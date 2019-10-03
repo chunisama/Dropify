@@ -55,15 +55,15 @@ class SessionForm extends React.Component {
   }
 
   // Returns a collection of Errors
-  // renderErrors() {
-  //   return (
-  //     <ul>
-  //       {this.props.errors.map((error, idx) => {
-  //         return <li key={idx}>{error}</li>;
-  //       })}
-  //     </ul>
-  //   );
-  // }
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, idx) => {
+          return <li key={idx}>{error}</li>;
+        })}
+      </ul>
+    );
+  }
 
   doesErrorExist(error) {
     const errors = this.props.errors;
