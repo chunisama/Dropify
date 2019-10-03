@@ -4,7 +4,7 @@ import Root from "./components/root";
 import configureStore from "./store/store";
 //testing
 // import { signUp, signIn, logout } from './util/session_api_util';
-// import { signUp, signIn, logout } from "./actions/session_actions";
+import { signUp, signIn, logout } from "./actions/session_actions";
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  // window.signUp = signUp;
-  // window.signIn = signIn;
-  // window.logout = logout;
+  window.signUp = signUp;
+  window.signIn = signIn;
+  window.logout = logout;
 });

@@ -32,45 +32,8 @@ span, article, footer, time, small {
   background: transparent;
 }
 
-html {
-  background-color: #F037A5;
-  background: linear-gradient(#F037A5 -60%, #FAE62D 140%) no-repeat;
-  height: 200%;
-
-}
-
 ul {
   list-style: none;
-}
-
-.app-img {
- width: 40px;
- height: 40px;
-}
-
-.app-logo {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  justify-content: space-between;
-}
-
-.app-title {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-weight: 600;
-  font-size: 120%;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.nav-buttons {
-  display: flex;
 }
 
 input[type="password"],
@@ -91,3 +54,160 @@ button,
 input[type="submit"] {
   cursor: pointer;
 }
+
+
+/*Splash Page Styles*/
+.splash-gradient {
+  background-color: #F037A5;
+  background: linear-gradient(#F037A5 -60%, #FAE62D 140%) no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.fixed-header {
+  background-color: rgba(0,0,0,0.3);
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+.app-nav {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.app-img {
+ width: 40px;
+ height: 40px;
+}
+
+.app-title, .footer-title, .footer-title2 {
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 145%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.nav-buttons {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #D9DADC;
+  font-size: 16px;
+  font-weight: 700;
+  padding-right: 40px;
+}
+
+.butt1:hover{
+  color: #1DB954;
+}
+.butt2:hover{
+  color: #1DB954;
+}
+
+.center-greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 270px;
+  z-index: 1;
+}
+
+.first-greeting {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: white;
+  font-size: 80px;
+}
+
+.second-greeting {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  margin: .5em 0 1em;
+}
+
+.webplayer-button {
+  color: #FFF;
+  background-color: #1DB954;
+  padding: 16px 48px 18px;
+  border-radius: 500px;
+  letter-spacing: 2px;
+  line-height: 1;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  border-width: 0;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+.webplayer-button:hover {
+  background-color: #1ED760;
+}
+
+
+.content {
+  position: relative;
+}
+
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0
+}
+
+.footer {
+  position: relative;
+  background-color: black;
+  min-height: 150px;
+}
+
+.bubbles {
+  background: url("https://www.scdn.co/i/home/hero-burst.svg") no-repeat;
+  width: 1610px;
+  height: 1523px;
+  background-position: top -410px center;
+}
+
+.footer-title, .footer-title2 {
+  display: flex;
+  align-items: center;
+}
+
+.logo2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-title2 {
+  padding: 5px;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.splash-footer-items {
+  display: flex;
+  padding-left: 61px;
+  padding-top: 40px;
+}
+
