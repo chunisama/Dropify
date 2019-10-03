@@ -8,15 +8,24 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  email           :string           not null
+#  name            :string           not null
+#  gender          :string           not null
+#  birthday        :string           not null
 #
 
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :session_token, :email, presence: true, uniqueness: true
+  validates :password_digest, :name, :gender, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true} 
 
   attr_reader :password 
 
   after_initialize :ensure_session_token
+
+  # def validate_birthdate
+  #   if !self.birthday
+  # end
 
 
   def self.find_by_credentials(username, password)

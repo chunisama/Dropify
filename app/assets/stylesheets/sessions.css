@@ -1,6 +1,9 @@
 .session-container {
     max-width: 500px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-container {
@@ -30,7 +33,7 @@
     align-items: center;
 }
 
-.username-input {
+.username-input, .password-input {
     width: 100%;
     height: 40px;
     padding: 6px 12px;
@@ -41,10 +44,17 @@
     box-sizing: border-box;
 }
 
-.username, .password, .button-containers, .session-button, .session-q1, .session-q2, .sign-up, .sign-in{
+.username, .password, .name, .button-containers, .session-button, .session-q1, .session-q2, .sign-up, .sign-in{
     padding: 7px;
+    width: 100%;
 }
-.password-input {
+
+.email{
+    padding: 7px;
+    padding-top: 25px;
+    width: 100%;
+}
+.email-input, .name-input {
     width: 100%;
     height: 40px;
     padding: 6px 12px;
@@ -55,7 +65,9 @@
     box-sizing: border-box;
 }
 
-.password-input-error, .username-input-error {
+
+
+.password-input-error, .username-input-error, .email-input-error, .name-input-error {
     border: 1px solid red;
     width: 100%;
     height: 40px;
@@ -66,16 +78,10 @@
     box-sizing: border-box;
 }
 
-.errors {
-    display: flex;
-}
-
 .button-containers {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
-
 
 .session-logo {
     display: flex;
@@ -116,19 +122,23 @@
 
 .demo {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 725;
     line-height: 1;
     border-radius: 500px;
     padding: 16px 48px 18px;
     transition-duration: .3s;
     border-width: 0;
     letter-spacing: 1px;
-    min-width: 460px;
     text-transform: uppercase;
     white-space: normal;
     color: #fff;
     background-color: #3B5998;
-    margin: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    margin: 0 auto;
+
 }
 
 
@@ -176,10 +186,139 @@
     font-weight: 600;
     font-size: 90%;
     font-family: 'Montserrat', sans-serif;
-    padding: 7px;
+    padding: 2px;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  box-shadow: (0 0 5px rgb(25, 55, 63));
-  border: 1px solid rgb(41, 83, 95);
+.month-menu:focus, .month-menu-error:focus, input[type=number]:focus,  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=name]:focus{
+    outline: none;
+    border: 1px solid rgb(43, 200, 243);
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+.birthday-container{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.month-menu {
+    border-radius: 2px;
+    background-color: #FFF;
+    border: 1px solid #dfe0e6;
+    color: #88898c;
+    font-size: .9375em;
+    margin: 0 6px;
+    padding: .625em .625em .625em;
+    width: 200%;
+    height: 40px;
+    line-height: 1em;
+    border-radius: 2px;
+    text-transform: capitalize;
+}
+
+
+
+.day-input {
+    height: 40px;
+    padding: 0 .75em;
+    border-radius: 2px;
+    width: 50%;
+    background-color: #FFF;
+    border: 1px solid #dfe0e6;
+    color: #1c1c1f;
+    font-size: .9375em;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0 18px;
+}
+
+.year-input {
+    height: 40px;
+    padding: 0 .75em;
+    border-radius: 2px;
+    text-transform: capitalize;
+    background-color: #FFF;
+    border: 1px solid #dfe0e6;
+    color: #1c1c1f;
+    font-size: .9375em;
+    line-height: normal;
+    margin: 0 5px;
+}
+
+.month-menu-error {
+    border-radius: 2px;
+    background-color: #FFF;
+    border: 1px solid red;
+    color: #88898c;
+    font-size: .9375em;
+    margin: 0 6px;
+    padding: .625em .625em .625em;
+    width: 200%;
+    height: 40px;
+    line-height: 1em;
+    border-radius: 2px;
+    text-transform: capitalize;
+}
+
+.day-input-error {
+    height: 40px;
+    padding: 0 .75em;
+    border-radius: 2px;
+    width: 50%;
+    background-color: #FFF;
+    border: 1px solid red;
+    color: #1c1c1f;
+    font-size: .9375em;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0 18px;
+
+}
+
+.year-input-error {
+    height: 40px;
+    padding: 0 .75em;
+    border-radius: 2px;
+    text-transform: capitalize;
+    background-color: #FFF;
+    border: 1px solid red;
+    color: #1c1c1f;
+    font-size: .9375em;
+    line-height: normal;
+    margin: 0 5px;
+}
+
+.dob-label {
+    color: #88898c;
+    display: block;
+    font-size: .9375em;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 7px;
+}
+
+.gender-container {
+    display: flex;
+    padding: 8px;
+    margin-top: 2px;
+    font-family: 'Montserrat', sans-serif;
+    color: #88898c;
+    width: 100%;
+}
+
+.male, .female, .neutral {
+    margin: 0 8px;
+}
+
+select#dob {
+    color: #000;
+}
+
+.errors + div {width: 100%;}
+
+.session-q2, .session-q1 {
+    text-align: center;
 }
