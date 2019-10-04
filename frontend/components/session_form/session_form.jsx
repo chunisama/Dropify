@@ -74,7 +74,7 @@ class SessionForm extends React.Component {
   }
 
   demoUser(formType){
-    const user = {username: "Guest", password: "password"};
+    const user = {username: "guest", password: "password"};
     formType === "Log In" ?
     this.props.processForm(user) : this.props.demoUser(user);
   }
