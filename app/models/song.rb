@@ -14,4 +14,7 @@ class Song < ApplicationRecord
     validates :title, presence: true
     belongs_to :artist
     belongs_to :album
+    # active storage association
+    has_one_attached :mp3
+    
 end

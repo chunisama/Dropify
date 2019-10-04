@@ -14,5 +14,7 @@ class Album < ApplicationRecord
     validates :name, :year, presence: true
     belongs_to :artist
     has_many :songs
+    # active storage association
+    has_one_attached :album_cover
 
 end

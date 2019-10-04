@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Genre.destroy_all
+Album.destroy_all
+Song.destroy_all
+
 guest = User.create!(
     username: "guest", 
     password: "password", 

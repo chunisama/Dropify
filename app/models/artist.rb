@@ -15,5 +15,7 @@ class Artist < ApplicationRecord
     belongs_to :genre
     has_many :songs
     has_many :albums
+    # active storage association
+    has_one_attached :artist_profile_pic
 
 end
