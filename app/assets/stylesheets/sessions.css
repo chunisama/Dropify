@@ -51,7 +51,7 @@
 
 .email{
     padding: 7px;
-    padding-top: 25px;
+    padding-top: 15px;
     width: 100%;
 }
 .email-input, .name-input {
@@ -136,9 +136,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35%;
+    width: 26%;
     margin: 0 auto;
-
+    margin-bottom: 15px;
 }
 
 
