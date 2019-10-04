@@ -7,7 +7,6 @@ class Api::GenresController < ApplicationController
             render json: @genres.errors.full_messages, status: 422
         end
     end
-
     def show
         @genre = Genre.find(params[:id])
         if @genre
@@ -16,5 +15,4 @@ class Api::GenresController < ApplicationController
             render json: @genre.errors.full_messages, status: 422
         end
     end
-
 end
