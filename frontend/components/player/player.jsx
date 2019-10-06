@@ -72,19 +72,20 @@ class Player extends React.Component {
         this.audio.onplaying = () => {
             this.currentTimeInterval = setInterval(() => {
                 this.range.value = this.audio.currentTime;
-            }, 500);
+            }, 1000);
         };
         
         this.audio.onpause = () => {
             clearInterval(this.currentTimeInterval);
         };
         
-        this.range.onchange = (e) => {
+        this.range.oninput = (e) => {
             clearInterval(this.currentTimeInterval);
             this.audio.currentTime = e.target.value;
+            
             this.currentTimeInterval = setInterval(() => {
                 this.range.value = this.audio.currentTime;
-            }, 500);
+            }, 1000);
         }
     }
 
