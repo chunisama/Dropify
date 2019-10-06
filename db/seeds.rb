@@ -149,6 +149,23 @@ Song.create!({title: "Coldest Blue", artist_id: 4, album_id: 3})
 Song.create!({title: "Itago", artist_id: 4, album_id: 3})
 
 
+uctrack1 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/01+Intro.mp3')
+uctrack2 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/02+Underground+Communication+(feat..mp3')
+uctrack3 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/03+Bomb+the+Blocks+(feat.+Persia).mp3')
+uctrack4 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/04+Amorphous+Form+(feat.+Souleye+_+E.mp3')
+uctrack5 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/05+Ridiculous+Wobble+(feat.+Nibu).mp3')
+uctrack6 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/06+Select+Frequency+(feat.+Seasunz).mp3')
+uctrack7 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/07+Kick+It+Complex+(Bassnectar+remix.mp3')
+uctrack8 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/08+Verbing+the+Noun.mp3')
+uctrack9 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/09+Yo+(feat.+KristinaMaria).mp3')
+uctrack10 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/10+Stomp+(feat.+Seasunz).mp3')
+uctrack11 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/11+Kick+It+Complex+(feat.+Persia).mp3')
+uctrack12 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/12+Carried+Away.mp3')
+uctrack13 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/13+Impossible+and+Overwhelming.mp3')
+uctrack14 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/14+I+Am+Back+(Bassnectar+remix).mp3')
+uctrack15 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/15+FSOF.mp3')
+uctrack16 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/16+Alkher+Illa+Doffor+(Bassnectar+re.mp3')
+uctrack17 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/17+Kyrian+Bee+Bop.mp3')
 
 
 
