@@ -6,46 +6,71 @@ class Player extends React.Component {
         this.state = {
             duration: null,
             volume: "1",
+            formattedDuration: null,
+            formattedTimer: null,
         };
-        this.playAudio = this.playAudio.bind(this);
-        this.pauseAudio = this.pauseAudio.bind(this);
+        this.togglePlay = this.togglePlay.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchSongs();
         this.handleProgressBar();
         this.handleVolume();
+        this.toggleButton();
+        this.setDuration();
+        this.setTimer();
+    }
+    componentDidUpdate(){
     }
 
-    isPlaying(){
-        return !this.audio.paused;    
-    }
-    
-    playAudio() {
-        this.audio.play();
+    togglePlay(){
+        return this.audio.paused ? this.audio.play() : this.audio.pause();
     }
 
-    pauseAudio() {
-        this.audio.pause();
+    toggleButton(){
+        this.audio.onplay = () => {
+            const pause = document.getElementById("play-pause");
+            pause.className = "fas fa-pause";
+        }
+        this.audio.onpause = () => {
+            const play = document.getElementById("play-pause");
+            play.className = "fas fa-play";
+        }
     }
 
-    handleVolume() {
+    toggleLooper(){
+        this.audio.loop = true;
+    }
+
+    handleVolume(){
         this.volume.onchange = (e) => {
             this.audio.volume = e.target.value;
         }
     }
 
+    setDuration() {
+        this.audio.onloadedmetadata = () => {
+            this.setState({ duration: this.audio.duration, formattedDuration: new Date(this.audio.duration * 1000).toISOString().substr(15, 4)});
+        };
+    }
+
+    setTimer() {
+        this.audio.ontimeupdate = () => {
+            this.setState({formattedTimer: new Date(this.audio.currentTime * 1000).toISOString().substr(15,4)});
+        }
+    }
+
+    updateTimer(){
+        return (e) => {
+            this.setState({formattedTimer: new Date(e.target.value * 1000).toISOString().substr(15,4)});
+        }      
+    }
+    
     handleProgressBar() {
         this.range.value = 0;
         this.currentTimeInterval = null;
-
-        this.audio.onloadedmetadata = () => {
-            this.setState({duration: this.audio.duration})
-        }
-
-
-        this.audio.onplay = () => {
-            this.currentTimeInterval = setInterval( () => {
+        this.audio.onplaying = () => {
+            this.currentTimeInterval = setInterval(() => {
                 this.range.value = this.audio.currentTime;
             }, 500);
         };
@@ -53,7 +78,7 @@ class Player extends React.Component {
         this.audio.onpause = () => {
             clearInterval(this.currentTimeInterval);
         };
-
+        
         this.range.onchange = (e) => {
             clearInterval(this.currentTimeInterval);
             this.audio.currentTime = e.target.value;
@@ -63,6 +88,9 @@ class Player extends React.Component {
         }
     }
 
+
+
+    //need to refactor this for loading on fetchSong instead of fetchSongs
     songExists(){
         if (this.props.songs.length >= 1) {
             return this.props.songs[0].songUrl;
@@ -70,16 +98,37 @@ class Player extends React.Component {
             return '';
         }
     }
+    
 
     render(){
         return(
-            <div>
-                <audio ref={(audio) => { this.audio = audio }} src={this.songExists()}></audio>
-                <input type="button" value="Play" onClick={() => this.playAudio()}/>
-                <input type="button" value="Pause" onClick={() => this.pauseAudio()}/>
-                <input type="range" ref={(range) => this.range = range} min="0" max={this.state.duration}/>
-                <input type="range" ref={(volume) => this.volume = volume} min="0" step="0.01" max={this.state.volume}/>
+    <footer className="player-container">
+        <div className="inner-wrap">
+            <div className="center-container">
+                <div className="player">
+                    <audio ref={(audio) => { this.audio = audio }} src={this.songExists()} loop={false} ></audio>
+                    <div className="player-controls">
+                        <button className="toggle-shuffle"><img className="shuffle-icon" src="../../assets/shuffle.png"/></button>
+                        <button className="toggle-previous"><img className="previous-icon" src="../../assets/previous_gray.png"/></button>
+                        <button className="toggle-player" onClick={() => this.togglePlay()}><i id="play-pause" className="fas fa-play"></i></button>
+                        <button className="toggle-next"><img className="next-icon" src="../../assets/next.png"/></button>
+                        <button className="toggle-looper" onClick={() => this.toggleLooper()}><img className="looper-icon" src="../../assets/looper.png"></img></button>
+                    </div>
+                    <div className="timer-controls">
+                        <div className="duration"ref={(currentDuration) => {this.currentDuration = currentDuration}}>{this.state.formattedTimer}</div>
+                        <input type="range" onInput={this.updateTimer()}ref={(range) => this.range = range} min="" max={this.state.duration}/>
+                        <div className="duration"ref={(totalDuration) => {this.totalDuration = totalDuration}}>{this.state.formattedDuration}</div>
+                    </div>
+                </div>
             </div>
+                <div className="misc-controls">
+                    <div className="sound-container">
+                        <img className="volume-icon" src="../../assets/volume-icon.png" />
+                        <input type="range" ref={(volume) => this.volume = volume} min="0" step="0.01" max={this.state.volume}/>
+                    </div>
+                </div>
+        </div>
+    </footer>
         )       
     }
 }

@@ -55,6 +55,9 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+input:focus, button:focus{
+  outline: none;
+}
 
 /*Splash Page Styles*/
 .splash-gradient {
