@@ -23,7 +23,7 @@ class PlaylistContoller < ApplicationController
         if @playlists
             render :index
         else
-            render json: 2playlists.errors.messages, status: 422
+            render json: @playlists.errors.messages, status: 422
         end
     end
 

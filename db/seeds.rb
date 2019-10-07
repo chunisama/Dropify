@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Genre.destroy_all
-Album.destroy_all
 Song.destroy_all
+Album.destroy_all
+Artist.detroy_all
+Genre.destroy_all
+User.destroy_all
 
 require 'open-uri'
 
@@ -23,20 +24,20 @@ guest = User.create!(
 
 
 #Genres
-Genre.create!({category: "Glitch Hop"})
-Genre.create!({category: "Dubstep"})
-Genre.create!({category: "Bass Music"})
-Genre.create!({category: "Neuro Hop"})
-Genre.create!({category: "Downtempo"})
-Genre.create!({category: "Ambient"})
+glitchhop = Genre.create!({category: "Glitch Hop"})
+dubstep = Genre.create!({category: "Dubstep"})
+bassmusic = Genre.create!({category: "Bass Music"})
+neurohop = Genre.create!({category: "Neuro Hop"})
+downtempo = Genre.create!({category: "Downtempo"})
+ambient = Genre.create!({category: "Ambient"})
 
 #Artists
-koansound = Artist.create!({name: "Koan Sound", bio: "Those funky brits", genre_id: 1})
-bassnectar = Artist.create!({name: "Bassnectar", bio: "A dj with really long hair", genre_id: 2})
-detoxunit = Artist.create!({name: "Detox Unit", bio: "Tasteful bass music", genre_id: 3})
-kursa = Artist.create!({name: "Kursa", bio: "Crazy british dude", genre_id: 4})
-tipper = Artist.create!({name: "Tipper", bio: "God tier electronic musician", genre_id: 5})
-crunch = Artist.create!({name: "Crunch", bio: "Collaboration project between Tipper and Mike Wallis", genre_id: 6})
+koansound = Artist.create!({name: "Koan Sound", bio: "Those funky brits", genre_id: glitchhop.id})
+bassnectar = Artist.create!({name: "Bassnectar", bio: "A dj with really long hair", genre_id: dubstep.id})
+detoxunit = Artist.create!({name: "Detox Unit", bio: "Tasteful bass music", genre_id: bassmusic.id})
+kursa = Artist.create!({name: "Kursa", bio: "Crazy british dude", genre_id: neurohop.id})
+tipper = Artist.create!({name: "Tipper", bio: "God tier electronic musician", genre_id: downtempo.id})
+crunch = Artist.create!({name: "Crunch", bio: "Collaboration project between Tipper and Mike Wallis", genre_id: ambient.id})
 
 
 
