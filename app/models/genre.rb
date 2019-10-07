@@ -11,4 +11,6 @@
 class Genre < ApplicationRecord
     validates :category, presence: true
     has_many :artists
+
+    has_one_attached :genre_photo
 end

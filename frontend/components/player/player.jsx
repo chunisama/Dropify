@@ -24,7 +24,7 @@ class Player extends React.Component {
     }
 
     togglePlay(){
-        return this.audio.paused ? this.audio.play() : this.audio.pause();
+        return this.audio.paused ? this.audio.play() : this.audio.pause();  
     }
 
     toggleButton(){
@@ -94,12 +94,11 @@ class Player extends React.Component {
     //need to refactor this for loading on fetchSong instead of fetchSongs
     songExists(){
         if (this.props.songs.length >= 1) {
-            return this.props.songs[0].songUrl;
+            return this.props.songs[1].mp3;
         } else {
             return '';
         }
     }
-    
 
     render(){
         return(

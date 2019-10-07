@@ -1,1 +1,3 @@
-json.extract! song, :id, :title, :artist_id, :album_id
+json.set! @song.id do
+  json.partial! 'api/songs/song', song: @song
+end

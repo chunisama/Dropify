@@ -22,11 +22,11 @@ class User < ApplicationRecord
   attr_reader :password 
 
   after_initialize :ensure_session_token
-
-  # def validate_birthdate
-  #   if !self.birthday
-  # end
-
+  
+  has_many :playlists
+  # active storage association
+  # has_one_attached :avatar
+ 
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

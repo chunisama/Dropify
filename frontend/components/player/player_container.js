@@ -3,10 +3,10 @@ import Player from "./player";
 import { fetchSongs, fetchSong } from "../../actions/player_actions";
 
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
     const { songs } = state.entities;
     return ({
-        songs: Object.values(songs)
+        songs: Object.values(songs),
     })
 }
 

@@ -11,11 +11,11 @@
 #
 
 class Artist < ApplicationRecord
-    validates :name, :bio, presence: true
+    validates :name, :bio, :genre_id, presence: true
     belongs_to :genre
     has_many :songs
     has_many :albums
     # active storage association
-    has_one_attached :artist_profile_pic
+    has_one_attached :profile_pic
 
 end
