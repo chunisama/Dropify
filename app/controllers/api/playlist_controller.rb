@@ -39,7 +39,7 @@ class PlaylistContoller < ApplicationController
     def update
         @playlist = Playlist.find(params[:id])
         if @playlist
-            render: show
+            render :show
         else
             render json: @playlists.errors.messages, status: 422
         end
