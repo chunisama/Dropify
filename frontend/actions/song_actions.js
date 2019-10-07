@@ -1,7 +1,19 @@
-import * as ApiUtil from "../util/player_api_util";
+import * as ApiUtil from "../util/song_api_util";
 
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
+export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
+export const RECEIVE_NEXT_SONG = 'RECEIVE_NEXT_SONG';
+
+export const receiveCurrentSong = song => ({
+    type: RECEIVE_CURRENT_SONG,
+    song
+})
+
+export const receiveNextSong = song => ({
+    type: RECEIVE_NEXT_SONG,
+    song
+})
 
 const receiveSong = song => ({
     type: RECEIVE_SONG, 

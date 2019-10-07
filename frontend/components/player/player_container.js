@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import Player from "./player";
-import { fetchSongs, fetchSong } from "../../actions/player_actions";
+import { fetchSongs, receiveCurrentSong, receiveNextSong } from "../../actions/song_actions";
 
 
-const msp = (state, ownProps) => {
+const msp = (state) => {
     const { songs } = state.entities;
     return ({
-        songs: Object.values(songs),
+        song: songs[state.entities.ui.currentSong]
     })
 }
 

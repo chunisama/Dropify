@@ -8,19 +8,24 @@ class Player extends React.Component {
             volume: "1",
             formattedDuration: null,
             formattedTimer: null,
+            currentSong: "",
         };
         this.togglePlay = this.togglePlay.bind(this);
     }
 
     componentDidMount(){
-        this.props.fetchSongs();
+        // this.props.fetchSongs();
         this.handleProgressBar();
         this.handleVolume();
         this.toggleButton();
         this.setDuration();
         this.setTimer();
     }
-    componentDidUpdate(){
+    
+    componentDidUpdate(prevProps){
+        if(prevProps.song !== this.props.song){
+            this.setState({currentSong: this.props.song.songUrl})
+        }
     }
 
     togglePlay(){
@@ -39,7 +44,11 @@ class Player extends React.Component {
     }
 
     toggleLooper(){
-        this.audio.loop = true;
+        if (this.audio.loop == false){
+            this.audio.loop = true;
+        } else if (this.audio.loop == true){
+            this.audio.loop = false;
+        }
     }
 
     handleVolume(){
@@ -91,10 +100,10 @@ class Player extends React.Component {
 
 
 
-    //need to refactor this for loading on fetchSong instead of fetchSongs
+    //for testing
     songExists(){
         if (this.props.songs.length >= 1) {
-            return this.props.songs[1].mp3;
+            return this.props.songs[2].songUrl;
         } else {
             return '';
         }
@@ -106,7 +115,7 @@ class Player extends React.Component {
         <div className="inner-wrap">
             <div className="center-container">
                 <div className="player">
-                    <audio ref={(audio) => { this.audio = audio }} src={this.songExists()} loop={false} ></audio>
+                    <audio ref={(audio) => { this.audio = audio }} src={this.state.currentSong} autoPlay loop={false} ></audio>
                     <div className="player-controls">
                         <button className="toggle-shuffle"><img className="shuffle-icon" src="../../assets/shuffle.png"/></button>
                         <button className="toggle-previous"><img className="previous-icon" src="../../assets/previous_gray.png"/></button>
