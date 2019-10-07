@@ -8,7 +8,7 @@
 
 Song.destroy_all
 Album.destroy_all
-Artist.detroy_all
+Artist.destroy_all
 Genre.destroy_all
 User.destroy_all
 
