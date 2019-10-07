@@ -195,6 +195,10 @@
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
+input:focus::-webkit-input-placeholder { 
+    color: black;
+}
+
 .birthday-container{
     display: flex;
     justify-content: space-between;
@@ -202,13 +206,13 @@
     font-family: 'Montserrat', sans-serif;
     width: 100%;
     margin-bottom: 10px;
+
 }
 
 .month-menu {
     border-radius: 2px;
     background-color: #FFF;
     border: 1px solid #dfe0e6;
-    color: #88898c;
     font-size: .9375em;
     margin: 0 6px;
     padding: .625em .625em .625em;
@@ -218,8 +222,6 @@
     border-radius: 2px;
     text-transform: capitalize;
 }
-
-
 
 .day-input {
     height: 40px;
@@ -322,3 +324,4 @@ select#dob {
 .session-q2, .session-q1 {
     text-align: center;
 }
+

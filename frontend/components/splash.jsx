@@ -14,7 +14,7 @@ class Splash extends React.Component{
         <header className="fixed-header">
         <div className="app-nav">
           <div className="logo">
-            <img className="app-img" src="../../assets/Spotify_Icon_RGB_White.png"/>
+            <img className="app-img" src={window.whiteSpotifyURL}/>
              &nbsp;
             <h1 className="app-title">Dropify</h1>
           </div>

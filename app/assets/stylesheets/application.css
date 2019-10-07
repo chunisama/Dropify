@@ -114,9 +114,11 @@ input:focus, button:focus{
 
 .butt1:hover{
   color: #1DB954;
+  transition: 0.5s;
 }
 .butt2:hover{
   color: #1DB954;
+  transition: 0.5s;
 }
 
 .center-greeting {
@@ -157,6 +159,7 @@ input:focus, button:focus{
   border-width: 0;
   font-weight: 700;
   margin-top: 16px;
+  transition: 0.5s;
 }
 
 .webplayer-button:hover {
@@ -214,3 +217,6 @@ input:focus, button:focus{
   padding-top: 40px;
 }
 
+input::-webkit-input-placeholder {
+  transition: 0.5s
+}

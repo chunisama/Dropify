@@ -146,7 +146,7 @@ class SessionForm extends React.Component {
         <label className="dob-label" htmlFor="dob">Date of birth</label>
         <div className="birthday-container">
             <select className={"month-menu" + this.changeToErrorForm("Birthday can't be blank")} onChange={this.update("month")} id="dob">
-            <option>Month</option>
+            <option className="default-birthday" value="" selected>Month</option>
             <option value="1">January</option>
             <option value="2">February</option>
             <option value="3">March</option>
@@ -162,8 +162,8 @@ class SessionForm extends React.Component {
           </select>
             <input
               className={"day-input" + this.changeToErrorForm("Birthday can't be blank")}
-            name="day"
-            type="number"
+              name="day"
+              type="number"
               value={this.state.day}
               onChange={this.update("day")}
               placeholder="Day"
@@ -214,7 +214,7 @@ class SessionForm extends React.Component {
       <div>
         {/* Session Logo */}
         <div className="session-logo">
-          <img className="session-img" src="../../assets/Spotify_Icon_RGB_Black.png" />
+          <img className="session-img" src={window.blackSpotifyURL} />
           &nbsp;
             <h1 className="session-title">Dropify</h1>
         </div>
