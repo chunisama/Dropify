@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head >
-  <link rel="icon" href="../../assets/Spotify_Icon_RGB_Green.png">
+  <link rel="icon" href="<%= image_url('Spotify_Icon_RGB_Green.png') %>">
     <title>Dropify</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,9 +9,19 @@
         integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript">
+    window.looperURL = "<%= image_url('looper.png') %>";
+    window.nextURL = "<%= image_url('next.png') %>";
+    window.previousURL = "<%= image_url('previous_gray.png') %>";
+    window.shuffleURL = "<%= image_url('shuffle.png') %>";
+    window.volumeURL = "<%= image_url('volume-icon.png') %>";
+    window.greenSpotifyURL = "<%= image_url('Spotify_Icon_RGB_Green.png') %>";
+    window.whiteSpotifyURL = "<%= image_url('Spotify_Icon_RGB_White.png') %>";
+    </script>
   </head>
 
   <body>
+
     <%= yield %>
   </body>
 </html>

@@ -39,7 +39,7 @@ class Splash extends React.Component{
             <div className="splash-footer-items">
               <div className="logo2">
                 <div className="footer-title">
-                <img className="app-img" src="../../assets/Spotify_Icon_RGB_White.png" />
+                <img className="app-img" src={window.whiteSpotifyURL} />
                 &nbsp;
                 <h1>Dropify</h1>
                 </div>

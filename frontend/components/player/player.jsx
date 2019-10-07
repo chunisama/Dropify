@@ -59,7 +59,7 @@ class Player extends React.Component {
 
     setDuration() {
         this.audio.onloadedmetadata = () => {
-            this.setState({ duration: this.audio.duration, formattedDuration: new Date(this.audio.duration * 1000).toISOString().substr(15, 4)});
+            this.setState({duration: this.audio.duration, formattedDuration: new Date(this.audio.duration * 1000).toISOString().substr(15, 4)});
         };
     }
 
@@ -117,11 +117,11 @@ class Player extends React.Component {
                 <div className="player">
                     <audio ref={(audio) => { this.audio = audio }} src={this.state.currentSong} autoPlay loop={false} ></audio>
                     <div className="player-controls">
-                        <button className="toggle-shuffle"><img className="shuffle-icon" src="../../assets/shuffle.png"/></button>
-                        <button className="toggle-previous"><img className="previous-icon" src="../../assets/previous_gray.png"/></button>
+                        <button className="toggle-shuffle"><img className="shuffle-icon" src={window.shuffleURL}/></button>
+                        <button className="toggle-previous"><img className="previous-icon" src={window.previousURL}/></button>
                         <button className="toggle-player" onClick={() => this.togglePlay()}><i id="play-pause" className="fas fa-play"></i></button>
-                        <button className="toggle-next"><img className="next-icon" src="../../assets/next.png"/></button>
-                        <button className="toggle-looper" onClick={() => this.toggleLooper()}><img className="looper-icon" src="../../assets/looper.png"></img></button>
+                        <button className="toggle-next"><img className="next-icon" src={window.nextURL}/></button>
+                        <button className="toggle-looper" onClick={() => this.toggleLooper()}><img className="looper-icon" src={window.looperURL}></img></button>
                     </div>
                     <div className="timer-controls">
                         <div className="duration"ref={(currentDuration) => {this.currentDuration = currentDuration}}>{this.state.formattedTimer}</div>
@@ -132,7 +132,7 @@ class Player extends React.Component {
             </div>
                 <div className="misc-controls">
                     <div className="sound-container">
-                        <img className="volume-icon" src="../../assets/volume-icon.png" />
+                        <img className="volume-icon" src={window.volumeURL} />
                         <input type="range" ref={(volume) => this.volume = volume} min="0" step="0.01" max={this.state.volume}/>
                     </div>
                 </div>
