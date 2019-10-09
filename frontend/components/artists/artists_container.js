@@ -16,8 +16,8 @@ const mdp = (dispatch) => {
     fetchSongs: () => dispatch(fetchSongs()),
     fetchArtists: () => dispatch(fetchArtists()),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
-    // fetchAlbum: (id) => dispatch(fetchAlbum(id)),
-    // fetchArtist: (id) => dispatch(fetchArtist(id)),
+    fetchAlbum: (id) => dispatch(fetchAlbum(id)),
+    fetchArtist: (id) => dispatch(fetchArtist(id)),
   })
 }
 
