@@ -42,11 +42,12 @@ crunch = Artist.create!({name: "Crunch", bio: "Collaboration project between Tip
 
 
 
+
 #Albums
 polychrome = Album.create!({name: "Polychrome", year: "2018", artist_id: koansound.id})
 forward_escape = Album.create!({name: "Forward Escape", year: "2014", artist_id: tipper.id})
 youcaneat = Album.create!({name: "YCEWYWFB", year: "2018", artist_id: kursa.id})
-crunchalbum = Album.create!({name: "Crunch", year: "2013", artist_id: crunch.id})
+crunchalbum = Album.create!({name: "Crunch", year: "2001", artist_id: crunch.id})
 deviate = Album.create!({name: "Deviate", year: "2019", artist_id: detoxunit.id})
 cozzafrenzy = Album.create!({name: "Cozza Frenzy", year: "2009", artist_id: bassnectar.id})
 bsjalbum = Album.create!({name: "Broken Soul Jamboree", year: "2010", artist_id: tipper.id})
@@ -151,6 +152,24 @@ kursa8 = Song.create!({title: "On The Canz", artist_id: kursa.id, album_id: youc
 kursa9 = Song.create!({title: "Coldest Blue", artist_id: kursa.id, album_id: youcaneat.id})
 kursa10 = Song.create!({title: "Itago", artist_id: kursa.id, album_id: youcaneat.id})
 
+# artist_pictures
+koansound_prof = koansound.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/koansound_prof.jpg'), filename: 'koansound_prof.jpg')
+tipper_prof = tipper.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/tipper_prof.jpg'), filename: 'tipper_prof.jpg')
+kursa_prof = kursa.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/kursa_prof.jpg'), filename: 'kursa_prof.jpg')
+crunch_profile_pic = crunch.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/crunch_prof.jpg'), filename: 'crunch_prof.jpg')
+detoxunit_prof = detoxunit.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/detoxunit_prof.jpg'), filename: 'detoxunit_prof.jpg')
+bassnectar_cover = bassnectar.profile_pic.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/artist_pictures/bassnectar_prof.jpg'), filename: 'bassnectar_prof.jpg')
+
+
+# album_covers
+polychrome_cover = polychrome.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/polychrome_cover.jpg'), filename: 'polychrome_cover.jpg')
+forward_escape_cover = forward_escape.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/forward_escape.jpg'), filename: 'forward_escape.jpg')
+youcaneat_cover = youcaneat.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/youcaneat_cover.jpg'), filename: 'youcaneat_cover.jpg')
+crunchalbum_cover = crunchalbum.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/crunch1_cover.jpg'), filename: 'crunch1_cover.jpg')
+deviate_cover = deviate.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/deviate_cover.png'), filename: 'deviate_cover.png')
+cozzafrenzy_cover = cozzafrenzy.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/cozza_frenzy.jpg'), filename: 'cozza_frenzy.jpg')
+bsj_cover = bsjalbum.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/bsj_cover.jpg'), filename: 'bsj_cover.jpg')
+undergroundcommunication_cover = undergroundcommunication.album_cover.attach(io: open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/uc_cover.jpg'), filename: 'uc_cover.jpg')
 # Mp3
 uctrack1 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/01+Intro.mp3')
 uctrack2 = open('https://dropify-aa-seeds.s3.us-east-2.amazonaws.com/dropify_seed_data/Bassnectar+-+Underground+Communication/02+Underground+Communication+(feat..mp3')

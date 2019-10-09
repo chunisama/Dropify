@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Player extends React.Component {
     constructor(props){
@@ -9,8 +10,10 @@ class Player extends React.Component {
             formattedDuration: null,
             formattedTimer: null,
             currentSong: "",
+            currentAlbum: "",
         };
         this.togglePlay = this.togglePlay.bind(this);
+        // this.audio = React.createRef();
     }
 
     componentDidMount(){
@@ -23,9 +26,17 @@ class Player extends React.Component {
     }
     
     componentDidUpdate(prevProps){
-        if(prevProps.song !== this.props.song){
-            this.setState({currentSong: this.props.song.songUrl})
+        if (prevProps.song !== this.props.song){
+            this.setState({currentSong: this.props.song, 
+                currentAlbum: this.props.albums[this.props.song.album_id],
+            })
         }
+    }
+
+    componentWillUnmount(){
+        this.audio.pause();
+        this.setState({formattedTimer: ""});
+        clearInterval(this.currentTimeInterval);
     }
 
     togglePlay(){
@@ -39,7 +50,9 @@ class Player extends React.Component {
         }
         this.audio.onpause = () => {
             const play = document.getElementById("play-pause");
-            play.className = "fas fa-play";
+            if (play) { // TEMPORARY SOLUTION
+                play.className = "fas fa-play";
+            }
         }
     }
 
@@ -63,7 +76,7 @@ class Player extends React.Component {
         };
     }
 
-    setTimer() {
+    setTimer() {            
         this.audio.ontimeupdate = () => {
             this.setState({formattedTimer: new Date(this.audio.currentTime * 1000).toISOString().substr(15,4)});
         }
@@ -83,18 +96,18 @@ class Player extends React.Component {
                 this.range.value = this.audio.currentTime;
             }, 1000);
         };
-        
+  
         this.audio.onpause = () => {
             clearInterval(this.currentTimeInterval);
         };
+
+        // this.audio.onseeking = () => {
+        //     clearInterval(this.currentTimeInterval);
+        // }
         
         this.range.oninput = (e) => {
             clearInterval(this.currentTimeInterval);
             this.audio.currentTime = e.target.value;
-            
-            this.currentTimeInterval = setInterval(() => {
-                this.range.value = this.audio.currentTime;
-            }, 1000);
         }
     }
 
@@ -113,9 +126,26 @@ class Player extends React.Component {
         return(
     <footer className="player-container">
         <div className="inner-wrap">
+            <div className="left-container">
+                <div className="currentSongInfo">
+                    <div className="currentSongArtwork">
+                    <Link to={`/albums/${this.state.currentAlbum.id}`}>
+                        <img className="currentSongArt" src={this.state.currentAlbum.photoUrl}/>
+                    </Link>
+                    </div>
+                    <div className="currentSong-text">
+                        <Link className="song-title"to={`/albums/${this.state.currentAlbum.id}`}>
+                            {this.state.currentSong.title}
+                        </Link>
+                        <Link className="artist-name"to={`/artists/${this.state.currentAlbum.artistId}`}>
+                            {this.state.currentAlbum.artist}
+                        </Link>
+                    </div>
+                </div>
+            </div>
             <div className="center-container">
                 <div className="player">
-                    <audio ref={(audio) => { this.audio = audio }} src={this.state.currentSong} autoPlay loop={false} ></audio>
+                    <audio ref={(audio) => { this.audio = audio }} src={this.state.currentSong.songUrl} autoPlay loop={false} ></audio>
                     <div className="player-controls">
                         <button className="toggle-shuffle"><img className="shuffle-icon" src={window.shuffleURL}/></button>
                         <button className="toggle-previous"><img className="previous-icon" src={window.previousURL}/></button>
@@ -125,17 +155,17 @@ class Player extends React.Component {
                     </div>
                     <div className="timer-controls">
                         <div className="duration"ref={(currentDuration) => {this.currentDuration = currentDuration}}>{this.state.formattedTimer}</div>
-                        <input type="range" onInput={this.updateTimer()}ref={(range) => this.range = range} min="" max={this.state.duration}/>
+                        <input type="range" onInput={this.updateTimer()}ref={(range) => this.range = range} min="0" max={this.state.duration}/>
                         <div className="duration"ref={(totalDuration) => {this.totalDuration = totalDuration}}>{this.state.formattedDuration}</div>
                     </div>
                 </div>
             </div>
-                <div className="misc-controls">
-                    <div className="sound-container">
-                        <img className="volume-icon" src={window.volumeURL} />
-                        <input type="range" ref={(volume) => this.volume = volume} min="0" step="0.01" max={this.state.volume}/>
-                    </div>
+            <div className="misc-controls">
+                <div className="sound-container">
+                    <img className="volume-icon" src={window.volumeURL} />
+                    <input type="range" ref={(volume) => this.volume = volume} min="0" step="0.01" max={this.state.volume}/>
                 </div>
+            </div>
         </div>
     </footer>
         )       

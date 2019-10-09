@@ -4,9 +4,10 @@ import { fetchSongs, receiveCurrentSong, receiveNextSong } from "../../actions/s
 
 
 const msp = (state) => {
-    const { songs } = state.entities;
+    const { songs, albums, ui } = state.entities;
     return ({
-        song: songs[state.entities.ui.currentSong]
+        song: songs[ui.currentSong],
+        albums,
     })
 }
 

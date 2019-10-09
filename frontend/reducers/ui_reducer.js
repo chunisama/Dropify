@@ -8,12 +8,12 @@ const _nullState = {
 export default (state = _nullState , action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_SONG:
-      return Object.assign({}, state, {currentSong: action.song.id});
-    // case RECEIVE_NEXT_SONG:
-    //   return Object.assign({}, state, {
-    //     currentSong: state.currentSong,
-    //     nextSong: action.song
-    //   });
+      return Object.assign({}, state, {currentSong: action.songId});
+  // case RECEIVE_NEXT_SONG:
+  //   return Object.assign({}, state, {
+  //     currentSong: state.currentSong,
+  //     nextSong: action.song
+  //   });
     default:
       return _nullState;
   }

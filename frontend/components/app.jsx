@@ -5,14 +5,20 @@ import Splash from "./splash";
 import { Route } from "react-router-dom";
 import { AuthRoute } from "../util/route_util"
 import PlayerContainer from "./player/player_container";
+import ArtistIndexContainer from "./artists/artists_container";
 import SongIndexContainer  from "./songs/song_index_container";
+import AlbumIndexContainer from "./albums/albums_container";
+
 const App = () => (
   <div>
     <Route exact path="/" component={Splash} />
     <Route path="/browse"> 
       <SongIndexContainer />
+      {/* <AlbumIndexContainer  /> */}
+      {/* <ArtistIndexContainer /> */}
       <PlayerContainer />
     </Route> 
+    <Route path="/collection" />
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
   </div>

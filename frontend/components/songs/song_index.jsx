@@ -1,37 +1,42 @@
 import React from "react";
+import SongIndexItem from "./song_index_item";
 
 class SongIndex extends React.Component {
   constructor(props){
   super(props);
-  this.state = {
-    currentSong: "",
-    };
   }
 
   componentDidMount(){
     this.props.fetchSongs();
-  }
-  
-  testSongs(){
-    const songs = this.props.songs.map((song) => {
-      return(
-        <div className="test" onClick={() => this.props.receiveCurrentSong(song)}>{song.title}</div>
-      )
-    })
-    return songs;
-  }
-
-  handleCurrentSong(e){
-    e.preventDefault();
-    this.props.fetchSong(e.target.value.id);
+    this.props.fetchAlbums();
   }
 
   render(){
+    if (this.props.songs.length == 0){
+      return (
+        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+      )
+    }
+    const songIndexItems = () => {
+      return(
+        <div className="song-index-container">
+          <div className="song-index">
+            {this.props.songs.map((song) => (
+              <SongIndexItem 
+                song={song}
+                key={song.id}
+                receiveCurrentSong={this.props.receiveCurrentSong}
+                album={this.props.albums[song.album_id]}
+                />
+              ))}
+          </div>
+        </div>
+      )
+    }
     return(
-      <div>
-        adsfsdfasdf
-        {this.testSongs()}
-      </div>
+      <>
+        {songIndexItems()}
+      </>
     )
   }
 

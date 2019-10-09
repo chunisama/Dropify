@@ -5,11 +5,9 @@ class Splash extends React.Component{
   render(){
     return(
       <div className="splash-container">
-
         <section className="splash-gradient">
           <div className="bubbles"></div>
         </section>
-
       <div className="content">
         <header className="fixed-header">
         <div className="app-nav">

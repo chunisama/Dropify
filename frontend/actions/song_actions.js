@@ -5,14 +5,14 @@ export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
 export const RECEIVE_NEXT_SONG = 'RECEIVE_NEXT_SONG';
 
-export const receiveCurrentSong = song => ({
+export const receiveCurrentSong = songId => ({
     type: RECEIVE_CURRENT_SONG,
-    song
+    songId,
 })
 
 export const receiveNextSong = song => ({
     type: RECEIVE_NEXT_SONG,
-    song
+    song,
 })
 
 const receiveSong = song => ({
