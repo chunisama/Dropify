@@ -15,21 +15,23 @@ import SidebarContainer from "./sidebar/sidebar_container";
 // import AlbumIndexContainer from "./albums/albums_container";
 
 const App = () => (
-  <div className="web-container">
+  <div className="dropify-container">
     <Route exact path="/" component={Splash} />
-    <div className="top-container">
-    <Route path="/browse"> 
-      <div className="background"></div>
-      <SidebarContainer />
-      <Browse />
-    </Route>
-    </div>
-    <Route path="/albums/:albumId" component={ AlbumShow } ></Route>
-    <Route path="/artists/:artistId" component={ ArtistShow }></Route>
-    <Route path="/collection" />
     <AuthRoute path="/login" component={ LoginFormContainer } />
     <AuthRoute path="/signup" component={ SignupFormContainer } />
-    <Route path="/"><PlayerContainer /></Route>
+    <div className="top-container">
+    <div className="background"></div>
+    </div>
+    <div className="main-wrapper">
+    <Route path="/:section" component={ SidebarContainer }></Route>
+    <Route path="/browse" component={ Browse }></Route>
+    <Route path="/albums/:albumId" component={ AlbumShow }></Route>
+    <Route path="/artists/:artistId" component={ ArtistShow }></Route>
+    <Route path="/collection" ></Route>
+    </div>
+    <div>
+    <Route path="/:section" component={ PlayerContainer }></Route>
+    </div>
   </div>
 );
 

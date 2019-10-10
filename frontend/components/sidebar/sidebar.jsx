@@ -30,7 +30,7 @@ class Sidebar extends React.Component{
             </Link>
           </div>
           <div className="collection-side">
-            <i class="fas fa-book"></i>
+            <i className="fas fa-book"></i>
             &nbsp;
             <Link to="/collection">
             Your Library

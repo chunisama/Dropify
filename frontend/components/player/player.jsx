@@ -17,7 +17,9 @@ class Player extends React.Component {
     }
 
     componentDidMount(){
-        // this.props.fetchSongs();
+        this.props.fetchSongs();
+        this.props.fetchAlbums();
+        this.props.fetchArtists();
         this.handleProgressBar();
         this.handleVolume();
         this.toggleButton();
@@ -94,7 +96,7 @@ class Player extends React.Component {
         this.audio.onplaying = () => {
             this.currentTimeInterval = setInterval(() => {
                 this.range.value = this.audio.currentTime;
-            }, 1000);
+            }, 500);
         };
   
         this.audio.onpause = () => {

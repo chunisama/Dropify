@@ -10,7 +10,9 @@ class SongIndexItem extends React.Component {
     return(
       <li>
         <div className="song-index-item">
-          <a onClick={() => this.props.receiveCurrentSong(this.props.song.id)}><i className="fas fa-play-circle"></i></a>
+         <button className="song-index-item-button" onClick={() => this.props.receiveCurrentSong(this.props.song.id)}>
+           <i className="fas fa-play-circle"></i>
+         </button>
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-artist">
             <Link to={`/artists/${this.props.album.artistId}`}>

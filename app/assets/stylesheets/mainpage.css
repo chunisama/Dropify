@@ -110,17 +110,20 @@ ul {
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  margin: 20px;
 }
 
 .index-item{
   width: 25%;
   height: 25%;
+  margin-top: 30px;
 }
 
 .content-wrapper{
   margin: 10px auto 20px;
-  width: 100%;
-  max-width: 200px;
+  width: 200px;
+  height: 200px;
+  /* max-width: 200px; */
   text-align: center;
   display: block;
   position: relative;
@@ -141,9 +144,11 @@ ul {
 
 .content-photo{
   border-radius: 100%;
-  width: 100%;
+  width: 200px;
   display: block;
   position: relative;
+  object-fit: cover;
+  height: 200px;
 }
 /* .artist-prof {
   opacity: 0;
@@ -176,12 +181,38 @@ ul {
   transition: 0s;
 } */
 
-.artist-name {
-  font-size: 12px;
-  font-weight: 400;
+.album-name {
+  margin-top: 1px;
+  font-size: 13px;
+  font-weight: 600;
   color: whitesmoke;
   line-height: 1.5;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.album-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.album-artist {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.artist-name {
+  font-size: 30px;
+  font-weight: 600;
+  color: whitesmoke;
+  line-height: 1.5;
   letter-spacing: 0.5px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -190,6 +221,22 @@ ul {
   justify-content: center;
   display: flex;
 }
+
+.content-photo-square {
+  width: 200px;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  height: 200px;
+}
+
+
+
+
+
+
+
+
 
 
 

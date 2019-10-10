@@ -9,8 +9,8 @@ class AlbumIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchSongs();
-    this.props.fetchAlbums();
+    // this.props.fetchSongs();
+    // this.props.fetchAlbums();
   }
 
   handleClick(album){
@@ -31,8 +31,8 @@ class AlbumIndex extends React.Component {
       return(
         <div className="albums-index-container">
           <ul className="flex-master">
-            {this.props.albums.map((album) => (
-              <li className="index-item">
+            {this.props.albums.map((album, idx) => (
+              <li key={idx} className="index-item">
               <AlbumIndexItem 
                 album={album}
                 key={album.id}

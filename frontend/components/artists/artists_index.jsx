@@ -11,9 +11,9 @@ class ArtistIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchSongs();
-    this.props.fetchAlbums();
-    this.props.fetchArtists();
+    // this.props.fetchSongs();
+    // this.props.fetchAlbums();
+    // this.props.fetchArtists();
   }
 
   handleClick(artist){
@@ -33,8 +33,8 @@ class ArtistIndex extends React.Component {
     return(
       <div className="artist-index-container">
         <ul className="flex-master">
-          {this.props.artists.map((artist) => (
-            <li className="index-item">
+          {this.props.artists.map((artist, idx) => (
+            <li key={idx} className="index-item">
             <ArtistIndexItem
               artist={artist}
               key={artist.id}
