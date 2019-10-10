@@ -4,21 +4,23 @@ import { Link } from 'react-router-dom';
 const BrowseNav = (props) => {
   return(
     <div className="tabs-container">
-      <div>
+    <ul className="tabs-list">
+      <li className="content-tab">
         <Link to="/browse/artists">
           Artists
         </Link>
-      </div>
-      <div>
+      </li>
+      <li className="content-tab">
         <Link to="/browse/albums">
           Albums
         </Link>
-      </div>
-      <div>
+      </li>
+      <li className="content-tab">
         <Link to="/browse/songs">
           Trending Songs
         </Link>
-      </div>
+      </li>
+    </ul>
     </div>
   )
 }

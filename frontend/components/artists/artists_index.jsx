@@ -32,16 +32,18 @@ class ArtistIndex extends React.Component {
     }
     return(
       <div className="artist-index-container">
-        <div className="artists">
+        <ul className="flex-master">
           {this.props.artists.map((artist) => (
+            <li className="index-item">
             <ArtistIndexItem
               artist={artist}
               key={artist.id}
               receiveCurrentSong={this.props.receiveCurrentSong}
               handleClick={this.handleClick}
             />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     )
   }

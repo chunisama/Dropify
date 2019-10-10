@@ -110,7 +110,6 @@ class ArtistShow extends React.Component{
 
 const msp = (state, ownProps) => {
   const { songs, albums, artists } = state.entities;
-  debugger
   return({
     artist: artists[ownProps.match.params.artistId],
     albums: albums,

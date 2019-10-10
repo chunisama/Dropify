@@ -10,7 +10,6 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount(){
-    debugger
     this.props.fetchAlbum(this.props.match.params.albumId);
   }
 

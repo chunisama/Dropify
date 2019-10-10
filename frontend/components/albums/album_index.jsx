@@ -30,16 +30,18 @@ class AlbumIndex extends React.Component {
     const albumIndexItems = () => {
       return(
         <div className="albums-index-container">
-          <div className="albums">
+          <ul className="flex-master">
             {this.props.albums.map((album) => (
+              <li className="index-item">
               <AlbumIndexItem 
                 album={album}
                 key={album.id}
                 receiveCurrentSong={this.props.receiveCurrentSong}
                 handleClick={this.handleClick}
                 />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )
     } 
