@@ -1,3 +1,7 @@
+.main-content-container * {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
 .background {
   z-index: -1;
   position: fixed;
@@ -14,16 +18,19 @@ ul {
   list-style: none;
 }
 
+
 .main-content-container {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 0px 0 100px 235px;
   /* animation: fadeIn 0.4s ease-in-out; */
 }
 
 .browse-container {
   padding: 20px;
-  min-height: 100vh;
+  /* min-height: 200vh; */
   color: #fff;
+  overflow: auto;
+  height: 750px;
 }
 
 .tabs-container {
@@ -87,10 +94,10 @@ ul {
   margin: 0 20px;
 }
 
-.browse-content {
-  min-height: 100vh;
+/* .browse-content { */
+  /* min-height: 100vh; */
   /* padding: 0 0 100px 220px; */
-}
+/* } */
 
 .side-bar-logo {
   display: flex;
@@ -230,9 +237,32 @@ ul {
   height: 200px;
 }
 
+.song-index-item {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 10px 20px 14px 10px;
+  font-weight: 300;
+  cursor: default;
+}
 
+.song-index-item-button {
+  height: 21px;
+  width: 25px;
+  line-height: 40px;
+  margin-right: 10px;
+}
 
+.song-index-item-button:hover {
+  cursor: pointer;
+}
 
+/* .fa-play-circle {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  color: whitesmoke;
+} */
 
 
 

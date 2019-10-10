@@ -29,6 +29,7 @@ class Player extends React.Component {
     
     componentDidUpdate(prevProps){
         if (prevProps.song !== this.props.song){
+            debugger
             this.setState({currentSong: this.props.song, 
                 currentAlbum: this.props.albums[this.props.song.album_id],
             })

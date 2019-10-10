@@ -15,6 +15,6 @@ export default (state = _nullState , action) => {
   //     nextSong: action.song
   //   });
     default:
-      return _nullState;
+      return state;
   }
 }

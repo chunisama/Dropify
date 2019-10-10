@@ -48,14 +48,15 @@ class AlbumShow extends React.Component {
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
       )
     }
+    debugger
     return (
       <div className="album-show-container">
+            <img src={this.props.album.photoUrl}/>
         <div className="album-songs">
             {this.renderSongs()}
         </div>
         <div className="album-show-info">
           <div className="album-show-cover-container">
-            <img src={this.props.album.photoUrl}/>
           </div>
           <div className="album-show-text1">{this.props.album.name}</div>
           <div className="album-show-text2">

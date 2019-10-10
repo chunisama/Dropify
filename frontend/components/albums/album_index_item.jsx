@@ -11,7 +11,6 @@ class AlbumIndexItem extends React.Component {
     this.props.receiveCurrentSong(songId);
   }
   render(){
-    debugger
     return(
       <div className="content-wrapper">
         <div className="album-cover">
