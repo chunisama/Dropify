@@ -10,8 +10,7 @@ class SongIndexItem extends React.Component {
     return(
       <li>
         <div className="song-index-item">
-        {/* <button className="song-index-item-button" ></button> */}
-          <i onClick={() => this.props.receiveCurrentSong(this.props.song.id)} className="song-index-item-button fas fa-play-circle"></i>
+          <i onClick={() => this.props.receiveCurrentSong(this.props.song.id)} className="song-index-item-button fab fa-google-play"></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">
@@ -20,6 +19,7 @@ class SongIndexItem extends React.Component {
                 {this.props.album.artist}
               </Link>
             </div>
+            <span class="spacing">•</span>
             <div className="song-index-item-album">
               <Link to={`/albums/${this.props.album.id}`}>
                 {this.props.album.name}

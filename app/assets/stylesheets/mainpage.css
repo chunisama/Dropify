@@ -244,35 +244,53 @@ ul {
   padding: 10px 20px 14px 10px;
   font-weight: 300;
   cursor: default;
+  /* align-items: center; */
+  /* top: 0px; */
 }
 
 .song-index-item-button {
-  height: 21px;
-  width: 25px;
-  line-height: 40px;
+  height: 20px;
+  width: 20px;
   margin-right: 10px;
+  margin-top: 3px;
+  background: transparent;
+  color: white;
 }
 
 .song-index-item-button:hover {
   cursor: pointer;
 }
 
-/* .fa-play-circle {
-  position: absolute;
-  top: 13px;
-  left: 15px;
+.song-index-item-info-child {
+  display: flex;
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.spacing {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.song-index-item-title {
+  text-shadow: black;
+  font-size: 13px;
+  font-weight: 600;
   color: whitesmoke;
-} */
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 
-
-
-
-
-
-
-
-
-
+.svg {
+  color: whitesmoke;
+  background-color: none;
+}
 
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
 import { receiveCurrentSong } from "../../actions/song_actions";
+import { Link } from "react-router-dom";
 
 class ArtistShow extends React.Component{
   constructor(props){
@@ -38,14 +39,37 @@ class ArtistShow extends React.Component{
         }
       }
     }
-    const result = artistSongs.map((song) => {
-    return (<div className="artist-songs-container" key={song.id}>
-      <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a>
-      <div className="artist-song-title">{song.title}</div>
-      <div className="artist-song-artist">{this.props.artist.name}</div>
-      <div className="artist-album-artist">{this.props.albums[song.album_id].name}</div>
-    </div>)
-    })
+    const result = artistSongs.map((song, idx) => {
+    return (
+        <li key={song.id}>
+          <div className="song-index-item">
+          <i onClick={() => this.props.receiveCurrentSong(song.id)} className="song-index-item-button fab fa-google-play"></i>
+          <div className="song-index-item-info">
+            <div className="song-index-item-title">{song.title}</div>
+            <div className="song-index-item-info-child">
+              <div className="song-index-item-artist">
+                <Link to={`/artists/${song.artistId}`}>
+                  {this.props.artist.name}
+                </Link>
+              </div>
+              <span className="spacing">•</span>
+              <div className="song-index-item-album">
+                <Link to={`/albums/${song.albumId}`}>
+                  {this.props.albums[song.album_id].name}
+                </Link>
+              </div>
+            </div>
+          </div>
+          </div>
+        </li>
+
+    // <div className="artist-songs-container" key={song.id}>
+    //   <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a>
+    //   <div className="artist-song-title">{song.title}</div>
+    //   <div className="artist-song-artist">{this.props.artist.name}</div>
+    //   <div className="artist-album-artist">{this.props.albums[song.album_id].name}</div>
+    // </div>)
+    )})
     return result;
   }
 
@@ -61,17 +85,22 @@ class ArtistShow extends React.Component{
         }
       }
     }
-    const result = artistAlbums.map((album) => {
+    const result = artistAlbums.map((album, idx) => {
     return (
-      <div className="artist-albums-container" key={album.id}>
-        <div className="album-cover" onClick={this.handleClick(album)}>
-          <a onClick={() => this.props.receiveCurrentSong(this.props.artist.songIds[0])}><i className="fas fa-play-circle"></i></a>
-          <img src={album.photoUrl}/>
-        </div> 
-         <div className="artist-album-artist">{this.props.artist.name}</div>
-        <div className="artist-album-title">{album.name}</div>
-      </div>)
-    })
+      <ul key={idx} className="flex-master">
+        <li className="artist-show-index-item">
+          <div className="img-wrapper"><img src={album.photoUrl}/></div>
+          <div className="artist-album-artist">{this.props.artist.name}</div>
+          <div className="artist-album-title">{album.name}</div>
+        </li>
+      </ul>
+        // for playing the first song on album 
+        // <div className="album-cover" onClick={this.handleClick(album)}>
+        // <a onClick={() => this.props.receiveCurrentSong(this.props.artist.songIds[0])}><i className="fas fa-play-circle"></i></a>
+        // </div> 
+        //  <div className="artist-album-artist">{this.props.artist.name}</div>
+        // <div className="artist-album-title">{album.name}</div>
+    )})
     return result;
   }
 
@@ -82,27 +111,32 @@ class ArtistShow extends React.Component{
       )
     }
     return(
-      <div>
-        <div className="artist-show-container"></div>
-          <div className="artist-show-profile">
-            <div className="artist-show-name">
-              {this.props.artist.name}
-            </div>
-            <div className="artist-show-pic">
-              <img src={this.props.artist.photoUrl} />
+      <div className="main-content-container">
+        <div className="artist-show-container">
+          <div className="artist-background">
+            <img className="artist-photo" src={`${this.props.artist.photoUrl}`}/>
+          </div>
+          <div className="artist-header">{this.props.artist.name}</div>
+          <div className="artist-content">
+            <div ClassName="artist-subheader">Overview</div>
+            <div className="artist-overview">
+              <div className="artist-show-albums">
+                <div className="artist-section-album-header">Albums</div>
+                <div className="artist-album-index">
+                  {this.renderAlbums()}
+                </div>
+              </div>
+              <div className="artist-show-songs">
+                <div className="artist-section-song-header">Songs</div>
+                <div className="artist-song-index">
+                  <ul className="flex-master">
+                  {this.renderSongs()}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="artist-show-content">
-            <div className="artist-content-overview">Overview</div>
-            <div className="artist-show-albums">
-              <div className="artist-show-album-label">Albums</div>
-              {this.renderAlbums()}
-            </div>
-            <div className="artist-show-songs">
-              <div className="artist-show-song-label">Songs</div>
-              {this.renderSongs()}
-            </div>
-          </div>
+        </div>
       </div>
     )
   }

@@ -33,7 +33,7 @@ class AlbumShow extends React.Component {
     const result = albumSongs.map((song, idx) => {
       //add play button here
       return (<div key={idx}>
-        <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a>
+        {/* <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a> */}
         <div className="album-song-title">{song.title}</div>
         <div className="album-song-artist">{this.props.album.artist}</div>
         <div className="album-song-album">{this.props.album.name}</div>
@@ -48,7 +48,7 @@ class AlbumShow extends React.Component {
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
       )
     }
-    debugger
+
     return (
       <div className="album-show-container">
             <img src={this.props.album.photoUrl}/>
