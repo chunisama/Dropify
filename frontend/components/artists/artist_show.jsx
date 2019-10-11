@@ -48,13 +48,13 @@ class ArtistShow extends React.Component{
             <div className="song-index-item-title">{song.title}</div>
             <div className="song-index-item-info-child">
               <div className="song-index-item-artist">
-                <Link to={`/artists/${song.artistId}`}>
+                {/* <Link to={`/artists/${song.artistId}`}> */}
                   {this.props.artist.name}
-                </Link>
+                {/* </Link> */}
               </div>
               <span className="spacing">•</span>
               <div className="song-index-item-album">
-                <Link to={`/albums/${song.albumId}`}>
+                <Link to={`/albums/${song.album_id}`}>
                   {this.props.albums[song.album_id].name}
                 </Link>
               </div>
@@ -87,9 +87,11 @@ class ArtistShow extends React.Component{
     }
     const result = artistAlbums.map((album, idx) => {
     return (
-        <li className="artist-show-index-item">
+        <li key={idx} className="artist-show-index-item">
           <div className="artist-show-index-item-wrapper">
+            <Link to={`/albums/${album.id}`}>
           <div className="img-wrapper"><img className="img-content"src={album.photoUrl}/></div>
+            </Link>
           <div className="artist-album-title">{album.name}</div>
           <div className="artist-album-artist">{this.props.artist.name}</div>
           </div>

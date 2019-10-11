@@ -34,7 +34,7 @@ class AlbumShow extends React.Component {
       //add play button here
       return (<li key={idx}>
         <div className="song-index-item">
-        <i onClick={() => this.props.receiveCurrentSong(this.props.song.id)} className="song-index-item-button fab fa-google-play"></i>
+        <i onClick={() => this.props.receiveCurrentSong(song.id)} className="song-index-item-button fab fa-google-play"></i>
         <div className="song-index-item-info">
         <div className="song-index-item-title">{song.title}</div>
         <div className="song-index-item-info-child">
@@ -45,9 +45,9 @@ class AlbumShow extends React.Component {
         </div>
         <span class="spacing">•</span>
         <div className="song-index-item-album">
-          <Link to={`/albums/${this.props.album.id}`}>
+          {/* <Link to={`/albums/${this.props.album.id}`}> */}
             {this.props.album.name}
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@ class AlbumShow extends React.Component {
               <div className="album-show-info">
                 <div className="album-show-text1">{this.props.album.name}</div>
                 <div className="album-show-text2">
-                  <Link to={`/artists/${this.props.album.artist.id}`}>
+                  <Link to={`/artists/${this.props.album.artistId}`}>
                     {this.props.album.artist}
                   </Link>
                 </div>

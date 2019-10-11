@@ -21,7 +21,7 @@ class ArtistIndexItem extends React.Component {
               {/* <div onClick={() => this.playSong()}><i className="fas fa-play-circle"></i></div> */}
             </Link>
           <div className="artist-details">
-              <Link className="artist-name"to={`/artists/${this.props.artist.id}`}>{this.props.artist.name}</Link>
+              <Link className="artist-index-name"to={`/artists/${this.props.artist.id}`}>{this.props.artist.name}</Link>
           </div>
         </div>  
         </>
