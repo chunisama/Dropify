@@ -32,12 +32,27 @@ class AlbumShow extends React.Component {
       }
     const result = albumSongs.map((song, idx) => {
       //add play button here
-      return (<div key={idx}>
-        {/* <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a> */}
-        <div className="album-song-title">{song.title}</div>
-        <div className="album-song-artist">{this.props.album.artist}</div>
-        <div className="album-song-album">{this.props.album.name}</div>
-      </div>)
+      return (<li key={idx}>
+        <div className="song-index-item">
+        <i onClick={() => this.props.receiveCurrentSong(this.props.song.id)} className="song-index-item-button fab fa-google-play"></i>
+        <div className="song-index-item-info">
+        <div className="song-index-item-title">{song.title}</div>
+        <div className="song-index-item-info-child">
+        <div className="song-index-item-artist">
+        <Link to={`/artists/${this.props.album.artistId}`}>
+          {this.props.album.artist}
+        </Link>
+        </div>
+        <span class="spacing">•</span>
+        <div className="song-index-item-album">
+          <Link to={`/albums/${this.props.album.id}`}>
+            {this.props.album.name}
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+      </li>)
     })
     return result;
   }
@@ -51,20 +66,24 @@ class AlbumShow extends React.Component {
 
     return (
       <div className="album-show-container">
-            <img src={this.props.album.photoUrl}/>
-        <div className="album-songs">
+        <div className="album-show">
+            <div className="album-show-img-container">
+              <img className="album-show-img-content"src={this.props.album.photoUrl}/>
+              <div className="album-show-info">
+                <div className="album-show-text1">{this.props.album.name}</div>
+                <div className="album-show-text2">
+                  <Link to={`/artists/${this.props.album.artist.id}`}>
+                    {this.props.album.artist}
+                  </Link>
+                </div>
+                <div className="album-show-text3">{this.props.album.songIds.length} SONGS</div>
+              </div>
+            </div>
+          <div className="album-show-songs-index">
+            <ul>
             {this.renderSongs()}
-        </div>
-        <div className="album-show-info">
-          <div className="album-show-cover-container">
+            </ul>
           </div>
-          <div className="album-show-text1">{this.props.album.name}</div>
-          <div className="album-show-text2">
-            <Link to={`/artists/${this.props.album.artist.id}`}>
-              {this.props.album.artist}
-            </Link>
-          </div>
-          <div className="album-show-text3">{this.props.album.songIds.length} SONGS</div>
         </div>
       </div>
   )}

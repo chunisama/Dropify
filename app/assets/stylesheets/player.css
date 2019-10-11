@@ -152,7 +152,7 @@ input[type="range"] {
 .currentSongInfo {
 	display: flex;
 	align-items: center;
-	padding-left: 15px;
+	/* padding-left: 15px; */
 }
 
 .currentSong-text {
@@ -164,12 +164,13 @@ input[type="range"] {
 .song-title {
 	font-weight: 500;
 	color: white;
+	flex-direction: row;
 	display: flex;
+	width: 200px;
 }
 
 .artist-name {
 	font-size: 11px;
 	display: flex;
 }
-
 

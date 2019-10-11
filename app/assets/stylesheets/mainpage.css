@@ -12,6 +12,8 @@
   animation: none;
   background-color: #181818;
   background-image: linear-gradient(#3c3e5d, #060609 85%);
+  overflow: auto;
+  height: 100%;
 }
 
 ul {
@@ -20,14 +22,11 @@ ul {
 
 
 .main-content-container {
-  /* min-height: 100vh; */
   padding: 0px 0 100px 235px;
-  /* animation: fadeIn 0.4s ease-in-out; */
 }
 
 .browse-container {
   padding: 20px;
-  /* min-height: 200vh; */
   color: #fff;
   overflow: auto;
   height: 750px;
@@ -55,8 +54,9 @@ ul {
   background-color: rgba(0,0,0,0.5);
   color: whitesmoke;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  margin: 1px;
-  
+  margin: -5px;
+  z-index: 2;
+
 }
 
 .log-out-button {
@@ -94,11 +94,6 @@ ul {
   margin: 0 20px;
 }
 
-/* .browse-content { */
-  /* min-height: 100vh; */
-  /* padding: 0 0 100px 220px; */
-/* } */
-
 .side-bar-logo {
   display: flex;
   flex-direction: row;
@@ -130,11 +125,9 @@ ul {
   margin: 10px auto 20px;
   width: 200px;
   height: 200px;
-  /* max-width: 200px; */
   text-align: center;
   display: block;
   position: relative;
-  /* animation: fadeIn 0.4s ease-in-out; */
 }
 
 .artist-link {
@@ -157,36 +150,6 @@ ul {
   object-fit: cover;
   height: 200px;
 }
-/* .artist-prof {
-  opacity: 0;
-  display: none;
-  pointer-events: none;
-  text-align: center;
-  width: 50%;
-  overflow: hidden;
-  border-radius: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
-/* .svg-container {
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  position: relative;
-} */
-/* 
-.viewBox {
-  display: block;
-  position: relative;
-  width: 100%;
-  stroke: rgba(255,255,255,0.6);
-  fill: transparent;
-  stroke-width: 6;
-  transition: 0s;
-} */
 
 .album-name {
   margin-top: 1px;
@@ -202,8 +165,6 @@ ul {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 .album-artist {
   font-size: 10px;
@@ -235,6 +196,7 @@ ul {
   position: relative;
   object-fit: cover;
   height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .song-index-item {
@@ -244,8 +206,6 @@ ul {
   padding: 10px 20px 14px 10px;
   font-weight: 300;
   cursor: default;
-  /* align-items: center; */
-  /* top: 0px; */
 }
 
 .song-index-item-button {
@@ -291,6 +251,8 @@ ul {
   color: whitesmoke;
   background-color: none;
 }
+
+
 
 
 

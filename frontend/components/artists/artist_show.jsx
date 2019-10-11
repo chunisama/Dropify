@@ -87,13 +87,14 @@ class ArtistShow extends React.Component{
     }
     const result = artistAlbums.map((album, idx) => {
     return (
-      <ul key={idx} className="flex-master">
         <li className="artist-show-index-item">
-          <div className="img-wrapper"><img src={album.photoUrl}/></div>
-          <div className="artist-album-artist">{this.props.artist.name}</div>
+          <div className="artist-show-index-item-wrapper">
+          <div className="img-wrapper"><img className="img-content"src={album.photoUrl}/></div>
           <div className="artist-album-title">{album.name}</div>
+          <div className="artist-album-artist">{this.props.artist.name}</div>
+          </div>
         </li>
-      </ul>
+
         // for playing the first song on album 
         // <div className="album-cover" onClick={this.handleClick(album)}>
         // <a onClick={() => this.props.receiveCurrentSong(this.props.artist.songIds[0])}><i className="fas fa-play-circle"></i></a>
@@ -116,20 +117,24 @@ class ArtistShow extends React.Component{
           <div className="artist-background">
             <img className="artist-photo" src={`${this.props.artist.photoUrl}`}/>
           </div>
-          <div className="artist-header">{this.props.artist.name}</div>
+          <div className="artist-header">
+          <h1 className="artist-show-name">{this.props.artist.name}</h1>
+          </div>
           <div className="artist-content">
-            <div ClassName="artist-subheader">Overview</div>
+            <div className="artist-show-subheader">Overview</div>
             <div className="artist-overview">
               <div className="artist-show-albums">
                 <div className="artist-section-album-header">Albums</div>
                 <div className="artist-album-index">
+                  <ul className="flex-parent">
                   {this.renderAlbums()}
+                  </ul>
                 </div>
               </div>
               <div className="artist-show-songs">
                 <div className="artist-section-song-header">Songs</div>
                 <div className="artist-song-index">
-                  <ul className="flex-master">
+                  <ul className="flex-songs">
                   {this.renderSongs()}
                   </ul>
                 </div>

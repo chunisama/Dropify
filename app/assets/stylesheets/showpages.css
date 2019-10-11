@@ -1,0 +1,203 @@
+
+.artist-background {
+  position: absolute;
+  top: 0;
+  left: 235px;
+  right: 0;
+  height: 360px;
+  background: rgba(0,0,0,0.3);
+  overflow: hidden;
+  z-index: -1;
+}
+.artist-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 1%, #222437);
+}
+
+.artist-photo {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.artist-header {
+  margin-bottom: 60px;
+  padding: 0 40px;
+  text-align: center;
+  display: block;
+  position: relative;
+  top: 120px;
+}
+
+.artist-show-name {
+  font-size: 72px;
+  line-height: 82px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: whitesmoke;
+  letter-spacing: -2px;
+  padding: 10px;
+}
+
+.artist-show-subheader {
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: whitesmoke;
+  margin-top: 115px;
+}
+
+
+.artist-show-albums {
+  padding: 20px;
+  display: block;
+  position: relative;
+}
+
+.artist-section-album-header, .artist-section-song-header{
+  font-size: 36px;
+  line-height: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: block;
+  position: relative;
+  letter-spacing: -1px;
+  color: whitesmoke;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 600;
+}
+
+.flex-parent {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-evenly;
+}
+
+.img-content {
+  width: 200px;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.artist-show-index-item-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.artist-album-artist {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.artist-album-title {
+  margin-top: 1px;
+  font-size: 13px;
+  font-weight: 600;
+  color: whitesmoke;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.flex-songs {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content-container {
+  padding: 0px 0 100px 235px;
+}
+
+/* .artist-show-index-item-wrapper {
+  margin: 10px auto 20px;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  display: block;
+  position: relative;
+}
+
+.artist-show-index-item {
+  width: 25%;
+} */
+
+
+/* .album-show-img-content{
+  width: 200px;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  height: 200px;
+} */
+
+
+.album-show-container{
+  display: flex;
+  flex-direction: row;
+  margin-left: 270px;
+  justify-content: left;
+  margin-top: 25px;
+}
+
+img.album-show-img-content {
+  width: 280px;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  height: 280px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.album-show {
+  display: flex;
+}
+
+.album-show-text1 {
+  text-align: center;
+  margin-top: 1px;
+  font-size: 13px;
+  font-weight: 600;
+  color: whitesmoke;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.album-show-songs-index {
+  margin-left: 30px;
+}
+
+.album-show-info {
+  margin-top: 10px;
+}
+
+
+.album-show-text2, .album-show-text3 {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

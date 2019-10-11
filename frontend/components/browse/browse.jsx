@@ -9,7 +9,8 @@ const Browse = (props) => {
   return (
     <div className="main-content-container">
       <div className="browse-container">
-      <Route to="/browse/" component={BrowseNav}></Route>
+      <Route exact path="/browse" render={() => <Redirect to="/browse/artists" />}/>
+      <Route to="/browse/:section" component={BrowseNav}></Route>
       <div className="browse-content">
         <Route exact path="/browse/artists" component={ArtistsContainer}></Route>
         <Route exact path="/browse/albums" component={AlbumsContainer}></Route>
