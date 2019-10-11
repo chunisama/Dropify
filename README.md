@@ -1,9 +1,9 @@
 # README
 
-# H1  Dropify 
+# Dropify 
 Dropify is a web service for audio streaming your favorite tracks for your audio listening pleasure. It can also be a way discover new genres and songs that you have never heard before!
 
-# User account creation, User Log in with frontend/backend authentication, guest/demo login, signup/login errors
+# User account frontend/backend authentication, guest/demo login, signup/login errors
 
 Users can sign up, sign in, and log out seamlessly. Additionally a user can use a demo login to experience the site without having to sign up.
 
@@ -20,14 +20,13 @@ https://github.com/chunisama/Dropify/blob/master/app/assets/images/
 
 
 # Curated Content for viewing: Albums, Artists, Songs
-
-## View a list of albums, songs, and artists curated by the creator
+View a list of albums, songs, and artists curated by the creator
 
 ## Here you can view a list of albums a user can select from
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png)
 
 ## Alternatively a user can select from a list of artists
-![alt text](![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png))
+![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png)
 
 ## A user can also view a list of trending underground songs hand selected by the creator
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.44.46%20AM.png)
