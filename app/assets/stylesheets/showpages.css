@@ -170,6 +170,7 @@ img.album-show-img-content {
 
 .album-show {
   display: flex;
+  width: 100%;
 }
 
 .album-show-text1 {
@@ -185,6 +186,7 @@ img.album-show-img-content {
 
 .album-show-songs-index {
   margin-left: 30px;
+  width: 100%;
 }
 
 .album-show-info {

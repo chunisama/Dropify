@@ -4,6 +4,7 @@ export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_CURRENT_SONG = 'RECEIVE_CURRENT_SONG';
 export const RECEIVE_NEXT_SONG = 'RECEIVE_NEXT_SONG';
+export const IS_PLAYING = "IS_PLAYING";
 
 export const receiveCurrentSong = songId => ({
     type: RECEIVE_CURRENT_SONG,
@@ -13,6 +14,11 @@ export const receiveCurrentSong = songId => ({
 export const receiveNextSong = song => ({
     type: RECEIVE_NEXT_SONG,
     song,
+})
+
+export const isPlaying = (boolean) => ({
+    type: IS_PLAYING,
+    boolean,
 })
 
 const receiveSong = song => ({

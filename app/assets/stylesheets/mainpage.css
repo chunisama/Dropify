@@ -253,13 +253,9 @@ ul {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.svg {
-  color: whitesmoke;
-  background-color: none;
+.song-index-item:hover {
+  background-color: #2d2f46;
 }
-
-
-
 
 
 

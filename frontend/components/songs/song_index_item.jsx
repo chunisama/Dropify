@@ -4,13 +4,20 @@ import React from 'react';
 class SongIndexItem extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isPlaying: false
+    }
   }
+
+  // toggleButton(){
+
+  // }
 
   render(){
     return(
       <li>
         <div className="song-index-item">
-          <i onClick={() => this.props.receiveCurrentSong(this.props.song.id)} className="song-index-item-button fab fa-google-play"></i>
+          <i onClick={() => {this.props.receiveCurrentSong(this.props.song.id)}} className="song-index-item-button fab fa-google-play"></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">

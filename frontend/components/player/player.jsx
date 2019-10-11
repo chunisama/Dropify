@@ -11,8 +11,10 @@ class Player extends React.Component {
             formattedTimer: null,
             currentSong: "",
             currentAlbum: "",
+            isPlaying: false,
         };
         this.togglePlay = this.togglePlay.bind(this);
+        this.toggleButton = this.toggleButton.bind(this);
         // this.audio = React.createRef();
     }
 
@@ -25,21 +27,32 @@ class Player extends React.Component {
         this.toggleButton();
         this.setDuration();
         this.setTimer();
+        // this.toggleIsPlaying();
     }
     
     componentDidUpdate(prevProps){
         if (prevProps.song !== this.props.song){
-            debugger
+            // this.toggleIsPlaying();
             this.setState({currentSong: this.props.song, 
                 currentAlbum: this.props.albums[this.props.song.album_id],
+                isPlaying: this.props.isPlaying,
             })
         }
     }
 
-    componentWillUnmount(){
-        this.audio.pause();
-        this.setState({formattedTimer: ""});
-        clearInterval(this.currentTimeInterval);
+    // componentWillUnmount(){
+    //     this.audio.pause();
+    //     this.setState({formattedTimer: ""});
+    //     clearInterval(this.currentTimeInterval);
+    // }
+
+    toggleIsPlaying(){
+        this.audio.onplay = () => {
+            this.props.isPlaying(true);
+        }
+        this.audio.onpause = () => {
+            this.props.isPlaying(false);
+        }
     }
 
     togglePlay(){
@@ -47,17 +60,23 @@ class Player extends React.Component {
     }
 
     toggleButton(){
-        this.audio.onplay = () => {
+    this.audio.onplay = () => {
             const pause = document.getElementById("play-pause");
             pause.className = "fas fa-pause";
         }
         this.audio.onpause = () => {
-            const play = document.getElementById("play-pause");
-            if (play) { // TEMPORARY SOLUTION
-                play.className = "fas fa-play";
+                const play = document.getElementById("play-pause");
+                if (play) { // TEMPORARY SOLUTION
+                    play.className = "fas fa-play";
+                }
             }
-        }
-    }
+}
+// if (this.state.isPlaying == true){
+// return "pause"
+// } else if (this.state.isPlaying == false){
+// return "play"
+// }
+    
 
     toggleLooper(){
         if (this.audio.loop == false){
@@ -152,7 +171,7 @@ class Player extends React.Component {
                     <div className="player-controls">
                         <button className="toggle-shuffle"><img className="shuffle-icon" src={window.shuffleURL}/></button>
                         <button className="toggle-previous"><img className="previous-icon" src={window.previousURL}/></button>
-                        <button className="toggle-player" onClick={() => this.togglePlay()}><i id="play-pause" className="fas fa-play"></i></button>
+                        <button className="toggle-player" onClick={() => this.togglePlay()}><i id="play-pause" className={"fas fa-play"}></i></button>
                         <button className="toggle-next"><img className="next-icon" src={window.nextURL}/></button>
                         <button className="toggle-looper" onClick={() => this.toggleLooper()}><img className="looper-icon" src={window.looperURL}></img></button>
                     </div>
