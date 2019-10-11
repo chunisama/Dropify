@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# H1  Dropify 
+Dropify is a web service for audio streaming your favorite tracks for your audio listening pleasure. It can also be a way discover new genres and songs that you have never heard before!
 
-Things you may want to cover:
+View a list of albums, songs, and artists curated by the creator
 
-* Ruby version
+Here you is a list of albums a user can select from
+![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png)
 
-* System dependencies
+Alternatively a user can select from a list of artists
+![alt text](![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png))
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Lastly a user can view a list of trending underground songs hand selected by the creator
