@@ -14,7 +14,7 @@ Users can sign up, sign in, and log out seamlessly. Additionally a user can use 
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.47.14%20AM.png)
 
 ## User Login
-![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.47.34%20AM.png)
+![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2012.33.14%20PM.png)
 
 ## User Signup
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.47.56%20AM.png)
@@ -24,13 +24,13 @@ Users can sign up, sign in, and log out seamlessly. Additionally a user can use 
 # Curated Content for viewing: Albums, Artists, Songs
 View a list of albums, songs, and artists curated by the creator
 
-## Here you can view a list of albums a user can select from
+## Album list
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.34.29%20AM.png)
 
-## Alternatively a user can select from a list of artists
+## Artist list
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.44.36%20AM.png)
 
-## A user can also view a list of trending underground songs hand selected by the creator
+## Songs List
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/Screen%20Shot%202019-10-11%20at%2011.44.46%20AM.png)
 
 Lastly, a user can navigate to a specific show page for an artist or album they click on their corresponding lists. There are tons of links implemented across Dropify to enable the user to seamlessly navigate through the website.
