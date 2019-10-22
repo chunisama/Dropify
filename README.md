@@ -53,14 +53,3 @@ Additionally, the audio player itself dynamically updates the content of the son
 Furthermore, the user can play, pause, control the volume, loop, and rewind/fast forward by using the slider on the progress bar.
 
 One tricky technical part of the player was to have the progress bar and the timer tick every second depending on the song's current time. I had to use multiple event listeners i.e "ontimeupdate" on the audio api in order to acheive this. Additionally, using a setTimer function to pass a callback to update the value of the progress bar with the song's current time was a major key to my success.
-
-
-
-
-
-
-
-
-
-
-

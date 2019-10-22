@@ -7,8 +7,8 @@ class SongIndex extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.fetchSongs();
-    // this.props.fetchAlbums();
+    this.props.fetchSongs();
+    this.props.fetchAlbums();
     // this.props.fetchArtists();
   }
 
@@ -18,19 +18,18 @@ class SongIndex extends React.Component {
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
       )
     }
-    //use audio tag to extract song durations?
     const songIndexItems = () => {
       return(
         <div className="song-index-container">
           <ul className="song-index">
             {this.props.songs.map((song) => (
-              // <audio ref={(audio) => { this.audio = audio }} src={song.songUrl} ></audio>
               <SongIndexItem 
                 song={song}
                 key={song.id}
                 receiveCurrentSong={this.props.receiveCurrentSong}
                 album={this.props.albums[song.album_id]}
-                // duration={}
+                isPlaying={this.props.isPlaying}
+                currentSong={this.props.currentSong}
                 />
               ))}
           </ul>

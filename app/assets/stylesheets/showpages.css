@@ -128,27 +128,10 @@
   padding: 0px 0 100px 235px;
 }
 
-/* .artist-show-index-item-wrapper {
-  margin: 10px auto 20px;
-  width: 100%;
-  max-width: 200px;
-  text-align: center;
-  display: block;
-  position: relative;
+
+.artist-song-index {
+  margin-left: 25px;
 }
-
-.artist-show-index-item {
-  width: 25%;
-} */
-
-
-/* .album-show-img-content{
-  width: 200px;
-  display: block;
-  position: relative;
-  object-fit: cover;
-  height: 200px;
-} */
 
 
 .album-show-container{
@@ -192,7 +175,6 @@ img.album-show-img-content {
 .album-show-info {
   margin-top: 10px;
 }
-
 
 .album-show-text2, .album-show-text3 {
   font-size: 10px;

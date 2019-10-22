@@ -19,6 +19,6 @@ const mdp = (dispatch) => {
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
     fetchArtist: (id) => dispatch(fetchArtist(id)),
   })
-}
+};
 
 export default connect(msp, mdp)(ArtistIndex);

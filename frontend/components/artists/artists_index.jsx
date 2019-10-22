@@ -5,15 +5,13 @@ import { withRouter } from 'react-router-dom';
 class ArtistIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-    }
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
     // this.props.fetchSongs();
     // this.props.fetchAlbums();
-    // this.props.fetchArtists();
+    this.props.fetchArtists();
   }
 
   handleClick(artist){

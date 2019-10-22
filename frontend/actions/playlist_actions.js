@@ -5,7 +5,7 @@ export const REMOVE_SONG = "REMOVE_SONG";
 import * as ApiUtil from "../util/playlist_api_util";
 
 
-const receivePlaylist = playlist => ({
+export const receivePlaylist = playlist => ({
   type: RECEIVE_PLAYLIST,
   playlist,
 })

@@ -70,8 +70,7 @@ ul {
   line-height: 1;
   border-radius: 500px;
   font-weight: 725;
-  padding: 9px 20px 7px;
-  transition-duration: .5s;
+  padding: 10px 20px 10px;
   border-width: 0;
   letter-spacing: 1px;
   min-width: 140px;
@@ -79,6 +78,11 @@ ul {
   white-space: normal;
   color: #fff;
   background-color: #1db954;
+}
+
+.log-out-button:hover{
+  background-color: #1ED760;
+  transition: 1s;
 }
 
 .browse-nav-list {

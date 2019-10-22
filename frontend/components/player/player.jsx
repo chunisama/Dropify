@@ -11,31 +11,26 @@ class Player extends React.Component {
             formattedTimer: null,
             currentSong: "",
             currentAlbum: "",
-            isPlaying: false,
         };
         this.togglePlay = this.togglePlay.bind(this);
-        this.toggleButton = this.toggleButton.bind(this);
         // this.audio = React.createRef();
     }
 
     componentDidMount(){
-        this.props.fetchSongs();
-        this.props.fetchAlbums();
-        this.props.fetchArtists();
+        // this.props.fetchSongs();
+        // this.props.fetchAlbums();
+        // this.props.fetchArtists();
         this.handleProgressBar();
         this.handleVolume();
-        this.toggleButton();
         this.setDuration();
         this.setTimer();
-        // this.toggleIsPlaying();
+        this.toggleIsPlaying();
     }
     
     componentDidUpdate(prevProps){
         if (prevProps.song !== this.props.song){
-            // this.toggleIsPlaying();
             this.setState({currentSong: this.props.song, 
                 currentAlbum: this.props.albums[this.props.song.album_id],
-                isPlaying: this.props.isPlaying,
             })
         }
     }
@@ -49,34 +44,19 @@ class Player extends React.Component {
     toggleIsPlaying(){
         this.audio.onplay = () => {
             this.props.isPlaying(true);
+            const pause = document.getElementById("play-pause");
+            pause.className = "fas fa-pause";
         }
         this.audio.onpause = () => {
             this.props.isPlaying(false);
+            const play = document.getElementById("play-pause");
+            play.className = "fas fa-play";
         }
     }
 
     togglePlay(){
         return this.audio.paused ? this.audio.play() : this.audio.pause();  
     }
-
-    toggleButton(){
-    this.audio.onplay = () => {
-            const pause = document.getElementById("play-pause");
-            pause.className = "fas fa-pause";
-        }
-        this.audio.onpause = () => {
-                const play = document.getElementById("play-pause");
-                if (play) { // TEMPORARY SOLUTION
-                    play.className = "fas fa-play";
-                }
-            }
-}
-// if (this.state.isPlaying == true){
-// return "pause"
-// } else if (this.state.isPlaying == false){
-// return "play"
-// }
-    
 
     toggleLooper(){
         if (this.audio.loop == false){

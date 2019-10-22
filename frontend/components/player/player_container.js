@@ -8,7 +8,6 @@ const msp = (state) => {
     const { songs, albums, ui } = state.entities;
     return ({
         song: songs[ui.currentSong],
-        isPlaying,
         albums,
         
     })

@@ -5,10 +5,16 @@ import { fetchArtists } from "../../actions/artist_actions";
 import SongIndex from "./song_index";
 
 const msp = (state) => {
-  const { songs, albums } = state.entities;
+  const { songs, albums, ui } = state.entities;
+  if (ui.currentSong == 1){
+  
+    debugger
+  }
   return({
     songs: Object.values(songs),
     albums,
+    isPlaying: ui.isPlaying,
+    currentSong: ui.currentSong,
   })
 }
 
@@ -17,9 +23,9 @@ const mdp = (dispatch) => {
     fetchSongs: () => dispatch(fetchSongs()),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
     // receiveNextSong: (song) => dispatch(receiveNextSong(song)),
-    fetchSong: (id) => dispatch(fetchSong(id)),
     fetchAlbums: () => dispatch(fetchAlbums()),
     fetchArtists: () => dispatch(fetchArtists()),
+    // isPlaying: (boolean) => dispatch(isPlaying(boolean)),
   })
 }
 
