@@ -33,6 +33,13 @@ class Player extends React.Component {
                 currentAlbum: this.props.albums[this.props.song.album_id],
             })
         }
+        if (prevProps.currentlyPlaying !== this.props.currentlyPlaying){
+            if (this.props.currentlyPlaying == false) {
+                this.audio.pause();
+            } else {
+                this.audio.play();
+            }
+        }
     }
 
     // componentWillUnmount(){
@@ -65,6 +72,7 @@ class Player extends React.Component {
             this.audio.loop = false;
         }
     }
+
 
     handleVolume(){
         this.volume.onchange = (e) => {

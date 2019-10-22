@@ -9,7 +9,7 @@ const msp = (state) => {
     return ({
         song: songs[ui.currentSong],
         albums,
-        
+        currentlyPlaying: ui.isPlaying, 
     })
 }
 

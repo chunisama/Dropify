@@ -8,12 +8,10 @@ class SongIndexItem extends React.Component {
       isPlaying: false,
     }
     this.toggleIcon = this.toggleIcon.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
+    //For displaying durations
+    // this.audio = new Audio(this.props.track.audioUrl)
   }
-
-  // componentDidMount(){
-  //   this.setState({isPlaying: this.props.isPlaying});
-  //   this.toggleIcon();
-  // }
 
   componentDidUpdate(prevProps){
     if (prevProps.isPlaying !== this.props.isPlaying){
@@ -31,14 +29,22 @@ class SongIndexItem extends React.Component {
     }
   }
 
+  togglePlay(){
+    if (this.state.isPlaying == false) {
+      this.props.receiveCurrentSong(this.props.song.id);
+      this.props.currentlyPlaying(true);
 
-
+    } else if (this.state.isPlaying == true) {
+      this.props.currentlyPlaying(false);
+      this.props.receiveCurrentSong(this.props.song.id);
+    }
+  }
 
   render(){
     return(
       <li>
         <div className="song-index-item">
-          <i onClick={() => {this.props.receiveCurrentSong(this.props.song.id)}} className={"song-index-item-button " + this.toggleIcon()}></i>
+          <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">

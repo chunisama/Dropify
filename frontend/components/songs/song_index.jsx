@@ -30,6 +30,7 @@ class SongIndex extends React.Component {
                 album={this.props.albums[song.album_id]}
                 isPlaying={this.props.isPlaying}
                 currentSong={this.props.currentSong}
+                currentlyPlaying={this.props.currentlyPlaying}
                 />
               ))}
           </ul>

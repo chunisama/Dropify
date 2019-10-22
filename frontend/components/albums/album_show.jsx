@@ -2,22 +2,50 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbum } from "../../actions/album_actions";
-import { receiveCurrentSong } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 
 class AlbumShow extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isPlaying: false,
+    }
+    this.toggleIcon = this.toggleIcon.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchAlbum(this.props.match.params.albumId);
   }
 
-  // componentDidUpdate(prevProps){
-  //   if (prevProps.album !== this.props.album){
-  //     this.props.fetchAlbum(this.props.match.params.albumId);
-  //   }
-  // }
+  componentDidUpdate(prevProps){
+    if (prevProps.isPlaying !== this.props.isPlaying){
+      this.setState({
+        isPlaying: this.props.isPlaying,
+      });
+    }
+  }
+
+  toggleIcon(songId){
+    if (this.state.isPlaying === true && songId === this.props.currentSong) {
+      return "fas fa-pause";
+    } else {
+      return "fab fa-google-play";
+    }
+  }
+
+  togglePlay(songId){
+    // if (this.state.isPlaying == false) {
+    //   this.props.currentlyPlaying(true);
+    // }
+    if (this.state.isPlaying == false) {
+      this.props.currentlyPlaying(true);
+      this.props.receiveCurrentSong(songId); 
+    } else if (this.state.isPlaying == true) {
+      this.props.currentlyPlaying(false);
+      this.props.receiveCurrentSong(songId); 
+    }
+  }
 
   renderSongs(){
     let albumSongs = [];
@@ -34,7 +62,7 @@ class AlbumShow extends React.Component {
       //add play button here
       return (<li key={idx}>
         <div className="song-index-item">
-        <i onClick={() => this.props.receiveCurrentSong(song.id)} className="song-index-item-button fab fa-google-play"></i>
+        <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay(song.id))}} className={"song-index-item-button " + this.toggleIcon(song.id)}></i>
         <div className="song-index-item-info">
         <div className="song-index-item-title">{song.title}</div>
         <div className="song-index-item-info-child">
@@ -43,11 +71,9 @@ class AlbumShow extends React.Component {
           {this.props.album.artist}
         </Link>
         </div>
-        <span class="spacing">•</span>
+        <span className="spacing">•</span>
         <div className="song-index-item-album">
-          {/* <Link to={`/albums/${this.props.album.id}`}> */}
             {this.props.album.name}
-          {/* </Link> */}
         </div>
       </div>
     </div>
@@ -92,16 +118,19 @@ class AlbumShow extends React.Component {
 
 
 const msp = (state, ownProps) => {
-  const { songs, albums } = state.entities;
+  const { songs, albums, ui } = state.entities;
   return ({
     album: albums[ownProps.match.params.albumId],
     songs: Object.values(songs),
+    isPlaying: ui.isPlaying,
+    currentSong: ui.currentSong,
   })
 }
 
 const mdp = dispatch => ({
   fetchAlbum: id => dispatch(fetchAlbum(id)),
   receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
+  currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
 })
 
 export default connect(msp, mdp)(AlbumShow);
