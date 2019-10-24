@@ -13,7 +13,6 @@ class Player extends React.Component {
             currentAlbum: "",
         };
         this.togglePlay = this.togglePlay.bind(this);
-        // this.audio = React.createRef();
     }
 
     componentDidMount(){
@@ -110,10 +109,6 @@ class Player extends React.Component {
         this.audio.onpause = () => {
             clearInterval(this.currentTimeInterval);
         };
-
-        // this.audio.onseeking = () => {
-        //     clearInterval(this.currentTimeInterval);
-        // }
         
         this.range.oninput = (e) => {
             clearInterval(this.currentTimeInterval);

@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
-import { receiveCurrentSong } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 import { Link } from "react-router-dom";
 
 class ArtistShow extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      isPlaying: false,
+    }
+    this.toggleIcon = this.toggleIcon.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
+
+    //Playing song using album art
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -14,12 +21,33 @@ class ArtistShow extends React.Component{
     this.props.fetchArtist(this.props.match.params.artistId);
   }
 
-  // componentDidUpdate(prevProps){
-  //   if (prevProps.artist !== this.props.artist){
-  //     this.props.fetchArtist(this.props.match.params.artistId);
-  //   }
-  // }
+  componentDidUpdate(prevProps){
+    if (prevProps.isPlaying !== this.props.isPlaying){
+      this.setState({
+        isPlaying: this.props.isPlaying,
+      });
+    }
+  }
 
+  toggleIcon(songId){
+    if (this.state.isPlaying === true && songId === this.props.currentSong) {
+      return "fas fa-pause";
+    } else {
+      return "fab fa-google-play";
+    }
+  }
+
+  togglePlay(songId){
+    if (this.state.isPlaying == false) {
+      this.props.currentlyPlaying(true);
+      this.props.receiveCurrentSong(songId); 
+    } else if (this.state.isPlaying == true) {
+      this.props.currentlyPlaying(false);
+      this.props.receiveCurrentSong(songId); 
+    }
+  }
+
+  //Method for playing song using album art
   handleClick(album){
     return (e) => {
       if (!e.target.classList.contains("fas", "fa-play-circle")){
@@ -39,18 +67,16 @@ class ArtistShow extends React.Component{
         }
       }
     }
-    const result = artistSongs.map((song, idx) => {
+    const result = artistSongs.map((song) => {
     return (
         <li key={song.id}>
           <div className="song-index-item">
-          <i onClick={() => this.props.receiveCurrentSong(song.id)} className="song-index-item-button fab fa-google-play"></i>
+          <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay(song.id))}} className={"song-index-item-button " + this.toggleIcon(song.id)}></i>
           <div className="song-index-item-info">
             <div className="song-index-item-title">{song.title}</div>
             <div className="song-index-item-info-child">
               <div className="song-index-item-artist">
-                {/* <Link to={`/artists/${song.artistId}`}> */}
                   {this.props.artist.name}
-                {/* </Link> */}
               </div>
               <span className="spacing">•</span>
               <div className="song-index-item-album">
@@ -62,13 +88,6 @@ class ArtistShow extends React.Component{
           </div>
           </div>
         </li>
-
-    // <div className="artist-songs-container" key={song.id}>
-    //   <a onClick={() => this.props.receiveCurrentSong(song.id)}><i className="fas fa-play-circle"></i></a>
-    //   <div className="artist-song-title">{song.title}</div>
-    //   <div className="artist-song-artist">{this.props.artist.name}</div>
-    //   <div className="artist-album-artist">{this.props.albums[song.album_id].name}</div>
-    // </div>)
     )})
     return result;
   }
@@ -150,11 +169,12 @@ class ArtistShow extends React.Component{
 }
 
 const msp = (state, ownProps) => {
-  const { songs, albums, artists } = state.entities;
+  const { songs, albums, artists, ui } = state.entities;
   return({
     artist: artists[ownProps.match.params.artistId],
     albums: albums,
     songs: Object.values(songs),
+    currentSong: ui.currentSong,
     })  
   };
 const mdp = dispatch => {
@@ -162,6 +182,7 @@ const mdp = dispatch => {
     fetchArtists: () => dispatch(fetchArtists()),
     fetchArtist: (id) => dispatch(fetchArtist(id)),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
+    currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
   })
 }
 

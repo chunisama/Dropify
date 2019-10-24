@@ -35,9 +35,6 @@ class AlbumShow extends React.Component {
   }
 
   togglePlay(songId){
-    // if (this.state.isPlaying == false) {
-    //   this.props.currentlyPlaying(true);
-    // }
     if (this.state.isPlaying == false) {
       this.props.currentlyPlaying(true);
       this.props.receiveCurrentSong(songId); 
