@@ -39,8 +39,8 @@ class ArtistShow extends React.Component{
 
   togglePlay(songId){
     if (this.state.isPlaying == false) {
-      this.props.currentlyPlaying(true);
       this.props.receiveCurrentSong(songId); 
+      this.props.currentlyPlaying(true);
     } else if (this.state.isPlaying == true) {
       this.props.currentlyPlaying(false);
       this.props.receiveCurrentSong(songId); 
@@ -67,9 +67,9 @@ class ArtistShow extends React.Component{
         }
       }
     }
-    const result = artistSongs.map((song) => {
+    const result = artistSongs.map((song, idx) => {
     return (
-        <li key={song.id}>
+        <li key={idx}>
           <div className="song-index-item">
           <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay(song.id))}} className={"song-index-item-button " + this.toggleIcon(song.id)}></i>
           <div className="song-index-item-info">
@@ -174,6 +174,7 @@ const msp = (state, ownProps) => {
     artist: artists[ownProps.match.params.artistId],
     albums: albums,
     songs: Object.values(songs),
+    isPlaying: ui.isPlaying,
     currentSong: ui.currentSong,
     })  
   };
