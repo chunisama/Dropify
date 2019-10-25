@@ -1,7 +1,7 @@
-import { RECEIVE_SONG, RECEIVE_SONGS } from "../actions/song_actions";
-import { RECEIVE_ARTIST } from "../actions/artist_actions"; 
-import { RECEIVE_ALBUM } from "../actions/album_actions";
-import { RECEIVE_PLAYLIST } from "../actions/playlist_actions";
+import { RECEIVE_SONG, RECEIVE_SONGS } from "../../actions/song_actions";
+import { RECEIVE_ARTIST } from "../../actions/artist_actions"; 
+import { RECEIVE_ALBUM } from "../../actions/album_actions";
+import { RECEIVE_PLAYLIST } from "../../actions/playlist_actions";
 
 export default (state = {}, action) => {
     Object.freeze(state);

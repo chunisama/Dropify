@@ -20,10 +20,6 @@ const removePlaylist = (playlistId) => ({
   playlistId,
 })
 
-const removeSong = (playlistSong) => ({
-    type: REMOVE_SONG,
-    playlistSong,
-})
 
 export const fetchPlaylists = () => dispatch => {
   return ApiUtil.fetchPlaylists().then((playlists) => {
@@ -37,22 +33,19 @@ export const fetchPlaylist = (id) => dispatch => {
   });
 };
 
-export const updatePlaylist = (id, songId) => dispatch => {
-  return ApiUtil.updatePlaylist(id, songId).then((playlist) => {
-    return dispatch(receiveplaylist(playlist))
+export const createPlaylist = (playlist) => dispatch => {
+  return ApiUtil.createPlaylist(playlist).then((playlist) => {
+    return dispatch(receivePlaylist(playlist))
   });
 };
+
 export const deletePlaylist = (id) => dispatch => {
   return ApiUtil.deletePlaylist(id).then((playlist) => {
     return dispatch(removePlaylist(playlist.id))
   });
 };
 
-export const deleteSong = (playlistSong) => dispatch => (
-  ApiUtil.deleteSong(playlistSong).then((playlistSong) => {
-    return dispatch(removeSong(playlistSong))
-  })
-);
+
 
 
 

@@ -1,6 +1,7 @@
-import { RECEIVE_ARTIST, RECEIVE_ALL_ARTISTS } from "../actions/artist_actions";
-import { RECEIVE_ALBUM } from "../actions/album_actions";
+import { RECEIVE_ARTIST, RECEIVE_ALL_ARTISTS } from "../../actions/artist_actions";
+import { RECEIVE_ALBUM } from "../../actions/album_actions";
 const artistReducer = (state = {}, action) => {
+  Object.freeze(state);
   switch(action.type){
     case RECEIVE_ALL_ARTISTS:
       return action.artists;

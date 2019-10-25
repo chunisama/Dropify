@@ -29,15 +29,6 @@ class PlaylistContoller < ApplicationController
         end
     end
 
-    def update
-        @playlist = Playlist.find(params[:id])
-        if params[:songId] != "nil"
-            song = Song.find(params[:songId])
-            @playlist.songs << song
-            @playlist.save
-        end
-    end
-
     private
     def playlist_params
         params.require(:playlist).permit(:title, :user_id)

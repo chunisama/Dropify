@@ -72,7 +72,6 @@ class Player extends React.Component {
         }
     }
 
-
     handleVolume(){
         this.volume.onchange = (e) => {
             this.audio.volume = e.target.value;

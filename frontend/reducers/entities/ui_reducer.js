@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_SONG, RECEIVE_NEXT_SONG, IS_PLAYING } from "../actions/song_actions";
+import { RECEIVE_CURRENT_SONG, RECEIVE_NEXT_SONG, IS_PLAYING } from "../../actions/song_actions";
 //implement AlbumCover action here for player to display the picture's album-cover in player-show component
 
 const _nullState = {
@@ -7,6 +7,7 @@ const _nullState = {
   // nextSong: null,
 }
 export default (state = _nullState , action) => {
+  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_SONG:
       return Object.assign({}, state, {currentSong: action.songId});
