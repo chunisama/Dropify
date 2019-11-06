@@ -5,12 +5,12 @@ import { fetchArtists } from "../../actions/artist_actions";
 import SongIndex from "./song_index";
 
 const msp = (state) => {
-  const { songs, albums, ui } = state.entities;
+  const { songs, albums, audio } = state.entities;
   return({
     songs: Object.values(songs),
     albums,
-    isPlaying: ui.isPlaying,
-    currentSong: ui.currentSong,
+    isPlaying: audio.isPlaying,
+    currentSong: audio.currentSong,
   })
 }
 

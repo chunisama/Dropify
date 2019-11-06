@@ -115,12 +115,12 @@ class AlbumShow extends React.Component {
 
 
 const msp = (state, ownProps) => {
-  const { songs, albums, ui } = state.entities;
+  const { songs, albums, audio } = state.entities;
   return ({
     album: albums[ownProps.match.params.albumId],
     songs: Object.values(songs),
-    isPlaying: ui.isPlaying,
-    currentSong: ui.currentSong,
+    isPlaying: audio.isPlaying,
+    currentSong: audio.currentSong,
   })
 }
 

@@ -169,13 +169,13 @@ class ArtistShow extends React.Component{
 }
 
 const msp = (state, ownProps) => {
-  const { songs, albums, artists, ui } = state.entities;
+  const { songs, albums, artists, audio } = state.entities;
   return({
     artist: artists[ownProps.match.params.artistId],
     albums: albums,
     songs: Object.values(songs),
-    isPlaying: ui.isPlaying,
-    currentSong: ui.currentSong,
+    isPlaying: audio.isPlaying,
+    currentSong: audio.currentSong,
     })  
   };
 const mdp = dispatch => {

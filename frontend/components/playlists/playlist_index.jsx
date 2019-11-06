@@ -1,7 +1,7 @@
 import React from "react";
 import PlaylistIndexItem from "./playlist_index_item";
 
-class PlaylistIndex extends PlaylistIndex.Component {
+class PlaylistIndex extends React.Component {
   constructor(props){
     super(props);
   }
@@ -11,13 +11,13 @@ class PlaylistIndex extends PlaylistIndex.Component {
     }
 
     render(){
-      if (this.props.songs.length == 0){
+      if (this.props.playlists.length == 0){
         return (
           <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
         )
       }
       const playlistIndexItems = () => {
-        requestAnimationFrame(
+        return(
           <div className="playlist-index-container">
             <ul className="playlist=index">
               {this.props.playlists.map((playlist) => (
@@ -33,7 +33,9 @@ class PlaylistIndex extends PlaylistIndex.Component {
 
 
       return(
-        <div></div>
+        <div>{playlistIndexItems}</div>
       )
     }
 }
+
+export default PlaylistIndex;

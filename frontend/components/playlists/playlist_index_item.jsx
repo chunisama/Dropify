@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import  { connect }  from 'react-redux';
+import { fetchSong } from '../../actions/song_actions';
 
 class PlaylistIndexItem extends React.Component {
   constructor(props){
@@ -7,6 +10,11 @@ class PlaylistIndexItem extends React.Component {
 
 
   render(){
+    if (this.props.playlists.length == 0){
+      return (
+        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+      )
+    }
     <li>
       <div className="playlist-index-item">
         <div className="playlist-cover">
@@ -25,4 +33,11 @@ class PlaylistIndexItem extends React.Component {
   }
 }
 
-export default PlaylistIndexItem;
+
+const mdp = dispatch => ({
+  fetchSong: id => dispatch(fetchSong),
+});
+
+
+
+export default connect(null, mdp)(PlaylistIndexItem);

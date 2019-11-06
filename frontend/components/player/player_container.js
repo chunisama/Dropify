@@ -5,11 +5,11 @@ import { fetchAlbums } from "../../actions/album_actions";
 import { fetchArtists } from "../../actions/artist_actions";
 
 const msp = (state) => {
-    const { songs, albums, ui } = state.entities;
+    const { songs, albums, audio } = state.entities;
     return ({
-        song: songs[ui.currentSong],
+        song: songs[audio.currentSong],
         albums,
-        currentlyPlaying: ui.isPlaying, 
+        currentlyPlaying: audio.isPlaying, 
     })
 }
 
