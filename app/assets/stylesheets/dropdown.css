@@ -1,0 +1,32 @@
+.dropdown-menu {
+  z-index: 100;
+  position: fixed;
+  background-color: rgb(61, 61, 61);
+  color: whitesmoke;
+  padding: 5px 0;
+  font-size: 14px;
+  font-weight: 300;
+  transition: 0.2s ease-in-out, top 0s, left 0s; 
+}
+
+.dropdown-menu-hidden {
+  display: none;
+}
+
+.options {
+  padding: 10px;
+  cursor: default;
+}
+.options:hover {
+  color: white;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.song-menu {
+  display: none;
+  margin: 0 20px;
+  cursor: pointer;
+  color: whitesmoke;
+  font-size: 14px;
+}
+

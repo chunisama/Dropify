@@ -261,6 +261,11 @@ ul {
   background-color: #2d2f46;
 }
 
+.song-index-item:hover .song-menu {
+  display: inline-block;
+}
+
+
 
 
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state) => ({
-  currentUserId: state.sesssion.currentUserId,
+  currentUserId: state.session.id,
 })
 
 const mdp = (dispatch) => ({

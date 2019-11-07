@@ -13,6 +13,7 @@ class PlaylistShow extends React.Component {
     this.props.fetchPlaylist(this.props.match.params.playlistId);
   }
 
+  //need to fix this
   renderSongs(){
     const result = this.props.songs((song, idx) => {
       return(
@@ -44,7 +45,7 @@ class PlaylistShow extends React.Component {
 
 
   render(){
-    if (!this.props.album){
+    if (!this.props.playlist){
       return (
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
       )
@@ -58,14 +59,14 @@ class PlaylistShow extends React.Component {
               <div className="album-show-info">
                 <div className="album-show-text1">{this.props.playlist.title}</div>
                 <div className="album-show-text2">
-                    {this.props.playlist.user.name}
+                    {this.props.playlist.user.username}
                 </div>
-                <div className="album-show-text3">{this.props.playlist.songIds.length} SONGS</div>
+                <div className="album-show-text3">{this.props.playlist.song_ids.length} SONGS</div>
               </div>
             </div>
           <div className="album-show-songs-index">
             <ul>
-            {this.renderSongs()}
+            {/* {this.renderSongs()} */}
             </ul>
           </div>
         </div>

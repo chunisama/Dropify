@@ -17,7 +17,6 @@ class PlaylistCreateModal extends React.Component {
   }
 
   createPlaylist(){
-    debugger
     if (this.state.playlistName) {
       this.props.createPlaylist({title: this.state.playlistName, user_id: this.props.currentUserId});
       this.close();

@@ -16,7 +16,7 @@ const Browse = (props) => {
         <Route exact path="/browse/artists" component={ArtistsContainer}></Route>
         <Route exact path="/browse/albums" component={AlbumsContainer}></Route>
         <Route exact path="/browse/songs" component={SongsContainer}></Route>
-        <Route exact path="/brows/playlists" component={PlaylistsContainer}></Route>
+        <Route exact path="/browse/playlists" component={PlaylistsContainer}></Route>
       </div>
       </div>
     </div>

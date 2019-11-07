@@ -12,18 +12,18 @@ class Api::PlaylistController < ApplicationController
     def destroy
         @playlist = Playlist.find(params[:id])
         @playlist.destroy
-        render :show
+        render 'api/playlists/index'
     end
 
     def index
         @playlists = Playlist.all
-        render :index
+        render 'api/playlists/index'
     end
 
     def show
         @playlist = Playlist.find(params[:id])
         if @playlist
-            render :show
+            render 'api/playlists/show'
         else
             render json: @playlists.errors.messages, status: 422
         end

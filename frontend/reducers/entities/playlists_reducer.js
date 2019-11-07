@@ -1,28 +1,30 @@
 import { RECEIVE_PLAYLIST, RECEIVE_PLAYLISTS, REMOVE_PLAYLIST } from '../../actions/playlist_actions';
 import { RECEIVE_PLAYLIST_SONG, DELETE_PLAYLIST_SONG } from '../../actions/playlist_song_actions';
+import { merge } from 'lodash';
 
 const playlistReducer = (state = {}, action) => {
   Object.freeze(state);
-  let newPlaylist;
   switch(action.type){
     case RECEIVE_PLAYLISTS:
       return action.playlists;
     case RECEIVE_PLAYLIST:
-      return Object.assign({}, state, {[action.playlist.id]: action.playlist});
+      const newState = merge({}, state);
+      newState[action.playlist.id] = action.playlist;
+      return newState;
     case REMOVE_PLAYLIST:
-      newPlaylist = Object.assign({}, state);
-      delete Playlist[action.playlistId];
-      return newPlaylist;
+      const removedState = merge({}, state);
+      delete removedState[action.playlistId];
+      return removedState;
     case RECEIVE_PLAYLIST_SONG:
-      newPlaylist = Object.assign({}, state);
-      newPlaylist[action.playlistsSongs.playlist_id].song_ids.push(action.playlistsSongs.song_id);
-      return newPlaylist;
+      const alteredState = merge({}, state);
+      alteredState[action.playlistsSong.playlist_id].song_ids.push(action.playlistsSongs.song_id);
+      return alteredState;
     case DELETE_PLAYLIST_SONG:
-      newPlaylist = Object.assign({}, state);
-      const arr = newPlaylist[action.playlistsSongs.playlist_id].song_ids;
-      const songIdx = arr.indexOf(action.playlistsSongs.song_id);
-      newPlaylist[action.playlistsSongs.playlist_id].song_ids.splice(songIdx, 1);
-      return newPlaylist;
+      const deletedState = merge({}, state);
+      const arr = deletedState[action.playlistsSong.playlist_id].song_ids;
+      const songIdx = arr.indexOf(action.playlistsSong.song_id);
+      deletedState[action.playlistsSong.playlist_id].song_ids.splice(songIdx, 1);
+      return deletedState;
     default:
       return state;
   }

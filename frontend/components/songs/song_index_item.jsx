@@ -61,6 +61,14 @@ class SongIndexItem extends React.Component {
             </div>
           </div>
          </div>
+         <div className="song-menu"
+         onClick={(e) => {
+           e.stopPropagation();
+           this.props.openDropdown({x: e.clientX - 100, y: e.clientY + 3});
+           this.props.setDropdownProps({songId: this.props.song.id, playlistId: this.props.playlistId});
+         }}>
+          • • •
+         </div>
         </div>
       </li>
     )

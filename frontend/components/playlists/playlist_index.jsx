@@ -11,7 +11,7 @@ class PlaylistIndex extends React.Component {
     }
 
     render(){
-      if (this.props.playlists.length == 0){
+      if (this.props.playlists.length === 0){
         return (
           <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
         )
@@ -19,7 +19,7 @@ class PlaylistIndex extends React.Component {
       const playlistIndexItems = () => {
         return(
           <div className="playlist-index-container">
-            <ul className="playlist=index">
+            <ul className="flex-master">
               {this.props.playlists.map((playlist) => (
                 <PlaylistIndexItem
                   playlist={playlist}
@@ -33,7 +33,7 @@ class PlaylistIndex extends React.Component {
 
 
       return(
-        <div>{playlistIndexItems}</div>
+        <div>{playlistIndexItems()}</div>
       )
     }
 }

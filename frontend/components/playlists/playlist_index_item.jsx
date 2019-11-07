@@ -10,26 +10,25 @@ class PlaylistIndexItem extends React.Component {
 
 
   render(){
-    if (this.props.playlists.length == 0){
-      return (
-        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-      )
-    }
-    <li>
+    return (
+    <li className="index-item">
       <div className="playlist-index-item">
         <div className="playlist-cover">
-          <img className="content-photo-square" src="" />
+          <Link className="playlist-link" to={`/playlists/${this.props.playlist.id}`}>
+            <img className="content-photo-square" src="" />
+          </Link>
         </div>
         <div className="playlist-details">
           <div className="playlist-title">
             {this.props.playlist.title}
           </div>
           <div className="playlist-user">
-            {this.props.playlist.user.name}
+            {this.props.playlist.user.username}
           </div>
         </div>
       </div>
     </li>
+    )
   }
 }
 

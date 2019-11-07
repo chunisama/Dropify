@@ -31,6 +31,8 @@ class SongIndex extends React.Component {
                 isPlaying={this.props.isPlaying}
                 currentSong={this.props.currentSong}
                 currentlyPlaying={this.props.currentlyPlaying}
+                openDropdown={this.props.openDropdown}
+                setDropdownProps={this.props.setDropdownProps}
                 />
               ))}
           </ul>

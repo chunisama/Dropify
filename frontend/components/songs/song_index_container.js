@@ -3,6 +3,7 @@ import { fetchSongs, receiveCurrentSong, receiveNextSong, isPlaying } from "../.
 import { fetchAlbums } from "../../actions/album_actions";
 import { fetchArtists } from "../../actions/artist_actions";
 import SongIndex from "./song_index";
+import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
 
 const msp = (state) => {
   const { songs, albums, audio } = state.entities;
@@ -22,6 +23,8 @@ const mdp = (dispatch) => {
     fetchAlbums: () => dispatch(fetchAlbums()),
     fetchArtists: () => dispatch(fetchArtists()),
     currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
+    openDropdown: pos => dispatch(openDropdown(pos)),
+    setDropdownProps: props => dispatch(setDropdownProps(props)),
   })
 }
 
