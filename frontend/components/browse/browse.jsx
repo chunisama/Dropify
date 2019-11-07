@@ -4,6 +4,7 @@ import BrowseNav from "./browse_nav";
 import AlbumsContainer from "../albums/albums_container";
 import SongsContainer from "../songs/song_index_container";
 import ArtistsContainer from "../artists/artists_container";
+import PlaylistsContainer from "../playlists/playlist_container";
 
 const Browse = (props) => {
   return (
@@ -15,6 +16,7 @@ const Browse = (props) => {
         <Route exact path="/browse/artists" component={ArtistsContainer}></Route>
         <Route exact path="/browse/albums" component={AlbumsContainer}></Route>
         <Route exact path="/browse/songs" component={SongsContainer}></Route>
+        <Route exact path="/brows/playlists" component={PlaylistsContainer}></Route>
       </div>
       </div>
     </div>

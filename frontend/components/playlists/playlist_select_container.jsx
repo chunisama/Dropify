@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPlaylists } from '../../actions/player_actions';
+import { fetchPlaylists } from '../../actions/playlist_actions';
 import { setModalComponent } from '../../actions/modal_actions';
 import PlaylistSelectItem from './playlist_select_item';
 

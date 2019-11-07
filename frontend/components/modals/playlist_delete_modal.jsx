@@ -17,12 +17,6 @@ class PlaylistDeleteModal extends React.Component {
     return(
       <div className="playlist-delete-modal">
       <h1 onClick={this.close}>
-        <div className="svg-close">
-          <svg viewBox="0 0 200 200">
-            <path d="M 50 50 L 150 150" StrokeWidth="8" />
-            <path d="M 150 50 L 50 150" StrokeWidth="8" />
-          </svg>
-        </div>
       </h1>
       <h1 className="modal-header">Do you really want to delete this playlist?</h1>
       <div className="modal-button-container">

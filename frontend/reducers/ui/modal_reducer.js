@@ -8,7 +8,7 @@ const defaultState = {
 
 const modalReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  switch (key) {
+  switch (action.type) {
     case OPEN_MODAL:
       return Object.assign({}, state, {isOpen: true});
     case CLOSE_MODAL:

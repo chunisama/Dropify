@@ -1,10 +1,10 @@
-import PlaylistCreateModal from './playlist_create_modal_container';
+import PlaylistCreateModal from './playlist_create_modal';
 import { connect } from 'react-redux';
 import { createPlaylist } from '../../actions/playlist_actions';
 import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state) => ({
-  currentUserId: state.session.currentUserId
+  currentUserId: state.session.id
 });
 
 const mdp = (dispatch) => ({

@@ -13,7 +13,7 @@ const PlaylistSelectItem = (props) => {
   return (
     <li className="index-item">
       <div className="content-item">
-        <Link className="content-item0play" to={`/playlists/${props.playlist.id}`}>
+        <Link className="content-item-play" to={`/playlists/${props.playlist.id}`}>
           <div className="svg-container-item" onClick={() => {props.closeModal();
           props.addPlaylistSong({playlist_id: props.playlist.id, song_id: props.songId})}}>
           {/* <svg viewBox="0 0 300 300" className="rela-block svg item">

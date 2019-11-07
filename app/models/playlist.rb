@@ -10,17 +10,11 @@
 #
 
 class Playlist < ApplicationRecord
-    validates :user_id, uniqueness: { scope: :user }
-    validates :title, presence: true
+    validates :title, :user_id, presence: true
     #might attach a playlist photo for fixed avatar
-
     belongs_to :user
-
     has_many :playlists_songs
-
-    has_many :songs,
-    through: :playlist_songs,
-    source: :songs
+    has_many :songs, through: :playlists_songs
 
     has_many :albums,
     through: :songs,

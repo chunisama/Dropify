@@ -1,9 +1,9 @@
-class PlaylistContoller < ApplicationController
+class Api::PlaylistController < ApplicationController
 
     def create
         @playlist = Playlist.new(playlist_params)
         if @playlist.save
-            render :show
+            render 'api/playlists/show'
         else
             render json: @playlist.errors.messages, status: 401
         end

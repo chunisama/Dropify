@@ -1,27 +1,28 @@
 class Api::PlaylistsSongsController < ApplicationController
 
     def create
-        @playlist_songs = PlaylistSongs.new(p_song_params)
-        if @playlist_songs.save
-            render :show
-        else 
+        @playlists_song = PlaylistsSong.new(p_song_params)
+        if @playlists_song.save
+            render 'ap/playlists_songs/show'
+        else
+            render json: ["Could not process request"], status: 401
         end
 
     end
 
     def destroy
-        @playlists_songs = PlaylistSongs.find_by(
-            playlist_id: params[:playlists_songs][:playlist_id], 
-            song_id: params[:playlists_songs][:song_id])
-        @playlists_songs.destroy
+        @playlists_song = PlaylistsSong.find_by(
+            playlist_id: params[:playlists_song][:playlist_id], 
+            song_id: params[:playlists_song][:song_id])
+        @playlists_song.destroy
         render json: {
-            playlist_id: @playlists_songs.playlist_id,
-            song_id: @playlists_songs.song_id
+            playlist_id: @playlists_song.playlist_id,
+            song_id: @playlists_song.song_id
         }
     end
 
     private
     def p_song_params
-        params.require(:playlist_track).permit(:playlist_id, :song_id)
+        params.require(:playlists_song).permit(:playlist_id, :song_id)
     end
 end

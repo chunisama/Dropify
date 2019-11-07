@@ -5,7 +5,7 @@ import PlaylistCreateModalContainer from './playlist_create_modal_container';
 import PlaylistAddModalContainer from './playlist_add_modal_container';
 import PlaylistDeleteModalContainer from './playlist_delete_modal_container';
 
-const Modal = (props) => {
+const ModalContainer = (props) => {
   let component;
   switch (props.modal.component) {
     case 'create':
@@ -35,4 +35,4 @@ const mdp = (dispatch) => ({
   close: () => dispatch(closeModal()),
 });
 
-export default connect(msp, mdp)(Modal);
+export default connect(msp, mdp)(ModalContainer);

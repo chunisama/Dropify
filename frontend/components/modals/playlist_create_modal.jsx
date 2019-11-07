@@ -17,6 +17,7 @@ class PlaylistCreateModal extends React.Component {
   }
 
   createPlaylist(){
+    debugger
     if (this.state.playlistName) {
       this.props.createPlaylist({title: this.state.playlistName, user_id: this.props.currentUserId});
       this.close();
@@ -30,13 +31,7 @@ class PlaylistCreateModal extends React.Component {
   render(){
     return (
     <div className="playlist-create-modal">
-      <h1 onClick={this.close}>
-        <div className="svg-close">
-          <svg viewBox="0 0 200 200">
-            <path d="M 50 50 L 150 150" StrokeWidth="8" />
-            <path d="M 150 50 L 50 150" StrokeWidth="8" />
-          </svg>
-        </div>
+      <h1 onClick={() => this.close()}>
       </h1>
       <h1 className="modal-header">Create New Playlist</h1>
       <div className="modal-input-container">

@@ -9,9 +9,9 @@
 #  song_id     :integer          not null
 #
 
-class PlaylistsSongs < ApplicationRecord
-    validates :playlist_id, uniqueness: {scope: :track_id}
-    validates :playlist_id, :track_id, presence: true
+class PlaylistsSong < ApplicationRecord
+    validates :song_id, uniqueness: {scope: :playlist_id}
+    validates :playlist_id, :song_id, presence: true
 
     belongs_to :song
     belongs_to :playlist
