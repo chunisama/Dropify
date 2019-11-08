@@ -3,7 +3,7 @@ class Api::PlaylistsSongsController < ApplicationController
     def create
         @playlists_song = PlaylistsSong.new(p_song_params)
         if @playlists_song.save
-            render 'ap/playlists_songs/show'
+            render 'api/playlists_songs/show'
         else
             render json: ["Could not process request"], status: 401
         end
@@ -23,6 +23,6 @@ class Api::PlaylistsSongsController < ApplicationController
 
     private
     def p_song_params
-        params.require(:playlists_song).permit(:playlist_id, :song_id)
+        params.require(:playlists_songs).permit(:playlist_id, :song_id)
     end
 end

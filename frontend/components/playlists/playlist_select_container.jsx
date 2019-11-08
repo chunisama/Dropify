@@ -10,7 +10,7 @@ class PlaylistSelect extends React.Component {
   }
   
   render(){
-    const userPlaylists = this.props.playlists.filter(playlist => playlist.user.id === this.props.curentUserId);
+    const userPlaylists = this.props.playlists.filter(playlist => playlist.user.id === this.props.currentUserId);
     const playlists = userPlaylists.map(playlist => (
       <PlaylistSelectItem key={playlist.id} playlist={playlist} />
     ));
@@ -33,7 +33,7 @@ class PlaylistSelect extends React.Component {
 
 const msp = state => ({
   playlists: Object.values(state.entities.playlists),
-  currentUserId: state.session.currentUserId,
+  currentUserId: state.session.id,
 })
 
 const mdp = dispatch => ({

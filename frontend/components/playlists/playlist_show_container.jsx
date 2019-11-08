@@ -13,9 +13,10 @@ class PlaylistShow extends React.Component {
     this.props.fetchPlaylist(this.props.match.params.playlistId);
   }
 
-  //need to fix this
   renderSongs(){
-    const result = this.props.songs((song, idx) => {
+    const result = this.props.songs.map((song, idx) => {
+      return this.props.playlist.song_ids.map((songId) => {
+        if (songId === song.id) {
       return(
         <li key={idx}>
           <div className="song-index-item">
@@ -24,23 +25,24 @@ class PlaylistShow extends React.Component {
         <div className="song-index-item-title">{song.title}</div>
         <div className="song-index-item-info-child">
         <div className="song-index-item-artist">
-        <Link to={`/artists/${this.props.song.artistId}`}>
-          {this.props.song.artist.name}
+        <Link to={`/artists/${song.artistId}`}>
+          {song.artist.name}
         </Link>
         </div>
         <span class="spacing">•</span>
         <div className="song-index-item-album">
           {/* <Link to={`/albums/${this.props.album.id}`}> */}
-            {this.props.album.name}
+            {/* {this.props.album.name} */}
           {/* </Link> */}
+          </div>
+       </div>
         </div>
       </div>
-    </div>
-  </div>
-        </li>        
+        </li>
+      )}})
+      }      
       )
-    })
-    return result;
+      return result;
   }
 
 
@@ -66,7 +68,7 @@ class PlaylistShow extends React.Component {
             </div>
           <div className="album-show-songs-index">
             <ul>
-            {/* {this.renderSongs()} */}
+            {this.renderSongs()}
             </ul>
           </div>
         </div>

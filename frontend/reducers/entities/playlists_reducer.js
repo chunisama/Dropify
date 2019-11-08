@@ -17,7 +17,7 @@ const playlistReducer = (state = {}, action) => {
       return removedState;
     case RECEIVE_PLAYLIST_SONG:
       const alteredState = merge({}, state);
-      alteredState[action.playlistsSong.playlist_id].song_ids.push(action.playlistsSongs.song_id);
+      alteredState[action.playlistSong.playlist_id].song_ids.push(action.playlistSong.song_id);
       return alteredState;
     case DELETE_PLAYLIST_SONG:
       const deletedState = merge({}, state);

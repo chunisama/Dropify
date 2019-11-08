@@ -6,10 +6,10 @@ export const deletePlaylistSong = (playlistsSongs) => (
   })
 );
 
-export const createPlaylistSong = (playlistsSongs) => (
+export const createPlaylistSong = (playlists_songs) => (
   $.ajax({
     method: 'POST',
     url: `/api/playlists_songs`,
-    data: {playlist_songs: playlistsSongs}
+    data: {playlists_songs}
   })
 );
