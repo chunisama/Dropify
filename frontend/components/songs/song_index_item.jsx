@@ -44,6 +44,7 @@ class SongIndexItem extends React.Component {
     return(
       <li>
         <div className="song-index-item">
+          <div className="song-index-item-wrapper">
           <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
@@ -61,6 +62,7 @@ class SongIndexItem extends React.Component {
             </div>
           </div>
          </div>
+          </div>
          <div className="song-menu"
          onClick={(e) => {
            e.stopPropagation();

@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 class PlaylistDeleteModal extends React.Component {
   constructor(props) {
     super(props);
-    this.deletePlaylist = this.confirmDelete.bind(this);
+    this.deletePlaylist = this.deletePlaylist.bind(this);
   }
 
   deletePlaylist(){
+    debugger
     const playlistId = this.props.modalProps.playlistId;
     this.props.deletePlaylist(playlistId);
     this.props.closeModal();

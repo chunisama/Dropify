@@ -12,7 +12,6 @@ class Api::PlaylistController < ApplicationController
     def destroy
         @playlist = Playlist.find(params[:id])
         @playlist.destroy
-        render 'api/playlists/index'
     end
 
     def index
@@ -21,7 +20,7 @@ class Api::PlaylistController < ApplicationController
     end
 
     def show
-        @playlist = Playlist.find(params[:id])
+        @playlist = Playlist.find_by(id: params[:id])
         if @playlist
             render 'api/playlists/show'
         else

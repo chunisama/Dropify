@@ -3,7 +3,7 @@ import { RECEIVE_PLAYLIST_SONG, DELETE_PLAYLIST_SONG } from '../../actions/playl
 import { merge } from 'lodash';
 
 const playlistReducer = (state = {}, action) => {
-  Object.freeze(state);
+  // Object.freeze(state);
   switch(action.type){
     case RECEIVE_PLAYLISTS:
       return action.playlists;
@@ -21,9 +21,9 @@ const playlistReducer = (state = {}, action) => {
       return alteredState;
     case DELETE_PLAYLIST_SONG:
       const deletedState = merge({}, state);
-      const arr = deletedState[action.playlistsSong.playlist_id].song_ids;
-      const songIdx = arr.indexOf(action.playlistsSong.song_id);
-      deletedState[action.playlistsSong.playlist_id].song_ids.splice(songIdx, 1);
+      const arr = deletedState[action.playlistSong.playlist_id].song_ids;
+      const songIdx = arr.indexOf(action.playlistSong.song_id);
+      deletedState[action.playlistSong.playlist_id].song_ids.splice(songIdx, 1);
       return deletedState;
     default:
       return state;

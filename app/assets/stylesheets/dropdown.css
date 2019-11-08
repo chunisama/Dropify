@@ -30,3 +30,6 @@
   font-size: 14px;
 }
 
+.song-index-item-wrapper{
+  display: flex;
+}

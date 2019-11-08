@@ -15,7 +15,7 @@ const ModalContainer = (props) => {
       component = <PlaylistAddModalContainer modalProps={props.modal.modalProps} />
       break;
     case 'delete':
-      component = <PlaylistDeleteModalContainer modaProps={props.modal.modalProps} />
+      component = <PlaylistDeleteModalContainer modalProps={props.modal.modalProps} />
       break;
   }
   return (
@@ -23,7 +23,7 @@ const ModalContainer = (props) => {
     <div className="modal-content-container" onClick={(e) => { e.stopPropagation(); }}>
       {component}
     </div>
-  </div>
+    </div>
   );
 };
 

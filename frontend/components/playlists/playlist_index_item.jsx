@@ -34,7 +34,7 @@ class PlaylistIndexItem extends React.Component {
 
 
 const mdp = dispatch => ({
-  fetchSong: id => dispatch(fetchSong),
+  fetchSong: id => dispatch(fetchSong(id)),
 });
 
 

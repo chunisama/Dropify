@@ -9,7 +9,7 @@ const msp = (state) => ({
 });
 
 const mdp = (dispatch) => ({
-  createPlaylist: playlistId => dispatch(deletePlaylist(playlistId)),
+  deletePlaylist: playlistId => dispatch(deletePlaylist(playlistId)),
   closeModal: () => dispatch(closeModal()),
 });
 

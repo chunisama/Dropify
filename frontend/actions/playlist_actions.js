@@ -41,7 +41,7 @@ export const createPlaylist = (playlist) => dispatch => {
 
 export const deletePlaylist = (id) => dispatch => {
   return ApiUtil.deletePlaylist(id).then((playlist) => {
-    return dispatch(removePlaylist(playlist.id))
+    return dispatch(removePlaylist(playlist))
   });
 };
 

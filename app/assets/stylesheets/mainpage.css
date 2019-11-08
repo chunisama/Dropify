@@ -216,6 +216,7 @@ ul {
   padding: 5px;
   font-weight: 300;
   cursor: default;
+  justify-content: space-between;
 }
 
 .song-index-item-button {

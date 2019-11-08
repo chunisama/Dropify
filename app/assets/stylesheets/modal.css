@@ -29,3 +29,18 @@
   opacity: 0;
   pointer-events: none;
 }
+
+.playlist-select {
+  padding: 0 40px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.playist-add-song-modal-header{
+  margin: 20px;
+  font-size: 48px;
+  letter-spacing: 1px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 48px;
+  font-weight: 700;
+}

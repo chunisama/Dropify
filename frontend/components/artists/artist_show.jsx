@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
 import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 import { Link } from "react-router-dom";
+import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
 
 class ArtistShow extends React.Component{
   constructor(props){
@@ -71,6 +72,7 @@ class ArtistShow extends React.Component{
     return (
         <li key={idx}>
           <div className="song-index-item">
+          <div className="song-index-item-wrapper">
           <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay(song.id))}} className={"song-index-item-button " + this.toggleIcon(song.id)}></i>
           <div className="song-index-item-info">
             <div className="song-index-item-title">{song.title}</div>
@@ -86,6 +88,15 @@ class ArtistShow extends React.Component{
               </div>
             </div>
           </div>
+          </div>
+          <div className="song-menu"
+            onClick={(e) => {
+              e.stopPropagation();
+              this.props.openDropdown({x: e.clientX - 100, y: e.clientY + 3});
+              this.props.setDropdownProps({songId: song.id, playlistId: this.props.playlistId});
+            }}>
+            • • •
+            </div>
           </div>
         </li>
     )})
@@ -184,6 +195,8 @@ const mdp = dispatch => {
     fetchArtist: (id) => dispatch(fetchArtist(id)),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
     currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
+    openDropdown: pos => dispatch(openDropdown(pos)),
+    setDropdownProps: props => dispatch(setDropdownProps(props)),
   })
 }
 
