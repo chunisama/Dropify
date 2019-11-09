@@ -39,7 +39,12 @@ class Sidebar extends React.Component{
         </div>
         <div className="user-controls-container">
           <button className="log-out-button"onClick={() => this.props.logout()}>Sign Out</button>
-          <div className="username-label">{this.props.currentUser.username}</div>
+        </div>
+        <div className="user-container">
+          <div className="user-img">
+          <i className="fas fa-user-astronaut"></i>
+          </div>
+          <p>{this.props.currentUser.username}</p>
         </div>
       </div>
 

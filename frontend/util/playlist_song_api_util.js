@@ -7,7 +7,6 @@ export const deletePlaylistSong = (playlistsSongs) => (
 );
 
 export const createPlaylistSong = (playlists_songs) => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: `/api/playlists_songs`,

@@ -16,6 +16,13 @@
 .options {
   padding: 10px;
   cursor: default;
+  text-shadow: black;
+  font-size: 12px;
+  font-weight: 600;
+  color: whitesmoke;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .options:hover {
   color: white;

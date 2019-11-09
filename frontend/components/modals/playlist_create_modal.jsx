@@ -30,10 +30,12 @@ class PlaylistCreateModal extends React.Component {
   render(){
     return (
     <div className="playlist-create-modal">
-      <h1 onClick={() => this.close()}>
+      <h1 className= "close-modal-x" onClick={() => this.close()}>
+      <i className="fas fa-times"></i>
       </h1>
       <h1 className="modal-header">Create New Playlist</h1>
       <div className="modal-input-container">
+        <p>Playlist Name</p>
         <input type="text" value={this.state.playlistName} className="modal-input"
         placeholder="Start typing..." onChange={this.updatePlaylistName}
         />
@@ -42,12 +44,12 @@ class PlaylistCreateModal extends React.Component {
         <button className="cancel-button" onClick={this.close}>
           Cancel
         </button>
-      </div>
       <Link to="/browse/playlists">
         <button className="create-button" onClick={this.createPlaylist}>
           Create
         </button>
       </Link>
+      </div>
     </div>
     );
   }

@@ -3,9 +3,9 @@ import { logout } from '../../actions/session_actions'
 import Sidebar from "./sidebar";
 
 const msp = (state) => {
-  // const sessionId = this.state.session[id];
+  const sessionId = state.session.id;
   return({
-    currentUser: state.entities.users,
+    currentUser: state.entities.users[sessionId],
   })
 }
 const mdp = (dispatch) => {

@@ -6,11 +6,6 @@
   transform: translateY(-50%);
 }
 
-.modal-header {
-  margin: 20px;
-  font-size: 48px;
-  letter-spacing: 1px;
-}
 
 .modal {
   z-index: 100;
@@ -36,11 +31,112 @@
   overflow-y: auto;
 }
 
-.playist-add-song-modal-header{
+.playist-add-song-modal-header, .modal-header{
   margin: 20px;
   font-size: 48px;
   letter-spacing: 1px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   line-height: 48px;
   font-weight: 700;
+}
+
+.close-modal-x {
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -2px;
+  color: gray;
+}
+
+.close-modal-x:hover {
+  transform: scale(1.06);
+  transition: 1s;
+  color: white;
+}
+
+
+.modal-input-container {
+  padding: 30px 30px 20px;
+  background-color: #282828;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal-input-container p {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.modal-input {
+  font-size: 48px;
+  line-height: 56px;
+  background-color: #282828;
+  color: #fff;
+  border: none;
+  font-weight: 500;
+  letter-spacing: -1px;
+  padding: 0;
+  caret-color: #1db954;
+  width: 100%;
+}
+
+.modal-input:focus {
+  border: none;
+  outline: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.modal-input::placeholder{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.playlist-select-container-item {
+  cursor: pointer;
+}
+
+.flex-parent-playlist {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+.content-primary-text, .playlist-title {
+  text-shadow: black;
+  font-size: 15px;
+  font-weight: 600;
+  color: whitesmoke;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+  margin-top: 5px;
+}
+
+
+.content-secondary-text, .playlist-user {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-transform: capitalize;
+}
+
+.fa-times {
+  cursor: pointer;
+}
+
+.show-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 100px;
 }

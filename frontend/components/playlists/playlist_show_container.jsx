@@ -96,13 +96,13 @@ class PlaylistShow extends React.Component {
       <div className="album-show-container">
         <div className="album-show">
             <div className="album-show-img-container">
-              <img className="album-show-img-content"src=""/>
+              <img className="album-show-img-content" src="https://img.icons8.com/clouds/2x/music.png"/>
               <div className="album-show-info">
                 <div className="album-show-text1">{this.props.playlist.title}</div>
                 <div className="album-show-text2">
                     {this.props.playlist.user.username}
                 </div>
-                <div className="album-show-text3">{this.props.playlist.song_ids.length} SONGS</div>
+                <div className="album-show-text3">{this.props.playlist.song_ids.length} SONG(S)</div>
 
                 <div className="show-button-container">
                   <button className="show-play-button" onClick={this.handlePlay}>

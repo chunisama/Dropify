@@ -15,7 +15,7 @@ class PlaylistIndexItem extends React.Component {
       <div className="playlist-index-item">
         <div className="playlist-cover">
           <Link className="playlist-link" to={`/playlists/${this.props.playlist.id}`}>
-            <img className="content-photo-square" src="" />
+            <img className="content-photo-square" src="https://img.icons8.com/clouds/2x/music.png" />
           </Link>
         </div>
         <div className="playlist-details">

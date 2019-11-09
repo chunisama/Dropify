@@ -189,14 +189,14 @@
     padding: 2px;
 }
 
-.month-menu:focus, .month-menu-error:focus, input[type=number]:focus,  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=name]:focus{
+.month-menu:focus, .month-menu-error:focus, input[type=number]:focus, input[type=password]:focus, input[type=email]:focus, .username-input:focus, input[type=name]:focus {
     outline: none;
     border: 1px solid rgb(43, 200, 243);
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
 input:focus::-webkit-input-placeholder { 
-    color: black;
+    color: darkgray;
 }
 
 .birthday-container{

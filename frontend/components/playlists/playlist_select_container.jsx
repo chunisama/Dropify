@@ -16,11 +16,11 @@ class PlaylistSelect extends React.Component {
     ));
     return (
       <div className="playlist-select">
-        <ul className="flex-parent">
+        <ul className="flex-parent-playlist">
           {playlists}
         </ul>
-        <div className="create-modal-button">
-          <button onClick={() => {this.props.setModalComponent('create')}}>
+        <div className="playlist-select-button-container">
+          <button  className="create-modal-button" onClick={() => {this.props.setModalComponent('create')}}>
             New Playlist
           </button>
         </div>
