@@ -6,13 +6,19 @@ class SongIndexItem extends React.Component {
     super(props);
     this.state = {
       isPlaying: false,
+      duration: "",
     }
     this.toggleIcon = this.toggleIcon.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
+    this.setDuration = this.setDuration.bind(this);
     //For displaying durations
-    // this.audio = new Audio(this.props.track.audioUrl)
+    this.url = this.props.song.songUrl;
+    this.song = new Audio(this.url);
   }
 
+  componentDidMount(){
+    this.setDuration();
+  }
   componentDidUpdate(prevProps){
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
@@ -20,6 +26,13 @@ class SongIndexItem extends React.Component {
       });
     }
   }
+
+  setDuration(){
+    // this.song.onloadedmetadata = () => {
+      this.setState({duration: this.song.duration});
+    // };
+  }
+
 
   toggleIcon(){
     if (this.state.isPlaying === true && this.props.song.id === this.props.currentSong) {
@@ -41,6 +54,7 @@ class SongIndexItem extends React.Component {
   }
 
   render(){
+    debugger
     return(
       <li>
         <div className="song-index-item">
@@ -71,6 +85,7 @@ class SongIndexItem extends React.Component {
          }}>
           • • •
          </div>
+         <div className="song-duration">{this.state.duration}</div>
         </div>
       </li>
     )
