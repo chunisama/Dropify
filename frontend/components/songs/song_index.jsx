@@ -4,6 +4,7 @@ import SongIndexItem from "./song_index_item";
 class SongIndex extends React.Component {
   constructor(props){
   super(props);
+  // this.audio = new Audio();
   }
 
   componentDidMount(){
@@ -23,7 +24,9 @@ class SongIndex extends React.Component {
         <div className="song-index-container">
           <ul className="song-index">
             {this.props.songs.map((song) => (
-              <SongIndexItem 
+              // this.audio = new Audio(song.songUrl),
+              <SongIndexItem
+                // duration={this.audio.duration}
                 song={song}
                 key={song.id}
                 receiveCurrentSong={this.props.receiveCurrentSong}

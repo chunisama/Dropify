@@ -1,12 +1,18 @@
 class Api::SongsController < ApplicationController
-
     def index
-        @songs = Song.all 
-        if @songs
-            render :index
+        if song_ids
+            @songs = Song.where(id: song_ids)
+        elsif search_term
+            @songs = Song.where('lower(title) LIKE ?', "%#{search_term.downcase}%")
         else
-            render json: @songs.errors.full_messages, status: 422
+            @songs = Song.all
+            render :index
         end
+        # if @songs
+        #     render :index
+        # else
+        #     render json: @songs.errors.full_messages, status: 422
+        # end
     end
 
     def show
@@ -16,5 +22,14 @@ class Api::SongsController < ApplicationController
         else
             render json: @song.errors.full_messages, status: 422
         end
+    end
+
+    private
+    def song_ids
+        params[:song_ids]
+    end
+
+    def search_term
+        params[:search_term]
     end
 end

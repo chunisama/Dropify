@@ -15,8 +15,16 @@ class Api::PlaylistController < ApplicationController
     end
 
     def index
-        @playlists = Playlist.all
-        render 'api/playlists/index'
+        # @playlists = Playlist.all
+        # render 'api/playlists/index'
+        if playlist_ids
+            @playlists = Playlist.where(id: playlist_ids)
+        elsif search_term
+            @playlists = Playlist.where('lower(title) LIKE ?', "%#{search_term.downcase}%")
+        else
+            @playlists = Playlist.all
+            render 'api/playlists/index'
+        end
     end
 
     def show
@@ -31,5 +39,13 @@ class Api::PlaylistController < ApplicationController
     private
     def playlist_params
         params.require(:playlist).permit(:title, :user_id)
+    end
+
+    def playlist_ids
+        params[:playlist_ids]
+    end
+
+    def search_term
+        params[:search_term]
     end
 end
