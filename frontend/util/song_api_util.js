@@ -1,8 +1,9 @@
-export const fetchSongs = () => {
+export const fetchSongs = (props) => {
     return (
         $.ajax({
             url: "api/songs",
-            method: "GET"
+            method: "GET",
+            data: {props},
         })
     )
 }

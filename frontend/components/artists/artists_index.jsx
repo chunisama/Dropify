@@ -2,6 +2,10 @@ import React from "react";
 import ArtistIndexItem from "./artists_index_item";
 import { withRouter } from 'react-router-dom';
 
+const arrayEq = (a1, a2) => {
+  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+};
+
 class ArtistIndex extends React.Component {
   constructor(props){
     super(props);
@@ -11,9 +15,25 @@ class ArtistIndex extends React.Component {
   componentDidMount(){
     // this.props.fetchSongs();
     // this.props.fetchAlbums();
-    this.props.fetchArtists();
+    this.props.fetchArtists({
+      artist_ids: this.props.artistIds,
+      search_term: this.props.searchTerm
+    });
   }
 
+  componentDidUpdate(prevProps){
+    if (
+      (prevProps.artistIds && !arrayEq(this.props.artistIds,prevProps.artistIds)) ||
+      (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
+    ) {
+      this.props.fetchArtists({
+        artist_ids: prevProps.artistIds,
+        search_term: prevProps.searchTerm
+      });
+    }
+  }
+
+  // playing song by clicking artist prof pic
   handleClick(artist){
     return (e) => {
       if (!e.target.classList.contains("fas", "fa-play-circle")){
@@ -28,10 +48,18 @@ class ArtistIndex extends React.Component {
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
       )
     }
+
+    let filteredArtists;
+    if (this.props.searchTerm) {
+      filteredArtists = this.props.artists.filter(artist => artist.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    } else {
+      filteredArtists = this.props.artists;
+    }
+
     return(
       <div className="artist-index-container">
         <ul className="flex-master">
-          {this.props.artists.map((artist, idx) => (
+          {filteredArtists.map((artist, idx) => (
             <li key={idx} className="index-item">
             <ArtistIndexItem
               artist={artist}

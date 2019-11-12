@@ -2,6 +2,7 @@ import { RECEIVE_SONG, RECEIVE_SONGS } from "../../actions/song_actions";
 import { RECEIVE_ARTIST } from "../../actions/artist_actions"; 
 import { RECEIVE_ALBUM } from "../../actions/album_actions";
 import { RECEIVE_PLAYLIST } from "../../actions/playlist_actions";
+import { merge } from 'lodash';
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -9,7 +10,11 @@ export default (state = {}, action) => {
         case RECEIVE_SONG:
             return Object.assign({}, state, {[action.song.id]: action.song});
         case RECEIVE_SONGS:
-            return Object.assign({}, action.songs);
+            if (action.searchTerm) {
+                return action.songs;
+            } else {
+                return merge({}, state, action.songs);
+            }
         case RECEIVE_ARTIST:
             return Object.assign({}, state, action.artist.song);
         case RECEIVE_ALBUM:

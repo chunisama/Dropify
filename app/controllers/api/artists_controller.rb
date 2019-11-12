@@ -1,9 +1,9 @@
 class Api::ArtistsController < ApplicationController
     def index
         if artist_ids
-            @artists = Album.where(id: artist_ids)
+            @artists = Artist.where(id: artist_ids)
         elsif search_term
-            @artists = Album.where('lower(title) like ?', "%#{search_term.downcase}%"
+            @artists = Artist.where('lower(title) like ?', "%#{search_term.downcase}%")
         else
             @artists = Artist.all 
             render :index

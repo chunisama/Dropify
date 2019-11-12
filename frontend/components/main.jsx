@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SidebarContainer from "./sidebar/sidebar_container";
 import PlayerContainer from "./player/player_container";
 import Browse from "./browse/browse";
+import Search from "./search/search";
 import AlbumShow from "./albums/album_show";
 import ArtistShow from "./artists/artist_show";
 import PlaylistShow from "./playlists/playlist_show_container";
@@ -18,6 +19,7 @@ const Main = (props) => {
         <div className="background">
           <Route path="/:section" component={ SidebarContainer }></Route>
           <Route path="/browse" component={ Browse }></Route>
+          <Route path="/search" component={ Search }></Route>
           <Route path="/albums/:albumId" component={ AlbumShow }></Route>
           <Route path="/artists/:artistId" component={ ArtistShow }></Route>
           <Route path="/playlists/:playlistId" component={ PlaylistShow }></Route>

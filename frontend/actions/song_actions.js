@@ -26,15 +26,17 @@ const receiveSong = song => ({
     song,
 })
 
-const receiveSongs = songs => ({
+const receiveSongs = (songs, searchTerm) => ({
     type: RECEIVE_SONGS,
     songs,
+    searchTerm,
 })
 
-export const fetchSongs = () => dispatch => {
-    return ApiUtil.fetchSongs().then(
-        songs => dispatch(receiveSongs(songs))
-    )
+export const fetchSongs = (props) => dispatch => {
+    return ApiUtil.fetchSongs(props).then(songs => {
+       debugger
+        return dispatch(receiveSongs(songs, props.search_term))
+    });
 }
 
 export const fetchSong = (id) => dispatch => {

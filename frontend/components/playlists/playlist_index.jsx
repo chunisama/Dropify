@@ -1,13 +1,33 @@
 import React from "react";
 import PlaylistIndexItem from "./playlist_index_item";
 
+const arrayEq = (a1, a2) => {
+  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+};
+
 class PlaylistIndex extends React.Component {
   constructor(props){
     super(props);
   }
   
     componentDidMount(){
-      this.props.fetchPlaylists();
+      this.props.fetchPlaylists({
+        playlist_ids: this.props.playlistIds,
+        search_term: this.props.searchTerm  
+      });
+    }
+
+    componentDidUpdate(prevProps){
+      if (
+        (prevProps.playlistIds && !arrayEq(this.props.playlistIds,prevProps.playlistIds)) ||
+        (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm) ||
+        (prevProps.playlists.length !== this.props.playlists.length)
+      ) {
+        this.props.fetchPlaylists({
+          playlist_ids: prevProps.playlistIds,
+          search_term: prevProps.searchTerm
+        });
+      }
     }
 
     render(){
@@ -16,11 +36,19 @@ class PlaylistIndex extends React.Component {
           <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
         )
       }
+
+      let filteredPlaylists;
+      if (this.props.searchTerm) {
+        filteredPlaylists = this.props.playlists.filter(playlist => playlist.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+      } else {
+        filteredPlaylists = this.props.playlists;
+      }
+
       const playlistIndexItems = () => {
         return(
           <div className="playlist-index-container">
             <ul className="flex-master">
-              {this.props.playlists.map((playlist) => (
+              {filteredPlaylists.map((playlist) => (
                 <PlaylistIndexItem
                   playlist={playlist}
                   key={playlist.id}

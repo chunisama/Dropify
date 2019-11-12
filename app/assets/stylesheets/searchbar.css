@@ -1,0 +1,15 @@
+.search-input-container {
+  padding: 30px 30px 20px;
+  background-color: #282828;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-left: 230px;
+}
+
+.search-input-container p {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
