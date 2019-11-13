@@ -27,6 +27,13 @@ class User < ApplicationRecord
   # active storage association
   # has_one_attached :avatar
  
+  has_many :likes
+  has_many :liked_songs, through: :likes, source: :likeable, source_type: 'Song'
+  has_many :liked_albums, through: :likes, source: :likeable, source_type: 'Album'
+
+  has_many :follows
+  has_many :followed_artists, through: :follows, source: :followable, source_type: 'Artist'
+  has_many :followed_playlists, through: :follows, source: :followable, source_type: 'Playlist'
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

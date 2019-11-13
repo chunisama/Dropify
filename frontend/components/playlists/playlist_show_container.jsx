@@ -2,15 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPlaylist } from "../../actions/playlist_actions";
-import { receiveCurrentSong } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 import { fetchAlbums } from "../../actions/album_actions";
 import { openModal, setModalComponent, setModalProps } from '../../actions/modal_actions';
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
+import { createFollow, deleteFollow } from "../../actions/follow_actions";
 
 class PlaylistShow extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      isPlaying: false,
+    }
     this.handlePlay = this.handlePlay.bind(this);
+    this.toggleIcon = this.toggleIcon.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
+    this.handleFollow = this.handleFollow.bind(this);
   }
 
   componentDidMount(){
@@ -18,13 +25,49 @@ class PlaylistShow extends React.Component {
     this.props.fetchAlbums();
   }
 
-  //Use this as guideline for handling queue
-  handlePlay() {
-    if (this.props.playlist.song_ids) {
-      this.props.receiveCurrentSong(this.props.playlist.song_ids[0]);
+  componentDidUpdate(prevProps){
+    if (prevProps.isPlaying !== this.props.isPlaying){
+      this.setState({
+        isPlaying: this.props.isPlaying,
+      });
     }
   }
 
+  togglePlay(songId){
+    if (this.state.isPlaying == false) {
+      this.props.receiveCurrentSong(songId); 
+      this.props.currentlyPlaying(true);
+    } else if (this.state.isPlaying == true) {
+      this.props.currentlyPlaying(false);
+      this.props.receiveCurrentSong(songId); 
+    }
+  }
+
+  toggleIcon(songId){
+    if (this.state.isPlaying === true && songId === this.props.currentSong) {
+      return "fas fa-pause";
+    } else {
+      return "fab fa-google-play";
+    }
+  }
+
+  handleFollow(e) {
+    const following = this.props.currentUser.followed_playlist_ids.includes(this.props.playlist.id);
+    const follow = {
+      user_id: this.props.currentUser.id,
+      followable_id: this.props.playlist.id,
+      followable_type: 'Playlist'
+    };
+
+    following ? this.props.deleteFollow(follow) : this.props.createFollow(follow);
+  }
+
+  //Use this as guideline for handling queue
+  handlePlay() {
+    if (this.props.playlist.song_ids) {
+      this.togglePlay(this.props.playlist.song_ids[0]);
+    }
+  }
 
   renderSongs(){
     const result = this.props.songs.map((song, idx) => {
@@ -34,7 +77,7 @@ class PlaylistShow extends React.Component {
         <li key={idx}>
         <div className="song-index-item">
         <div className="song-index-item-wrapper">
-        <i onClick={() => this.props.receiveCurrentSong(song.id)} className="song-index-item-button fab fa-google-play"></i>
+        <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay(song.id))}} className={"song-index-item-button " + this.toggleIcon(song.id)}></i>
         <div className="song-index-item-info">
         <div className="song-index-item-title">{song.title}</div>
         <div className="song-index-item-info-child">
@@ -103,12 +146,15 @@ class PlaylistShow extends React.Component {
                     {this.props.playlist.user.username}
                 </div>
                 <div className="album-show-text3">{this.props.playlist.song_ids.length} SONG(S)</div>
-
                 <div className="show-button-container">
                   <button className="show-play-button" onClick={this.handlePlay}>
                     Play
                   </button>
                   {deleteButton}
+                  <button className="delete-playlist-button"
+                    onClick={this.handleFollow}>
+                    {this.props.currentUser.followed_playlist_ids.includes(this.props.playlist.id) ? 'Unfollow' : 'Follow'}
+                  </button>
                 </div>
               </div>
             </div>
@@ -123,11 +169,14 @@ class PlaylistShow extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  const { songs, playlists } = state.entities;
+  const { songs, playlists, audio, users } = state.entities;
   return({
     playlist: playlists[ownProps.match.params.playlistId],
     songs: Object.values(songs),
     currentUserId: state.session.id,
+    currentSong: audio.currentSong,
+    isPlaying: audio.isPlaying,
+    currentUser: users[state.session.id],
   })
 }
 
@@ -140,6 +189,9 @@ const mdp = (dispatch) => ({
   setModalProps: (props) => dispatch(setModalProps(props)),
   openDropdown: pos => dispatch(openDropdown(pos)),
   setDropdownProps: props => dispatch(setDropdownProps(props)),
+  currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
+  createFollow: follow => dispatch(createFollow(follow)),
+  deleteFollow: follow => dispatch(deleteFollow(follow)),
 })
 
 export default connect(msp, mdp)(PlaylistShow);

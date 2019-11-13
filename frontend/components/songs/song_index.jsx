@@ -64,7 +64,7 @@ class SongIndex extends React.Component {
 
     const songIndexItems = () => {
       return(
-      searchedSongs.map((song) => (
+      sortedSongs.map((song) => (
         <SongIndexItem
           song={song}
           key={song.id}

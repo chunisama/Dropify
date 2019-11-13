@@ -10,6 +10,7 @@ import ArtistShow from "./artists/artist_show";
 import PlaylistShow from "./playlists/playlist_show_container";
 import ModalContainer  from "./modals/modal_container";
 import DropdownContainer from "./dropdown/dropdown_container";
+import Collection from "./collection/collection";
 import { closeDropdown } from "../actions/dropdown_actions";
 
 const Main = (props) => {
@@ -20,6 +21,7 @@ const Main = (props) => {
           <Route path="/:section" component={ SidebarContainer }></Route>
           <Route path="/browse" component={ Browse }></Route>
           <Route path="/search" component={ Search }></Route>
+          <Route path="/collection" component={ Collection }></Route>
           <Route path="/albums/:albumId" component={ AlbumShow }></Route>
           <Route path="/artists/:artistId" component={ ArtistShow }></Route>
           <Route path="/playlists/:playlistId" component={ PlaylistShow }></Route>

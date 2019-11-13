@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchAlbum } from "../../actions/album_actions";
 import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
-
+import { createLike, deleteLike } from "../../actions/like_actions";
 
 class AlbumShow extends React.Component {
   constructor(props){
@@ -14,6 +14,8 @@ class AlbumShow extends React.Component {
     }
     this.toggleIcon = this.toggleIcon.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
   }
 
   componentDidMount(){
@@ -27,6 +29,24 @@ class AlbumShow extends React.Component {
       });
     }
   }
+
+  handlePlay() {
+    if (this.props.album.songIds) {
+      this.togglePlay(this.props.album.songIds[0]);      
+    }
+  }
+
+  handleLike(e) {
+    const liked = this.props.currentUser.liked_album_ids.includes(this.props.album.id);
+    const like = {
+      user_id: this.props.currentUser.id,
+      likeable_id: this.props.album.id,
+      likeable_type: 'Album'
+    };
+
+    liked ? this.props.deleteLike(like) : this.props.createLike(like);
+  }
+
 
   toggleIcon(songId){
     if (this.state.isPlaying === true && songId === this.props.currentSong) {
@@ -112,6 +132,15 @@ class AlbumShow extends React.Component {
                   </Link>
                 </div>
                 <div className="album-show-text3">{this.props.album.songIds.length} SONGS</div>
+                <div className="show-button-container">
+                  <button className="show-play-button" onClick={this.handlePlay}>
+                    Play
+                  </button>
+                  <button className="delete-playlist-button"
+                    onClick={this.handleLike}>
+                    {this.props.currentUser.liked_album_ids.includes(this.props.album.id) ? 'Remove from Collection' : 'Save to Collection'}
+                  </button>
+                </div>
               </div>
             </div>
           <div className="album-show-songs-index">
@@ -133,6 +162,7 @@ const msp = (state, ownProps) => {
     songs: Object.values(songs),
     isPlaying: audio.isPlaying,
     currentSong: audio.currentSong,
+    currentUser: state.entities.users[state.session.id]
   })
 }
 
@@ -142,6 +172,8 @@ const mdp = dispatch => ({
   currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
   openDropdown: pos => dispatch(openDropdown(pos)),
   setDropdownProps: props => dispatch(setDropdownProps(props)),
+  createLike: like => dispatch(createLike(like)),
+  deleteLike: like => dispatch(deleteLike(like)),
 })
 
 export default connect(msp, mdp)(AlbumShow);

@@ -56,7 +56,15 @@ class ArtistIndex extends React.Component {
       filteredArtists = this.props.artists;
     }
 
-    const artists = filteredArtists.map((artist, idx) => (
+    let sortedArtists;
+    if (this.props.artistIds) {
+      sortedArtists = this.props.artistIds.map(id => filteredArtists.find(obj => obj.id === id ))
+    } else {
+      sortedArtists = filteredArtists;
+    }
+
+
+    const artists = sortedArtists.map((artist, idx) => (
       <li key={idx} className="index-item">
         <ArtistIndexItem
           artist={artist}

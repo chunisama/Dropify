@@ -44,9 +44,16 @@ class PlaylistIndex extends React.Component {
         filteredPlaylists = this.props.playlists;
       }
 
+      let sortedPlaylists;
+      if (this.props.playlistIds) {
+        sortedPlaylists = this.props.playlistIds.map(id => filteredPlaylists.find(obj => obj.id === id ))
+      } else {
+        sortedPlaylists = filteredPlaylists;
+      }
+  
       const playlistIndexItems = () => {
         return(
-        filteredPlaylists.map((playlist) => (
+        sortedPlaylists.map((playlist) => (
           <PlaylistIndexItem
             playlist={playlist}
             key={playlist.id}

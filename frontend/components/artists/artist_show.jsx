@@ -4,6 +4,7 @@ import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
 import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
 import { Link } from "react-router-dom";
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
+import { createFollow, deleteFollow } from "../../actions/follow_actions";
 
 class ArtistShow extends React.Component{
   constructor(props){
@@ -13,7 +14,8 @@ class ArtistShow extends React.Component{
     }
     this.toggleIcon = this.toggleIcon.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
-
+    this.handleFollow = this.handleFollow.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
     //Playing song using album art
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,6 +30,23 @@ class ArtistShow extends React.Component{
         isPlaying: this.props.isPlaying,
       });
     }
+  }
+
+  handlePlay(){
+    if (this.props.artist.songIds) {
+      this.togglePlay(this.props.artist.songIds[0]);      
+    }
+  }
+
+  handleFollow(e) {
+    const following = this.props.currentUser.followed_artist_ids.includes(this.props.artist.id);
+    const follow = {
+      user_id: this.props.currentUser.id,
+      followable_id: this.props.artist.id,
+      followable_type: 'Artist'
+    };
+
+    following ? this.props.deleteFollow(follow) : this.props.createFollow(follow);
   }
 
   toggleIcon(songId){
@@ -151,6 +170,16 @@ class ArtistShow extends React.Component{
           </div>
           <div className="artist-header">
           <h1 className="artist-show-name">{this.props.artist.name}</h1>
+          <div className="artist-button-container">
+            <button className="show-play-button"
+              onClick={this.handlePlay}>
+              Play
+            </button>
+            <button className="delete-playlist-button"
+              onClick={this.handleFollow}>
+              {this.props.currentUser.followed_artist_ids.includes(this.props.artist.id) ? 'Unfollow' : 'Follow'}
+            </button>
+          </div>
           </div>
           <div className="artist-content">
             <div className="artist-show-subheader">Overview</div>
@@ -180,13 +209,14 @@ class ArtistShow extends React.Component{
 }
 
 const msp = (state, ownProps) => {
-  const { songs, albums, artists, audio } = state.entities;
+  const { songs, albums, artists, audio, users } = state.entities;
   return({
     artist: artists[ownProps.match.params.artistId],
     albums: albums,
     songs: Object.values(songs),
     isPlaying: audio.isPlaying,
     currentSong: audio.currentSong,
+    currentUser: users[state.session.id]
     })  
   };
 const mdp = dispatch => {
@@ -197,6 +227,8 @@ const mdp = dispatch => {
     currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
     openDropdown: pos => dispatch(openDropdown(pos)),
     setDropdownProps: props => dispatch(setDropdownProps(props)),
+    createFollow: follow => dispatch(createFollow(follow)),
+    deleteFollow: follow => dispatch(deleteFollow(follow)),
   })
 }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_000725) do
+ActiveRecord::Schema.define(version: 2019_11_13_003043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,31 @@ ActiveRecord::Schema.define(version: 2019_10_07_000725) do
     t.index ["genre_id"], name: "index_artists_on_genre_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "followable_id", null: false
+    t.string "followable_type", null: false
+    t.index ["followable_id"], name: "index_follows_on_followable_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category", null: false
     t.index ["category"], name: "index_genres_on_category", unique: true
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "likeable_id", null: false
+    t.string "likeable_type", null: false
+    t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "playlists", force: :cascade do |t|

@@ -61,34 +61,6 @@ class SearchResults extends React.Component {
 
   render(){
     const section = this.props.match.params.section;
-    // let filteredArtists;
-    // if (this.props.searchTerm) {
-    //   filteredArtists = this.props.artists.filter(artist => artist.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
-    // } else {
-    //   filteredArtists = this.props.artists;
-    // }
-
-    // let filteredAlbums;
-    // if (this.props.searchTerm) {
-    //   filteredAlbums = this.props.albums.filter(album => album.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
-    // } else {
-    //   filteredAlbums = this.props.albums;
-    // }
-
-    // let filteredPlaylists;
-    // if (this.props.searchTerm) {
-    //   filteredPlaylists = this.props.playlists.filter(playlist => playlist.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
-    // } else {
-    //   filteredPlaylists = this.props.playlists;
-    // }
-
-    // let searchedSongs;
-    // if (this.props.searchTerm) {
-    //   searchedSongs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
-    // } else {
-    //   searchedSongs = this.props.songs;
-    // }
-
     return(
       <div className="search-results">
         <div className="tabs-container">
@@ -179,6 +151,6 @@ const msp = (state) => {
 }
 
 
-export default withRouter(connect(msp)(SearchResults));
+export default withRouter(connect(msp, null)(SearchResults));
 
 

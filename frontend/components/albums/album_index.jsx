@@ -54,10 +54,16 @@ class AlbumIndex extends React.Component {
     } else {
       filteredAlbums = this.props.albums;
     }
+    let sortedAlbums;
+    if (this.props.albumIds) {
+      sortedAlbums = this.props.albumIds.map(id => filteredAlbums.find(obj => obj.id === id ))
+    } else {
+      sortedAlbums = filteredAlbums;
+    }
 
     const albumIndexItems = () => {
       return(
-      filteredAlbums.map((album, idx) => (
+      sortedAlbums.map((album, idx) => (
         <li key={idx} className="index-item">
         <AlbumIndexItem 
           album={album}

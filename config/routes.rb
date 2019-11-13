@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :show]
     resources :playlist, only: [:create, :index, :show, :destroy]
     resources :playlists_songs, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy]
   end
 end

@@ -12,8 +12,8 @@ const receiveAlbum = album => ({
   album,
 });
 
-export const fetchAlbums = () => dispatch => {
-  return apiUtil.fetchAlbums().then((albums) => dispatch(receiveAlbums(albums)))
+export const fetchAlbums = (props) => dispatch => {
+  return apiUtil.fetchAlbums(props).then((albums) => dispatch(receiveAlbums(albums)))
 };
 
 export const fetchAlbum = id => dispatch => {

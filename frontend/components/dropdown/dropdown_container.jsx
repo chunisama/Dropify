@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { removePlaylistSong } from '../../actions/playlist_song_actions';
 import { closeDropdown } from '../../actions/dropdown_actions';
 import { openModal, setModalComponent, setModalProps } from '../../actions/modal_actions';
-
+import { createLike, deleteLike } from '../../actions/like_actions';
 
 class Dropdown extends React.Component {
   render() {
@@ -41,6 +41,31 @@ class Dropdown extends React.Component {
           },
         }); 
       }
+
+    // Like
+    const like = {
+      user_id: this.props.currentUser.id,
+      likeable_id: this.props.dropdown.dropdownProps.songId,
+      likeable_type: 'Song',
+    };
+    // Removing Like
+    if (this.props.currentUser.liked_song_ids.includes(this.props.dropdown.dropdownProps.songId)) {
+      actions.push({
+        title: 'Remove from your Liked Songs',
+        func: () => {
+          this.props.deleteLike(like);
+          this.props.closeDropdown();
+        },
+      });
+    } else {
+      actions.push({
+        title: 'Add to your Liked Songs',
+        func: () => {
+          this.props.createLike(like);
+          this.props.closeDropdown();
+        },
+      });
+    }
     
     const actionOptions = actions.map((action, idx) => (
       <li className="options" key={idx} onClick={action.func}>{action.title}</li>
@@ -68,6 +93,8 @@ class Dropdown extends React.Component {
     setModalProps: props => dispatch(setModalProps(props)),
     setModalComponent: type => dispatch(setModalComponent(type)),
     removePlaylistSong: song => dispatch(removePlaylistSong(song)),
+    createLike: like => dispatch(createLike(like)),
+    deleteLike: like => dispatch(deleteLike(like)),
   });
 
   export default connect(msp, mdp)(Dropdown);
