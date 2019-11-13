@@ -7,8 +7,88 @@ import { withRouter, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class SearchResults extends React.Component {
+  constructor(props){
+    super(props);
+    this.artistResults = this.artistResults.bind(this);
+    this.albumResults = this.albumResults.bind(this);
+    this.playlistResults = this.playlistResults.bind(this);
+    this.songResults = this.songResults.bind(this);
+    }
+  
+  artistResults(){
+    let filteredArtists;
+    if (this.props.searchTerm) {
+      filteredArtists = this.props.artists.filter(artist => artist.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+      return filteredArtists.length;
+    } else {
+      filteredArtists = this.props.artists;
+      return filteredArtists.length;
+    }
+  }
+
+  albumResults(){
+    let filteredAlbums;
+    if (this.props.searchTerm) {
+      filteredAlbums = this.props.albums.filter(album => album.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+      return filteredAlbums.length;
+    } else {
+      filteredAlbums = this.props.albums;
+      return filteredAlbums.length;
+    }
+  }
+
+  playlistResults(){
+    let filteredPlaylists;
+    if (this.props.searchTerm) {
+      filteredPlaylists = this.props.playlists.filter(playlist => playlist.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+      return filteredPlaylists.length;
+    } else {
+      filteredPlaylists = this.props.playlists;
+      return filteredPlaylists.length;
+    }
+  }
+
+  songResults(){
+    let searchedSongs;
+    if (this.props.searchTerm) {
+      searchedSongs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+      return searchedSongs.length;
+    } else {
+      searchedSongs = this.props.songs;
+      return searchedSongs.length;
+    }
+  }
+
   render(){
     const section = this.props.match.params.section;
+    // let filteredArtists;
+    // if (this.props.searchTerm) {
+    //   filteredArtists = this.props.artists.filter(artist => artist.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    // } else {
+    //   filteredArtists = this.props.artists;
+    // }
+
+    // let filteredAlbums;
+    // if (this.props.searchTerm) {
+    //   filteredAlbums = this.props.albums.filter(album => album.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    // } else {
+    //   filteredAlbums = this.props.albums;
+    // }
+
+    // let filteredPlaylists;
+    // if (this.props.searchTerm) {
+    //   filteredPlaylists = this.props.playlists.filter(playlist => playlist.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    // } else {
+    //   filteredPlaylists = this.props.playlists;
+    // }
+
+    // let searchedSongs;
+    // if (this.props.searchTerm) {
+    //   searchedSongs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+    // } else {
+    //   searchedSongs = this.props.songs;
+    // }
+
     return(
       <div className="search-results">
         <div className="tabs-container">
@@ -50,22 +130,22 @@ class SearchResults extends React.Component {
           <Route path="/search/top" render={() => (
             <div className="top-results">
               <div className="search-section"
-                style={{order: (this.props.numArtists === 0 ? 2 : 1)}}>
+                style={{order: (this.artistResults() === 0 ? 2 : 1)}}>
                 <h2>Artists</h2>
                 <ArtistsContainer searchTerm={this.props.searchTerm} />
               </div>
               <div className="search-section"
-                style={{order: (this.props.numAlbums === 0 ? 2 : 1)}}>
+                style={{order: (this.albumResults() === 0 ? 2 : 1)}}>
                 <h2>Albums</h2>
                 <AlbumsContainer searchTerm={this.props.searchTerm} />
               </div>
               <div className="search-section"
-                style={{order: (this.props.numPlaylists === 0 ? 2 : 1)}}>
+                style={{order: (this.playlistResults() === 0 ? 2 : 1)}}>
                 <h2>Playlists</h2>
                 <PlaylistsContainer searchTerm={this.props.searchTerm} />
               </div>
-              <div className="search-section"
-                style={{order: (this.props.numSongs === 0 ? 2 : 1)}}>
+              <div className="search-section-song"
+                style={{order: (this.songResults() === 0 ? 2 : 1)}}>
                 <h2>Songs</h2>
                 <SongsContainer searchTerm={this.props.searchTerm} />
               </div>
@@ -89,13 +169,16 @@ class SearchResults extends React.Component {
   }
 }
 
-const msp = (state) => ({
-  numArtists: Object.keys(state.entities.artists).length,
-  numAlbums: Object.keys(state.entities.albums).length,
-  numPlaylists: Object.keys(state.entities.playlists).length,
-  numSongs: Object.keys(state.entities.songs).length,
-});
+const msp = (state) => {
+  return ({
+    artists: Object.values(state.entities.artists),
+    albums: Object.values(state.entities.albums),
+    playlists: Object.values(state.entities.playlists),
+    songs: Object.values(state.entities.songs),
+  })
+}
 
-export default withRouter(connect(msp, null)(SearchResults));
+
+export default withRouter(connect(msp)(SearchResults));
 
 

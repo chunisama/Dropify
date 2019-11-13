@@ -57,26 +57,24 @@ class AlbumIndex extends React.Component {
 
     const albumIndexItems = () => {
       return(
-        <div className="albums-index-container">
-          <ul className="flex-master">
-            {filteredAlbums.map((album, idx) => (
-              <li key={idx} className="index-item">
-              <AlbumIndexItem 
-                album={album}
-                key={album.id}
-                receiveCurrentSong={this.props.receiveCurrentSong}
-                handleClick={this.handleClick}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+      filteredAlbums.map((album, idx) => (
+        <li key={idx} className="index-item">
+        <AlbumIndexItem 
+          album={album}
+          key={album.id}
+          receiveCurrentSong={this.props.receiveCurrentSong}
+          handleClick={this.handleClick}
+          />
+        </li>
+        ))
       )
     } 
     return(
-      <>
-        {albumIndexItems()}
-      </>
+      <div className="albums-index-container"> 
+        <ul className="flex-master">
+          {albumIndexItems().length ? albumIndexItems() : <p>No Albums</p>}
+        </ul>
+      </div>
     )
   }
 }

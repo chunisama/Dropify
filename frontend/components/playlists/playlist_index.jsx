@@ -46,22 +46,20 @@ class PlaylistIndex extends React.Component {
 
       const playlistIndexItems = () => {
         return(
-          <div className="playlist-index-container">
-            <ul className="flex-master">
-              {filteredPlaylists.map((playlist) => (
-                <PlaylistIndexItem
-                  playlist={playlist}
-                  key={playlist.id}
-                />
-              ))}
-            </ul>
-          </div>
-        )
-      }
-
+        filteredPlaylists.map((playlist) => (
+          <PlaylistIndexItem
+            playlist={playlist}
+            key={playlist.id}
+          />
+        ))
+      )};
 
       return(
-        <div>{playlistIndexItems()}</div>
+        <div className="playlist-index-container">
+          <ul className="flex-master">
+            {playlistIndexItems().length ? playlistIndexItems() : <p>No Playlists</p>}
+          </ul>
+        </div>
       )
     }
 }

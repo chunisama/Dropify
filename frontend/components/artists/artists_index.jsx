@@ -2,7 +2,7 @@ import React from "react";
 import ArtistIndexItem from "./artists_index_item";
 import { withRouter } from 'react-router-dom';
 
-const arrayEq = (a1, a2) => {
+const arrayEqeu = (a1, a2) => {
   return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
 };
 
@@ -23,7 +23,7 @@ class ArtistIndex extends React.Component {
 
   componentDidUpdate(prevProps){
     if (
-      (prevProps.artistIds && !arrayEq(this.props.artistIds,prevProps.artistIds)) ||
+      (prevProps.artistIds && !arrayEqeu(this.props.artistIds,prevProps.artistIds)) ||
       (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
     ) {
       this.props.fetchArtists({
@@ -56,19 +56,21 @@ class ArtistIndex extends React.Component {
       filteredArtists = this.props.artists;
     }
 
+    const artists = filteredArtists.map((artist, idx) => (
+      <li key={idx} className="index-item">
+        <ArtistIndexItem
+          artist={artist}
+          key={artist.id}
+          receiveCurrentSong={this.props.receiveCurrentSong}
+          handleClick={this.handleClick}
+        />
+      </li>
+    ));
+
     return(
       <div className="artist-index-container">
         <ul className="flex-master">
-          {filteredArtists.map((artist, idx) => (
-            <li key={idx} className="index-item">
-            <ArtistIndexItem
-              artist={artist}
-              key={artist.id}
-              receiveCurrentSong={this.props.receiveCurrentSong}
-              handleClick={this.handleClick}
-            />
-            </li>
-          ))}
+          {artists.length ? artists : <p>No Artists</p>}
         </ul>
       </div>
     )

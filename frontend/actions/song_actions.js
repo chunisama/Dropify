@@ -34,7 +34,6 @@ const receiveSongs = (songs, searchTerm) => ({
 
 export const fetchSongs = (props) => dispatch => {
     return ApiUtil.fetchSongs(props).then(songs => {
-       debugger
         return dispatch(receiveSongs(songs, props.search_term))
     });
 }

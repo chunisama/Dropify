@@ -64,29 +64,27 @@ class SongIndex extends React.Component {
 
     const songIndexItems = () => {
       return(
-        <div className="song-index-container">
-          <ul className="song-index">
-            {sortedSongs.map((song) => (
-              <SongIndexItem
-                song={song}
-                key={song.id}
-                receiveCurrentSong={this.props.receiveCurrentSong}
-                album={this.props.albums[song.album_id]}
-                isPlaying={this.props.isPlaying}
-                currentSong={this.props.currentSong}
-                currentlyPlaying={this.props.currentlyPlaying}
-                openDropdown={this.props.openDropdown}
-                setDropdownProps={this.props.setDropdownProps}
-                />
-              ))}
-          </ul>
-        </div>
+      searchedSongs.map((song) => (
+        <SongIndexItem
+          song={song}
+          key={song.id}
+          receiveCurrentSong={this.props.receiveCurrentSong}
+          album={this.props.albums[song.album_id]}
+          isPlaying={this.props.isPlaying}
+          currentSong={this.props.currentSong}
+          currentlyPlaying={this.props.currentlyPlaying}
+          openDropdown={this.props.openDropdown}
+          setDropdownProps={this.props.setDropdownProps}
+          />
+        ))
       )
     }
     return(
-      <>
-        {songIndexItems()}
-      </>
+      <div className="song-index-container">
+        <ul className="song-index">
+          {songIndexItems().length ? songIndexItems() : <p>No Songs</p>}
+        </ul>
+      </div>
     )
   }
 
