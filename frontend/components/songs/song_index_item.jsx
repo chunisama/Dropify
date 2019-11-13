@@ -10,15 +10,14 @@ class SongIndexItem extends React.Component {
     }
     this.toggleIcon = this.toggleIcon.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
-    //For displaying durations
-    // this.url = this.props.song.songUrl;
-    // this.audio = new Audio(this.url);
   }
 
-  // componentDidMount(){
-  //   this.setDuration();
-  // }
-
+  componentDidMount(){
+    if (this.props.queueIds) {
+      this.props.setSongQueue(this.props.queueIds);
+      this.props.getQueuePos();
+    }
+  }
   componentDidUpdate(prevProps){
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
@@ -26,12 +25,6 @@ class SongIndexItem extends React.Component {
       });
     }
   }
-
-  // setDuration(){
-  //   this.audio.onloadedmetadata = () => {
-  //     this.setState({duration: new Date(this.audio.duration * 1000).toISOString().substr(15, 4)});
-  //   };
-  // }
 
   toggleIcon(){
     if (this.state.isPlaying === true && this.props.song.id === this.props.currentSong) {
@@ -57,7 +50,8 @@ class SongIndexItem extends React.Component {
       <li>
         <div className="song-index-item">
           <div className="song-index-item-wrapper">
-          <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
+          <i onDoubleClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}}
+          onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">

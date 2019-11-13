@@ -68,6 +68,7 @@ class SongIndex extends React.Component {
         <SongIndexItem
           song={song}
           key={song.id}
+          queueIds={ids}
           receiveCurrentSong={this.props.receiveCurrentSong}
           album={this.props.albums[song.album_id]}
           isPlaying={this.props.isPlaying}
@@ -75,6 +76,8 @@ class SongIndex extends React.Component {
           currentlyPlaying={this.props.currentlyPlaying}
           openDropdown={this.props.openDropdown}
           setDropdownProps={this.props.setDropdownProps}
+          getQueuePos={this.props.getQueuePos}
+          setSongQueue={this.props.setSongQueue}
           />
         ))
       )

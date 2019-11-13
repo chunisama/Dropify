@@ -13,6 +13,8 @@ class Player extends React.Component {
             currentAlbum: "",
         };
         this.togglePlay = this.togglePlay.bind(this);
+        this.handleNextSong = this.handleNextSong.bind(this);
+        this.handlePrevSong = this.handlePrevSong.bind(this);
     }
 
     componentDidMount(){
@@ -27,9 +29,9 @@ class Player extends React.Component {
     }
     
     componentDidUpdate(prevProps){
-        if (prevProps.song !== this.props.song){
-            this.setState({currentSong: this.props.song, 
-                currentAlbum: this.props.albums[this.props.song.album_id],
+        if (prevProps.currentSong !== this.props.currentSong){
+            this.setState({currentSong: this.props.currentSong, 
+                currentAlbum: this.props.albums[this.props.currentSong.album_id],
             })
         }
         if (prevProps.currentlyPlaying !== this.props.currentlyPlaying){
@@ -47,6 +49,7 @@ class Player extends React.Component {
     //     clearInterval(this.currentTimeInterval);
     // }
 
+    
     toggleIsPlaying(){
         this.audio.onplay = () => {
             this.props.isPlaying(true);
@@ -96,7 +99,7 @@ class Player extends React.Component {
         }      
     }
     
-    handleProgressBar() {
+    handleProgressBar(){
         this.range.value = 0;
         this.currentTimeInterval = null;
         this.audio.onplaying = () => {
@@ -115,6 +118,23 @@ class Player extends React.Component {
         }
     }
 
+    handleNextSong(e){
+        if (this.props.nextSongId) {
+            this.props.receiveNextSong(this.props.nextSongId);
+        } else {
+            this.setState({currentSong: ""});
+        }
+    }
+
+    handlePrevSong(e){
+        if (this.audio.currentTime > 3) {
+            this.audio.curentTime = 0;
+        } else if (this.props.prevSongId) {
+            this.props.receivePrevSong(this.props.prevSongId);
+        } else {
+            this.setState({ currentSong: ""});
+        }
+    }
 
 
     //for testing
@@ -151,11 +171,11 @@ class Player extends React.Component {
                 <div className="player">
                     <audio ref={(audio) => { this.audio = audio }} src={this.state.currentSong.songUrl} autoPlay loop={false} ></audio>
                     <div className="player-controls">
-                        <button className="toggle-shuffle"><img className="shuffle-icon" src={window.shuffleURL}/></button>
-                        <button className="toggle-previous"><img className="previous-icon" src={window.previousURL}/></button>
+                        <button className="toggle-shuffle" onClick={this.props.toggleShuffle}><img className="shuffle-icon" src={window.shuffleURL}/></button>
+                        <button className="toggle-previous" onClick={this.handlePrevSong}><img className="previous-icon" src={window.previousURL}/></button>
                         <button className="toggle-player" onClick={() => this.togglePlay()}><i id="play-pause" className={"fas fa-play"}></i></button>
-                        <button className="toggle-next"><img className="next-icon" src={window.nextURL}/></button>
-                        <button className="toggle-looper" onClick={() => this.toggleLooper()}><img className="looper-icon" src={window.looperURL}></img></button>
+                        <button className="toggle-next" onClick={this.handleNextSong}><img className="next-icon" src={window.nextURL}/></button>
+                        <button className="toggle-looper" onClick={() => {this.toggleLooper(); this.props.toggleLoop}}><img className="looper-icon" src={window.looperURL}></img></button>
                     </div>
                     <div className="timer-controls">
                         <div className="duration"ref={(currentDuration) => {this.currentDuration = currentDuration}}>{this.state.formattedTimer}</div>
