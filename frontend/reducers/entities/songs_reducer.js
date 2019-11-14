@@ -5,7 +5,7 @@ import { RECEIVE_PLAYLIST } from "../../actions/playlist_actions";
 import { merge } from 'lodash';
 
 export default (state = {}, action) => {
-    Object.freeze(state);
+    // Object.freeze(state);
     switch (action.type) {
         case RECEIVE_SONG:
             return Object.assign({}, state, {[action.song.id]: action.song});
@@ -16,11 +16,14 @@ export default (state = {}, action) => {
                 return merge({}, state, action.songs);
             }
         case RECEIVE_ARTIST:
-            return Object.assign({}, state, action.artist.song);
+            const newState = Object.assign({}, state, action.artist.song);
+            return newState;
         case RECEIVE_ALBUM:
-            return Object.assign({}, state, action.album.song);
+            const otherState = Object.assign({}, state, action.album.song);
+            return otherState;
         case RECEIVE_PLAYLIST:
-            return Object.assign({}, state, action.playlist.song)
+            const playlistState = Object.assign({}, state, action.playlist.song);
+            return playlistState;
         default:
             return state;
     }

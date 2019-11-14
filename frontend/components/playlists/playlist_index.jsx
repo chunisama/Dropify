@@ -19,7 +19,7 @@ class PlaylistIndex extends React.Component {
 
     componentDidUpdate(prevProps){
       if (
-        (prevProps.playlistIds && !arrayEq(this.props.playlistIds,prevProps.playlistIds)) ||
+        (prevProps.playlistIds && !arrayEq(this.props.playlistIds, prevProps.playlistIds)) ||
         (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm) ||
         (prevProps.playlists.length !== this.props.playlists.length)
       ) {

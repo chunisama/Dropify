@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArtist, fetchArtists } from "../../actions/artist_actions";
-import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying, setSongQueue } from "../../actions/song_actions";
 import { Link } from "react-router-dom";
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
 import { createFollow, deleteFollow } from "../../actions/follow_actions";
@@ -21,10 +21,17 @@ class ArtistShow extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchArtist(this.props.match.params.artistId);
+    this.props.fetchArtist(this.props.match.params.artistId)
+    .then(() => {this.props.setSongQueue(this.props.songIds);
+    });
   }
 
   componentDidUpdate(prevProps){
+    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+      this.props.fetchArtist(this.props.match.params.artistId)
+      .then(() => {this.props.setSongQueue(this.props.songIds);
+      });
+    }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -45,7 +52,6 @@ class ArtistShow extends React.Component{
       followable_id: this.props.artist.id,
       followable_type: 'Artist'
     };
-
     following ? this.props.deleteFollow(follow) : this.props.createFollow(follow);
   }
 
@@ -214,6 +220,9 @@ const msp = (state, ownProps) => {
     artist: artists[ownProps.match.params.artistId],
     albums: albums,
     songs: Object.values(songs),
+    songIds: Object.keys(songs).map((songId) => {
+      return parseInt(songId);
+    }),
     isPlaying: audio.isPlaying,
     currentSong: audio.currentSong,
     currentUser: users[state.session.id]
@@ -229,6 +238,7 @@ const mdp = dispatch => {
     setDropdownProps: props => dispatch(setDropdownProps(props)),
     createFollow: follow => dispatch(createFollow(follow)),
     deleteFollow: follow => dispatch(deleteFollow(follow)),
+    setSongQueue: (queue) => dispatch(setSongQueue(queue)),
   })
 }
 

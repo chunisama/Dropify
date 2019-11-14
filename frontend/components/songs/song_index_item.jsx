@@ -12,12 +12,11 @@ class SongIndexItem extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
   }
 
-  componentDidMount(){
-    if (this.props.queueIds) {
-      this.props.setSongQueue(this.props.queueIds);
-      this.props.getQueuePos();
-    }
-  }
+  // componentDidMount(){
+  //   if (this.props.queueIds) {
+  //     this.props.setSongQueue(this.props.queueIds);
+  //   }
+  // }
   componentDidUpdate(prevProps){
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({

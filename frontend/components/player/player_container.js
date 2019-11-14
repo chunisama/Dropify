@@ -10,8 +10,8 @@ const msp = (state) => {
     return ({
         currentlyPlaying: audio.isPlaying, 
         currentSong: songs[audio.currentSong],
-        nextSongId: audio.shuffledQueue[audio.queuePosition + 1] || (audio.repeat ? audio.shuffledQueue[0] : null),
-        prevSongId: audio.shuffledQueue[audio.queuePosition - 1] || (audio.repeat ? audio.shuffledQueue[audio.shuffledQueue.length - 1] : null),
+        nextSongId: audio.shuffledQueue[audio.shuffledQueue.indexOf(audio.currentSong)] || audio.shuffledQueue[audio.queuePosition + 1],
+        prevSongId: audio.shuffledQueue[audio.queuePosition - 1],
         repeat: audio.repeat,
         shuffle: audio.shuffle,
         albums,
@@ -24,7 +24,6 @@ const mdp = (dispatch) => {
         fetchAlbums: () => dispatch(fetchAlbums()),
         fetchArtists: () => dispatch(fetchArtists()),
         isPlaying: (boolean) => dispatch(isPlaying(boolean)),
-        // figure this out
         addSongQueue: () => dispatch(addSongQueue()),
         getQueuePos: () => dispatch(getQueuePos()),
         setSongQueue: (queue) => dispatch(setSongQueue(queue)),
@@ -34,14 +33,8 @@ const mdp = (dispatch) => {
         // Add like functionality to player
         createLike: like => dispatch(createLike(like)),
         deleteLike: like => dispatch(deleteLike(like)),
-        receiveNextSong: (id) => {
-            dispatch(receiveNextSong(id));
-            // if (id) dispatch(fetchSong(id));
-        },
-        receivePrevSong: (id) => {
-            dispatch(receivePrevSong(id));
-            // if (id) dispatch(fetchSong(id));
-        },
+        receiveNextSong: (id) => { dispatch(receiveNextSong(id))},
+        receivePrevSong: (id) => { dispatch(receivePrevSong(id))},
     })
 }
 

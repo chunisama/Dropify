@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPlaylist } from "../../actions/playlist_actions";
-import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying, setSongQueue } from "../../actions/song_actions";
 import { fetchAlbums } from "../../actions/album_actions";
 import { openModal, setModalComponent, setModalProps } from '../../actions/modal_actions';
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
@@ -21,11 +21,18 @@ class PlaylistShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchPlaylist(this.props.match.params.playlistId);
+    this.props.fetchPlaylist(this.props.match.params.playlistId)    
+    .then(() => {this.props.setSongQueue(this.props.songIds);
+    });;
     this.props.fetchAlbums();
   }
 
   componentDidUpdate(prevProps){
+    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+      this.props.fetchPlaylist(this.props.match.params.playlistId)
+      .then(() => {this.props.setSongQueue(this.props.songIds);
+      });
+    }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -173,6 +180,9 @@ const msp = (state, ownProps) => {
   return({
     playlist: playlists[ownProps.match.params.playlistId],
     songs: Object.values(songs),
+    songIds: Object.keys(songs).map((songId) => {
+      return parseInt(songId);
+    }),
     currentUserId: state.session.id,
     currentSong: audio.currentSong,
     isPlaying: audio.isPlaying,
@@ -192,6 +202,7 @@ const mdp = (dispatch) => ({
   currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
   createFollow: follow => dispatch(createFollow(follow)),
   deleteFollow: follow => dispatch(deleteFollow(follow)),
+  setSongQueue: (queue) => dispatch(setSongQueue(queue)),
 })
 
 export default connect(msp, mdp)(PlaylistShow);

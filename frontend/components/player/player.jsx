@@ -128,7 +128,7 @@ class Player extends React.Component {
 
     handlePrevSong(e){
         if (this.audio.currentTime > 3) {
-            this.audio.curentTime = 0;
+            this.audio.currentTime = 0;
         } else if (this.props.prevSongId) {
             this.props.receivePrevSong(this.props.prevSongId);
         } else {

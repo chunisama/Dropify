@@ -12,17 +12,19 @@ export const SET_SONG_QUEUE = 'SET_SONG_QUEUE';
 export const ADD_SONG_QUEUE = "ADD_SONG_QUEUE";
 export const GET_QUEUE_POS = "GET_QUEUE_POS";
 
-export const receiveCurrentSong = songId => ({
+export const receiveCurrentSong = (songId) => ({
     type: RECEIVE_CURRENT_SONG,
     songId,
 })
 
-export const receiveNextSong = () => ({
+export const receiveNextSong = (songId) => ({
     type: RECEIVE_NEXT_SONG,
+    songId,
 })
 
-export const receivePrevSong = () => ({
+export const receivePrevSong = (songId) => ({
     type: RECEIVE_PREV_SONG,
+    songId,
 })
 
 export const toggleShuffle = () => ({

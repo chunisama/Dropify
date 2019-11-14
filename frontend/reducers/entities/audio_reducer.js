@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_SONG, RECEIVE_NEXT_SONG, RECEIVE_PREV_SONG,
-  ADD_SONG_QUEUE, GET_QUEUE_POS, TOGGLE_SHUFFLE, TOGGLE_REPEAT, SET_SONG_QUEUE, IS_PLAYING,  } from "../../actions/song_actions";
+  ADD_SONG_QUEUE, GET_QUEUE_POS, TOGGLE_SHUFFLE, TOGGLE_REPEAT, SET_SONG_QUEUE, IS_PLAYING, } from "../../actions/song_actions";
 
 function shuffle(a) {
   let arr = a.slice(0);
@@ -24,7 +24,11 @@ const audioReducer = (state = defaultState , action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_SONG:
-      return Object.assign({}, state, {currentSong: action.songId});
+      const currentState = Object.assign({}, state);
+      currentState.currentSong = action.songId;
+      currentState.queuePosition = currentState.shuffledQueue.indexOf(action.songId);
+      return currentState;
+      // return Object.assign({}, state, {currentSong: action.songId, queuePosition: state.shuffledQueue.indexOf(action.songId)});
     case IS_PLAYING: 
       return Object.assign({}, state, {isPlaying: action.boolean})
     case SET_SONG_QUEUE:
@@ -46,14 +50,11 @@ const audioReducer = (state = defaultState , action) => {
     case RECEIVE_NEXT_SONG:
       const nextState = Object.assign({}, state);
       if (nextState.queuePosition + 1 >= nextState.shuffledQueue.length) {
-        if (nextState.repeat) {
-          nextState.queuePosition = 0;
-          nextState.currentSong = nextState.shuffledQueue[0];
-        } else {
-          nextState.queuePosition = -1;
-          nextState.currentSong = null;
-          nextState.isPlaying = false;
-        }
+        nextState.queuePosition = 0;
+        nextState.currentSong = nextState.shuffledQueue[0];
+      } else if (nextState.queuePosition !== -1){
+        nextState.queuePosition = nextState.shuffledQueue.indexOf(action.songId) + 1;
+        nextState.currentSong = nextState.shuffledQueue[nextState.queuePosition];
       } else {
         nextState.queuePosition++;
         nextState.currentSong = nextState.shuffledQueue[nextState.queuePosition];
@@ -84,7 +85,7 @@ const audioReducer = (state = defaultState , action) => {
       if (shuffleState.shuffle) {
         shuffleState.shuffle = false;
         shuffleState.shuffledQueue = shuffleState.queue.slice(0);
-        shuffleState.queuePos = shuffleState.shuffledQueue.indexOf(shuffleState.currentSong);
+        shuffleState.queuePosition = shuffleState.shuffledQueue.indexOf(shuffleState.currentSong);
       } else {
         shuffleState.shuffle = true;
         const currentSongPosition = shuffleState.shuffledQueue.indexOf(shuffleState.currentSong);

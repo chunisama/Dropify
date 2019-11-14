@@ -14,14 +14,14 @@ class SongIndex extends React.Component {
     this.props.fetchSongs({
       song_ids: this.props.songIds,
       search_term: this.props.searchTerm,
-    });
+    }).then(() => {this.props.setSongQueue(this.props.songQueueIds)});
     this.props.fetchAlbums();
     // this.props.fetchArtists();
   }
 
   compondentDidUpdate(prevProps){
     if (
-      (prevProps.songIds && !arrayEq(this.props.songIds,prevProps.songIds)) ||
+      (prevProps.songIds && !arrayEq(this.props.songIds, prevProps.songIds)) ||
       (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
     ) {
       this.props.fetchSongs({
@@ -76,7 +76,6 @@ class SongIndex extends React.Component {
           currentlyPlaying={this.props.currentlyPlaying}
           openDropdown={this.props.openDropdown}
           setDropdownProps={this.props.setDropdownProps}
-          getQueuePos={this.props.getQueuePos}
           setSongQueue={this.props.setSongQueue}
           />
         ))

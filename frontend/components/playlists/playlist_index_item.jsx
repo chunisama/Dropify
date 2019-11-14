@@ -7,8 +7,7 @@ class PlaylistIndexItem extends React.Component {
   constructor(props){
     super(props);
   }
-
-
+  
   render(){
     return (
     <li className="index-item">

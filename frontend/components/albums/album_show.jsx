@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbum } from "../../actions/album_actions";
-import { receiveCurrentSong, isPlaying } from "../../actions/song_actions";
+import { receiveCurrentSong, isPlaying, setSongQueue } from "../../actions/song_actions";
 import { openDropdown, setDropdownProps } from "../../actions/dropdown_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
 
@@ -19,10 +19,17 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchAlbum(this.props.match.params.albumId);
+    this.props.fetchAlbum(this.props.match.params.albumId)
+    .then(() => {this.props.setSongQueue(this.props.songIds)
+    });
   }
 
   componentDidUpdate(prevProps){
+    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+      this.props.fetchAlbum(this.props.match.params.albumId)
+      .then(() => {this.props.setSongQueue(this.props.songIds);
+      });
+    }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -160,6 +167,9 @@ const msp = (state, ownProps) => {
   return ({
     album: albums[ownProps.match.params.albumId],
     songs: Object.values(songs),
+    songIds: Object.keys(songs).map((songId) => {
+      return parseInt(songId);
+    }),
     isPlaying: audio.isPlaying,
     currentSong: audio.currentSong,
     currentUser: state.entities.users[state.session.id]
@@ -174,6 +184,7 @@ const mdp = dispatch => ({
   setDropdownProps: props => dispatch(setDropdownProps(props)),
   createLike: like => dispatch(createLike(like)),
   deleteLike: like => dispatch(deleteLike(like)),
+  setSongQueue: (queue) => dispatch(setSongQueue(queue)),
 })
 
 export default connect(msp, mdp)(AlbumShow);
