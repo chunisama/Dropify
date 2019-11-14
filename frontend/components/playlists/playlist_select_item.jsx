@@ -14,7 +14,7 @@ const PlaylistSelectItem = (props) => {
               props.closeModal(); 
               props.history.push(`/playlists/${props.playlist.id}`)});
             }}>
-              <img src="https://img.icons8.com/clouds/2x/music.png" alt=""/>
+              <img src="https://www.magix.com/fileadmin/user_upload/Produkte/Pro/ACID_Music_Studio_11/Family/acid-icon.svg" alt=""/>
           </div>
       </div>
       <div className="content-primary-text">{props.playlist.title}</div>
