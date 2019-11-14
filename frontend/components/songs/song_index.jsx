@@ -11,10 +11,17 @@ class SongIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchSongs({
-      song_ids: this.props.songIds,
-      search_term: this.props.searchTerm,
-    }).then(() => {this.props.setSongQueue(this.props.songQueueIds)});
+    if (this.props.songIds) {
+      this.props.fetchSongs({
+        song_ids: this.props.songIds,
+        search_term: this.props.searchTerm,
+      }).then(() => {this.props.setSongQueue(this.props.songIds)});
+    } else {
+      this.props.fetchSongs({
+        song_ids: this.props.songIds,
+        search_term: this.props.searchTerm,
+      }).then(() => {this.props.setSongQueue(this.props.songQueueIds)});
+    }
     this.props.fetchAlbums();
     // this.props.fetchArtists();
   }
@@ -30,13 +37,13 @@ class SongIndex extends React.Component {
       });
     }
   }
-
+  
   render(){
     if (this.props.songs.length == 0){
       return (
         <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-      )
-    }
+        )
+      }
 
     let searchedSongs;
     if (this.props.searchTerm) {
@@ -77,6 +84,7 @@ class SongIndex extends React.Component {
           openDropdown={this.props.openDropdown}
           setDropdownProps={this.props.setDropdownProps}
           setSongQueue={this.props.setSongQueue}
+          addSongQueue={this.props.addSongQueue}
           />
         ))
       )

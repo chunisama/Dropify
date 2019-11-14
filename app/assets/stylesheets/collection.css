@@ -1,8 +1,13 @@
-/* .collection-content {
-  margin-left: 215px;
-} */
-
 .collection-container {
   margin-left: 235px;
   padding: 20px;
+}
+
+.playlist-show-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 130px;
 }

@@ -27,11 +27,11 @@ class ArtistShow extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
-      this.props.fetchArtist(this.props.match.params.artistId)
-      .then(() => {this.props.setSongQueue(this.props.songIds);
-      });
-    }
+    // if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+    //   this.props.fetchArtist(this.props.match.params.artistId)
+    //   .then(() => {this.props.setSongQueue(this.props.songIds);
+    //   });
+    // }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -114,6 +114,7 @@ class ArtistShow extends React.Component{
             </div>
           </div>
           </div>
+          <div className="song-details">
           <div className="song-menu"
             onClick={(e) => {
               e.stopPropagation();
@@ -122,6 +123,8 @@ class ArtistShow extends React.Component{
             }}>
             • • •
             </div>
+            <div className="song-duration">{song.duration}</div>
+          </div>
           </div>
         </li>
     )})
@@ -177,7 +180,7 @@ class ArtistShow extends React.Component{
           <div className="artist-header">
           <h1 className="artist-show-name">{this.props.artist.name}</h1>
           <div className="artist-button-container">
-            <button className="show-play-button"
+            <button className="artist-show-play-button"
               onClick={this.handlePlay}>
               Play
             </button>

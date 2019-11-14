@@ -18,4 +18,6 @@ class Artist < ApplicationRecord
     # active storage association
     has_one_attached :profile_pic
 
+    has_many :follows, as: :followable, dependent: :destroy
+    has_many :followers, through: :follows, source: :user
 end

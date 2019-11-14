@@ -3,7 +3,7 @@ export const fetchSongs = (props) => {
         $.ajax({
             url: "api/songs",
             method: "GET",
-            data: {props},
+            data: props,
         })
     )
 }

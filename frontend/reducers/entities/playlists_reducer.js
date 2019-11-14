@@ -3,7 +3,7 @@ import { RECEIVE_PLAYLIST_SONG, DELETE_PLAYLIST_SONG } from '../../actions/playl
 import { merge } from 'lodash';
 
 const playlistReducer = (state = {}, action) => {
-  // Object.freeze(state);
+  Object.freeze(state);
   switch(action.type){
     case RECEIVE_PLAYLISTS:
       return Object.assign({}, state, action.playlists);

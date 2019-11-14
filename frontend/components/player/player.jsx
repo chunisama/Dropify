@@ -29,7 +29,7 @@ class Player extends React.Component {
     }
     
     componentDidUpdate(prevProps){
-        if (prevProps.currentSong !== this.props.currentSong){
+        if (prevProps.currentSong !== this.props.currentSong && this.props.currentSong){
             this.setState({currentSong: this.props.currentSong, 
                 currentAlbum: this.props.albums[this.props.currentSong.album_id],
             })

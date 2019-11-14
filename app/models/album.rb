@@ -17,4 +17,6 @@ class Album < ApplicationRecord
     # active storage association
     has_one_attached :album_cover
 
+    has_many :likes, as: :likeable, dependent: :destroy
+    has_many :likers, through: :likes, source: :user
 end

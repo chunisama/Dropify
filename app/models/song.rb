@@ -14,7 +14,7 @@ class Song < ApplicationRecord
     validates :title, presence: true
     belongs_to :artist
     belongs_to :album
-    has_many :playlists_songs
+    has_many :playlists_songs, dependent: :destroy
     
     has_many :playlists,
     through: :playlists_songs,
@@ -22,5 +22,7 @@ class Song < ApplicationRecord
 
     # active storage association
     has_one_attached :mp3
-    
+
+    has_many :likes, as: :likeable, dependent: :destroy
+    has_many :likers, through: :likes, source: :user
 end

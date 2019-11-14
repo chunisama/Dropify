@@ -37,6 +37,19 @@
   font-size: 14px;
 }
 
+.song-details {
+  display: flex;
+  align-items: center;
+}
 .song-index-item-wrapper{
   display: flex;
+}
+.song-duration {
+  font-size: 13px;
+  font-weight: 400;
+  color: whitesmoke;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-right: 25px;
 }

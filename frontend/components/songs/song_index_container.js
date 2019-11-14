@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchSongs, receiveCurrentSong , isPlaying, 
-setSongQueue,  } from "../../actions/song_actions";
+setSongQueue, addSongQueue } from "../../actions/song_actions";
 import { fetchAlbums } from "../../actions/album_actions";
 import { fetchArtists } from "../../actions/artist_actions";
 import SongIndex from "./song_index";
@@ -16,7 +16,6 @@ const msp = (state) => {
     albums,
     isPlaying: audio.isPlaying,
     currentSong: audio.currentSong,
-
   })
 }
 
@@ -30,6 +29,7 @@ const mdp = (dispatch) => {
     openDropdown: pos => dispatch(openDropdown(pos)),
     setDropdownProps: props => dispatch(setDropdownProps(props)),
     setSongQueue: (queue) => dispatch(setSongQueue(queue)),
+    addSongQueue: (songId) => dispatch(addSongQueue(songId)),
   })
 }
 

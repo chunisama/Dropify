@@ -1,29 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModal, setModalComponent } from '../../actions/modal_actions';
 
 const BrowseNav = (props) => {
+  const url = props.location.pathname
   return(
     <div className="tabs-container">
     <ul className="tabs-list">
       <li className="content-tab">
-        <Link to="/browse/artists">
+        <Link to="/browse/artists" className={"app-link" + ((url === '/browse/artists') ? '-active' : '')}>
           Artists
         </Link>
       </li>
       <li className="content-tab">
-        <Link to="/browse/albums">
+        <Link to="/browse/albums" className={"app-link" + ((url === '/browse/albums') ? '-active' : '')}>
           Albums
         </Link>
       </li>
       <li className="content-tab">
-        <Link to="/browse/songs">
+        <Link to="/browse/songs" className={"app-link" + ((url === '/browse/songs') ? '-active' : '')}>
           Trending Songs
         </Link>
       </li>
       <li className="content-tab">
-        <Link to="/browse/playlists">
+        <Link to="/browse/playlists" className={"app-link" + ((url === '/browse/playlists') ? '-active' : '')}>
           Playlists
         </Link>
       </li>
@@ -42,4 +43,4 @@ const mdp = dispatch => ({
   setModalComponent: type => dispatch(setModalComponent(type)),
 })
 
-export default connect(null, mdp)(BrowseNav);
+export default withRouter(connect(null, mdp)(BrowseNav));

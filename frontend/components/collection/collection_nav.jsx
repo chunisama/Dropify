@@ -10,25 +10,25 @@ const CollectionNav = (props) => {
       <ul className="tabs-list">
         <li className="content-tab">
           <Link to={'/collection/artists'}
-            className={"app-link" + ((section === 'artists') ? ' active' : '')}>
+            className={"app-link" + ((section === 'artists') ? '-active' : '')}>
             Artists
           </Link>
         </li>
         <li className="content-tab">
           <Link to={'/collection/albums'}
-            className={"app-link" + ((section === 'albums') ? ' active' : '')}>
+            className={"app-link" + ((section === 'albums') ? '-active' : '')}>
             Albums
           </Link>
         </li>
         <li className="content-tab">
           <Link to={'/collection/songs'}
-            className={"app-link" + ((section === 'songs') ? ' active' : '')}>
+            className={"app-link" + ((section === 'songs') ? '-active' : '')}>
             Liked Songs
           </Link>
         </li>
         <li className="content-tab">
           <Link to={'/collection/playlists'}
-            className={"app-link" + ((section === 'playlists') ? ' active' : '')}>
+            className={"app-link" + ((section === 'playlists') ? '-active' : '')}>
             Playlists
           </Link>
         </li>

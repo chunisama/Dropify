@@ -67,25 +67,25 @@ class SearchResults extends React.Component {
           <ul className="tabs-list">
             <li className="content-tab">
               <Link to={`/search/top`}
-                className={"app-link" + ((section === 'top') ? ' active' : '')}>
+                className={"app-link" + ((section === 'top') ? '-active' : '')}>
                 Top Results
               </Link>
             </li>
             <li className="content-tab">
               <Link to={`/search/artists`}
-                className={"app-link" + ((section === 'artists') ? ' active' : '')}>
+                className={"app-link" + ((section === 'artists') ? '-active' : '')}>
                 Artists
               </Link>
             </li>
             <li className="content-tab">
               <Link to={`/search/songs`}
-                className={"app-link" + ((section === 'songs') ? ' active' : '')}>
+                className={"app-link" + ((section === 'songs') ? '-active' : '')}>
                 Songs
               </Link>
             </li>
             <li className="content-tab">
               <Link to={`/search/albums`}
-                className={"app-link" + ((section === 'albums') ? ' active' : '')}>
+                className={"app-link" + ((section === 'albums') ? '-active' : '')}>
                 Albums
               </Link>
             </li>

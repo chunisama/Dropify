@@ -33,11 +33,12 @@ const audioReducer = (state = defaultState , action) => {
       return Object.assign({}, state, {isPlaying: action.boolean})
     case SET_SONG_QUEUE:
       const queueState = Object.assign({}, state);
+      queueState.queue = [];
       queueState.queue = action.queue;
       queueState.shuffledQueue = queueState.shuffle ? shuffle(action.queue) : action.queue.slice(0);
       return queueState;
     case ADD_SONG_QUEUE:
-      const addedState = Object.assign({}, state);
+      const addedState = Object.assign({}, defaultState);
       if (!addedState.queue.includes(action.songId)) {
         addedState.queue.push(action.songId);
         addedState.shuffledQueue.push(action.songId);

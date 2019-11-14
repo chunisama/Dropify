@@ -28,11 +28,11 @@ class PlaylistShow extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
-      this.props.fetchPlaylist(this.props.match.params.playlistId)
-      .then(() => {this.props.setSongQueue(this.props.songIds);
-      });
-    }
+    // if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+    //   this.props.fetchPlaylist(this.props.match.params.playlistId)
+    //   .then(() => {this.props.setSongQueue(this.props.songIds);
+    //   });
+    // }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -102,6 +102,7 @@ class PlaylistShow extends React.Component {
         </div>
         </div>
         </div>
+        <div className="song-details">
         <div className="song-menu"
          onClick={(e) => {
            e.stopPropagation();
@@ -110,6 +111,8 @@ class PlaylistShow extends React.Component {
          }}>
           • • •
          </div>
+         <div className="song-duration">{song.duration}</div>
+        </div>
       </div>
         </li>
         )
@@ -146,14 +149,14 @@ class PlaylistShow extends React.Component {
       <div className="album-show-container">
         <div className="album-show">
             <div className="album-show-img-container">
-              <img className="album-show-img-content" src="https://img.icons8.com/clouds/2x/music.png"/>
+              <img className="album-show-img-content" src="https://s18670.pcdn.co/wp-content/uploads/Awesome-Songs-for-Your-End-of-Year-Playlist.jpg"/>
               <div className="album-show-info">
                 <div className="album-show-text1">{this.props.playlist.title}</div>
                 <div className="album-show-text2">
                     {this.props.playlist.user.username}
                 </div>
                 <div className="album-show-text3">{this.props.playlist.song_ids.length} SONG(S)</div>
-                <div className="show-button-container">
+                <div className="playlist-show-button-container">
                   <button className="show-play-button" onClick={this.handlePlay}>
                     Play
                   </button>

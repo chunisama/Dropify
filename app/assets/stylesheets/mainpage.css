@@ -113,6 +113,22 @@ ul {
   white-space: normal;
   color: #fff;
   background-color: #1db954;
+}
+
+.artist-show-play-button {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  border-radius: 500px;
+  font-weight: 725;
+  padding: 10px 20px 10px;
+  border-width: 0;
+  letter-spacing: 1px;
+  min-width: 140px;
+  text-transform: uppercase;
+  white-space: normal;
+  color: #fff;
+  background-color: #1db954;
   margin-right: 15px;
 }
 
@@ -133,7 +149,9 @@ ul {
   margin-left: 20px;
 }
 
-.create-modal-button:hover, .create-button:hover, .show-play-button:hover {
+
+
+.create-modal-button:hover, .create-button:hover, .show-play-button:hover, .artist-show-play-button:hover {
   background-color: #1ED760;
   transform: scale(1.06);
   transition: 1s;
@@ -152,6 +170,7 @@ ul {
   letter-spacing: 2px;
 }
 
+
 .tabs-list {
   margin-bottom: 10px;
 }
@@ -162,6 +181,32 @@ ul {
   margin: 0 20px;
   color: lightgray;
 }
+
+.side-app-link-active{
+  position: relative;
+  color: white;
+  border-left: 3px solid green;
+  padding-right: 10px;
+}
+
+
+.app-link-active {
+  position: relative;
+  color: white;
+}
+
+.app-link-active:after {
+  content: "";
+  background-color: green;
+  display: block;
+  vertical-align: middle;
+  width: 50%;
+  height: 2px;
+  position: relative;
+  top: 4px;
+  margin: 0 auto; 
+}
+
 
 .side-bar-logo {
   display: flex;

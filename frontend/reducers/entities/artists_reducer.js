@@ -1,7 +1,8 @@
 import { RECEIVE_ARTIST, RECEIVE_ALL_ARTISTS } from "../../actions/artist_actions";
 import { RECEIVE_ALBUM } from "../../actions/album_actions";
+
 const artistReducer = (state = {}, action) => {
-  // Object.freeze(state);
+  Object.freeze(state);
   switch(action.type){
     case RECEIVE_ALL_ARTISTS:
       return Object.assign({}, state, action.artists);

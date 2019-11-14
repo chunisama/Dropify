@@ -13,7 +13,7 @@ class Playlist < ApplicationRecord
     validates :title, :user_id, presence: true
     #might attach a playlist photo for fixed avatar
     belongs_to :user
-    has_many :playlists_songs
+    has_many :playlists_songs, dependent: :destroy
     has_many :songs, through: :playlists_songs
 
     has_many :albums,
@@ -23,5 +23,8 @@ class Playlist < ApplicationRecord
     has_many :playlist_photos,
     through: :albums,
     source: :photo_attachments
+
+    has_many :follows, as: :followable, dependent: :destroy
+    has_many :followers, through: :follows, source: :user
 
 end

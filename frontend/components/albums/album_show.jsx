@@ -25,11 +25,11 @@ class AlbumShow extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
-      this.props.fetchAlbum(this.props.match.params.albumId)
-      .then(() => {this.props.setSongQueue(this.props.songIds);
-      });
-    }
+    // if (Object.values(prevProps.songs).length !== Object.values(this.props.songs).length) {
+    //   this.props.fetchAlbum(this.props.match.params.albumId)
+    //   .then(() => {this.props.setSongQueue(this.props.songIds);
+    //   });
+    // }
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
         isPlaying: this.props.isPlaying,
@@ -105,6 +105,7 @@ class AlbumShow extends React.Component {
         </div>
       </div>
     </div>
+    <div className="song-details">
     <div className="song-menu"
     onClick={(e) => {
       e.stopPropagation();
@@ -112,6 +113,8 @@ class AlbumShow extends React.Component {
       this.props.setDropdownProps({songId: song.id, playlistId: this.props.playlistId});
     }}>
     • • •
+    </div>
+    <div className="song-duration">{song.duration}</div>
     </div>
   </div>
       </li>)

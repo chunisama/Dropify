@@ -7,6 +7,7 @@ class Sidebar extends React.Component{
   }
 
   render(){
+    const url = this.props.location.pathname
     return(
       <div className="sidebar-container">
         <div className="side-bar-logo">
@@ -16,23 +17,26 @@ class Sidebar extends React.Component{
         </div>
         <div className="side-bar-nav">
           <div className="home-side">
-            <i className="fas fa-home"></i>
+            <Link to="/browse" className={"side-app-link" + ((url.includes('/browse')) ? '-active' : '')}>
             &nbsp;
-            <Link to="/browse">
+            <i className="fas fa-home"></i>
+              &nbsp;
                 Home
             </Link>
           </div>
           <div className="search-side">
-            <i className="fas fa-search"></i>
+            <Link to="/search"  className={"side-app-link" + ((url.includes('/search')) ? '-active' : '')}>
             &nbsp;
-            <Link to="/search">
+            <i className="fas fa-search"></i>
+              &nbsp;
               Search
             </Link>
           </div>
           <div className="collection-side">
+            <Link to="/collection" className={"side-app-link" + ((url.includes('/collection')) ? '-active' : '')}>
+            &nbsp;
             <i className="fas fa-book"></i>
             &nbsp;
-            <Link to="/collection">
             Your Library
             </Link>
           </div>

@@ -12,11 +12,13 @@ class SongIndexItem extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
   }
 
+  // For future Queue component
   // componentDidMount(){
-  //   if (this.props.queueIds) {
-  //     this.props.setSongQueue(this.props.queueIds);
-  //   }
+    // if (this.props.queueIds) {
+    //   this.props.setSongQueue(this.props.queueIds);
+    // }
   // }
+
   componentDidUpdate(prevProps){
     if (prevProps.isPlaying !== this.props.isPlaying){
       this.setState({
@@ -47,10 +49,9 @@ class SongIndexItem extends React.Component {
   render(){
     return(
       <li>
-        <div className="song-index-item">
+        <div className="song-index-item" onDoubleClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}}>
           <div className="song-index-item-wrapper">
-          <i onDoubleClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}}
-          onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
+          <i onClick={() => {this.setState({isPlaying: !this.state.isPlaying }, this.togglePlay())}} className={"song-index-item-button " + this.toggleIcon()}></i>
          <div className="song-index-item-info">
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">
@@ -68,6 +69,7 @@ class SongIndexItem extends React.Component {
           </div>
          </div>
           </div>
+        <div className="song-details">
          <div className="song-menu"
          onClick={(e) => {
            e.stopPropagation();
@@ -76,7 +78,8 @@ class SongIndexItem extends React.Component {
          }}>
           • • •
          </div>
-         {/* <div className="song-duration">{this.state.duration}</div> */}
+         <div className="song-duration">{this.props.song.duration}</div>
+        </div>
         </div>
       </li>
     )
