@@ -15,9 +15,9 @@ const receivePlaylists = playlists => ({
   playlists,
 })
 
-const removePlaylist = (playlistId) => ({
+const removePlaylist = (playlist) => ({
   type: REMOVE_PLAYLIST,
-  playlistId,
+  playlist,
 })
 
 
@@ -41,6 +41,7 @@ export const createPlaylist = (playlist) => dispatch => {
 
 export const deletePlaylist = (id) => dispatch => {
   return ApiUtil.deletePlaylist(id).then((playlist) => {
+    debugger
     return dispatch(removePlaylist(playlist))
   });
 };
