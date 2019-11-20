@@ -237,6 +237,38 @@ ul {
   padding: 20px;
 }
 
+@media screen and (max-width: 720px){
+  .index-item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 920px){
+  .index-item {
+      width: 50%;
+  }
+}
+
+@media screen and (max-width: 1160px){
+  .index-item {
+      width: 33.3333%;
+  }
+}
+
+@media screen and (max-width: 1400px){
+  .index-item {
+      width: 25%;
+  }
+}
+
+@media screen and (max-width: 1800px){
+  .index-item {
+      width: 20%;
+  }
+}
+
+
+
 .content-wrapper{
   margin: 10px auto 20px;
   width: 200px;
