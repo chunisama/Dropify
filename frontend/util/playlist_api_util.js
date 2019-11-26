@@ -5,12 +5,13 @@ export const fetchPlaylist = (id) => (
   })
 );
 
-export const fetchPlaylists = () => (
-  $.ajax({
+export const fetchPlaylists = (props) => {
+  return $.ajax({
     method: "GET",
-    url: `/api/playlist`
+    url: `/api/playlist`,
+    data: { props }
   })
-);
+}
 
 export const createPlaylist = (playlist) => (
   $.ajax({

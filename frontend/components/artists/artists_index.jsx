@@ -16,22 +16,22 @@ class ArtistIndex extends React.Component {
     // this.props.fetchSongs();
     // this.props.fetchAlbums();
     this.props.fetchArtists({
-      artist_ids: this.props.artistIds,
+      // artist_ids: this.props.artistIds,
       search_term: this.props.searchTerm
     });
   }
 
-  componentDidUpdate(prevProps){
-    if (
-      (prevProps.artistIds && !arrayEqeu(this.props.artistIds,prevProps.artistIds)) ||
-      (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
-    ) {
-      this.props.fetchArtists({
-        artist_ids: prevProps.artistIds,
-        search_term: prevProps.searchTerm
-      });
-    }
-  }
+  // componentDidUpdate(prevProps){
+  //   if (
+  //     (prevProps.artistIds && !arrayEqeu(this.props.artistIds,prevProps.artistIds)) ||
+  //     (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
+  //   ) {
+  //     this.props.fetchArtists({
+  //       artist_ids: prevProps.artistIds,
+  //       search_term: prevProps.searchTerm
+  //     });
+  //   }
+  // }
 
   // playing song by clicking artist prof pic
   handleClick(artist){
@@ -43,11 +43,11 @@ class ArtistIndex extends React.Component {
   }
 
   render(){
-    if (this.props.artists.length == 0){
-      return (
-        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-      )
-    }
+    // if (this.props.artists.length == 0){
+    //   return (
+    //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+    //   )
+    // }
 
     let filteredArtists;
     if (this.props.searchTerm) {

@@ -11,9 +11,9 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return({
-    fetchAlbums: () => dispatch(fetchAlbums()),
+    fetchAlbums: (props) => dispatch(fetchAlbums(props)),
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
-    fetchSongs: () => dispatch(fetchSongs()),
+    fetchSongs: (props) => dispatch(fetchSongs(props)),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
   })
 }

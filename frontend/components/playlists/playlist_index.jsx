@@ -12,30 +12,30 @@ class PlaylistIndex extends React.Component {
   
     componentDidMount(){
       this.props.fetchPlaylists({
-        playlist_ids: this.props.playlistIds,
+        // playlist_ids: this.props.playlistIds,
         search_term: this.props.searchTerm  
       });
     }
 
-    componentDidUpdate(prevProps){
-      if (
-        (prevProps.playlistIds && !arrayEq(this.props.playlistIds, prevProps.playlistIds)) ||
-        (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm) ||
-        (prevProps.playlists.length !== this.props.playlists.length)
-      ) {
-        this.props.fetchPlaylists({
-          playlist_ids: prevProps.playlistIds,
-          search_term: prevProps.searchTerm
-        });
-      }
-    }
+    // componentDidUpdate(prevProps){
+    //   if (
+    //     (prevProps.playlistIds && !arrayEq(this.props.playlistIds, prevProps.playlistIds)) ||
+    //     (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm) ||
+    //     (prevProps.playlists.length !== this.props.playlists.length)
+    //   ) {
+    //     this.props.fetchPlaylists({
+    //       playlist_ids: prevProps.playlistIds,
+    //       search_term: prevProps.searchTerm
+    //     });
+    //   }
+    // }
 
     render(){
-      if (this.props.playlists.length === 0){
-        return (
-          <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-        )
-      }
+      // if (this.props.playlists.length === 0){
+      //   return (
+      //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+      //   )
+      // }
 
       let filteredPlaylists;
       if (this.props.searchTerm) {

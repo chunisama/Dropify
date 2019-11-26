@@ -12,8 +12,8 @@ const receiveArtists = artists => ({
   artists,
 });
 
-export const fetchArtists = () => dispatch => {
-  return apiUtil.fetchArtists().then((artists) => {
+export const fetchArtists = (props) => dispatch => {
+  return apiUtil.fetchArtists(props).then((artists) => {
     return dispatch(receiveArtists(artists))
   });
 };

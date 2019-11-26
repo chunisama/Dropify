@@ -23,8 +23,8 @@ const mdp = (dispatch) => {
   return({
     fetchSongs: (props) => dispatch(fetchSongs(props)),
     receiveCurrentSong: (songId) => dispatch(receiveCurrentSong(songId)),
-    fetchAlbums: () => dispatch(fetchAlbums()),
-    fetchArtists: () => dispatch(fetchArtists()),
+    fetchAlbums: (props) => dispatch(fetchAlbums(props)),
+    fetchArtists: (props) => dispatch(fetchArtists(props)),
     currentlyPlaying: (boolean) => dispatch(isPlaying(boolean)),
     openDropdown: pos => dispatch(openDropdown(pos)),
     setDropdownProps: props => dispatch(setDropdownProps(props)),

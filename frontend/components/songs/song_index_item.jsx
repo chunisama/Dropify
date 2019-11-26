@@ -56,14 +56,14 @@ class SongIndexItem extends React.Component {
           <div className="song-index-item-title">{this.props.song.title}</div>
           <div className="song-index-item-info-child">
             <div className="song-index-item-artist">
-              <Link to={`/artists/${this.props.album.artistId}`}>
-                {this.props.album.artist}
+              <Link to={`/artists/${this.props.song.artist_id}`}>
+                {this.props.song.artist}
               </Link>
             </div>
             <span className="spacing">•</span>
             <div className="song-index-item-album">
-              <Link to={`/albums/${this.props.album.id}`}>
-                {this.props.album.name}
+              <Link to={`/albums/${this.props.song.album_id}`}>
+                {this.props.song.album}
               </Link>
             </div>
           </div>

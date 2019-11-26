@@ -1,18 +1,16 @@
 class Api::AlbumsController < ApplicationController
     def index
-        if album_ids
-            @albums = Album.where(id: album_ids)
-        elsif search_term
+        # if album_ids
+        #     @albums = Album.where(id: album_ids)
+        #     render :index
+        # els
+        if search_term
             @albums = Album.where('lower(name) LIKE ?', "%#{search_term.downcase}%")
+            render :index
         else
             @albums = Album.all 
             render :index
         end
-        # if @albums
-        #     render :index
-        # else
-        #     render json: @albums.errors.full_messages, status: 422
-        # end
     end
 
     def show
@@ -24,11 +22,15 @@ class Api::AlbumsController < ApplicationController
         end
     end
     private
-    def album_ids
-        params[:album_ids]
-    end
+    # def album_ids
+    #     params[:props][:album_ids]
+    # end
 
     def search_term
-        params[:search_term]
+        if params[:props]
+            params[:props][:search_term]
+        else
+            return nil
+        end
     end
 end

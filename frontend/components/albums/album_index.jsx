@@ -15,22 +15,22 @@ class AlbumIndex extends React.Component {
   componentDidMount(){
     // this.props.fetchSongs();
     this.props.fetchAlbums({
-      album_ids: this.props.albumIds,
+      // album_ids: this.props.albumIds,
       search_term: this.props.searchTerm
     });
   }
 
-  componentDidUpdate(prevProps){
-    if (
-      (prevProps.albumIds && !arrayEq(this.props.albumIds,prevProps.albumIds)) ||
-      (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
-    ) {
-      this.props.fetchAlbums({
-        album_ids: prevProps.albumIds,
-        search_term: prevProps.searchTerm
-      });
-    }
-  }
+  // componentDidUpdate(prevProps){
+  //   if (
+  //     (prevProps.albumIds && !arrayEq(this.props.albumIds,prevProps.albumIds)) ||
+  //     (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
+  //   ) {
+  //     this.props.fetchAlbums({
+  //       album_ids: prevProps.albumIds,
+  //       search_term: prevProps.searchTerm
+  //     });
+  //   }
+  // }
 
   // Playing a song by clicking on album
   handleClick(album){

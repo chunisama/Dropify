@@ -21,8 +21,8 @@ const removePlaylist = (playlist) => ({
 })
 
 
-export const fetchPlaylists = () => dispatch => {
-  return ApiUtil.fetchPlaylists().then((playlists) => {
+export const fetchPlaylists = (props) => dispatch => {
+  return ApiUtil.fetchPlaylists(props).then((playlists) => {
     return dispatch(receivePlaylists(playlists))
   });
 };

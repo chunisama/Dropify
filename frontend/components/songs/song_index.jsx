@@ -11,39 +11,39 @@ class SongIndex extends React.Component {
   }
 
   componentDidMount(){
-    if (this.props.songIds) {
+    // if (this.props.songIds) {
+    //   this.props.fetchSongs({
+    //     song_ids: this.props.songIds,
+    //     search_term: this.props.searchTerm,
+    //   }).then(() => {this.props.setSongQueue(this.props.songIds)});
+    // } else {
       this.props.fetchSongs({
-        song_ids: this.props.songIds,
-        search_term: this.props.searchTerm,
-      }).then(() => {this.props.setSongQueue(this.props.songIds)});
-    } else {
-      this.props.fetchSongs({
-        song_ids: this.props.songIds,
+        // song_ids: this.props.songIds,
         search_term: this.props.searchTerm,
       }).then(() => {this.props.setSongQueue(this.props.songQueueIds)});
-    }
+    // }
     this.props.fetchAlbums();
     // this.props.fetchArtists();
   }
 
-  compondentDidUpdate(prevProps){
-    if (
-      (prevProps.songIds && !arrayEq(this.props.songIds, prevProps.songIds)) ||
-      (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
-    ) {
-      this.props.fetchSongs({
-        song_ids: prevProps.songIds,
-        search_term: prevProps.searchTerm
-      });
-    }
-  }
+  // compondentDidUpdate(prevProps){
+  //   if (
+  //     (prevProps.songIds && !arrayEq(this.props.songIds, prevProps.songIds)) ||
+  //     (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
+  //   ) {
+  //     this.props.fetchSongs({
+  //       song_ids: prevProps.songIds,
+  //       search_term: prevProps.searchTerm
+  //     });
+  //   }
+  // }
   
   render(){
-    if (this.props.songs.length == 0){
-      return (
-        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-        )
-      }
+    // if (this.props.songs.length == 0){
+    //   return (
+    //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+    //     )
+    //   }
 
     let searchedSongs;
     if (this.props.searchTerm) {

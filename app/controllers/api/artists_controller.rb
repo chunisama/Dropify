@@ -1,18 +1,15 @@
 class Api::ArtistsController < ApplicationController
     def index
-        if artist_ids
-            @artists = Artist.where(id: artist_ids)
-        elsif search_term
-            @artists = Artist.where('lower(title) like ?', "%#{search_term.downcase}%")
+        # if artist_ids
+        #     @artists = Artist.where(id: artist_ids)
+        # els
+        if search_term
+            @artists = Artist.where('lower(name) LIKE ?', "%#{search_term.downcase}%")
+            render :index
         else
             @artists = Artist.all 
             render :index
         end
-        # if @artists
-        #     render :index
-        # else
-        #     render json: @artists.errors.full_messages, status: 422
-        # end
     end
 
     def show
@@ -25,11 +22,15 @@ class Api::ArtistsController < ApplicationController
     end
 
     private
-    def artist_ids
-        params[:artist_ids]
-    end
+    # def artist_ids
+    #     params[:artist_ids]
+    # end
 
     def search_term
-        params[:search_term]
+        if params[:props]
+            params[:props][:search_term]
+        else
+            return nil
+        end
     end
 end
