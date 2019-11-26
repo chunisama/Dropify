@@ -23,9 +23,6 @@ ul {
 .user-controls-container {
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 495px;
-  left: -4px;
 }
 
 
@@ -52,7 +49,7 @@ ul {
 
 .sidebar-container {
   position: fixed;
-  height: 100vh;
+  height: 80vh;
   width: 220px;
   font-weight: 600;
   padding: 25px 0px 125px;
@@ -61,8 +58,10 @@ ul {
   color: whitesmoke;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   margin: -5px;
+  display: flex;
   z-index: 2;
-
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .log-out-button, .cancel-button {
@@ -422,12 +421,9 @@ ul {
 
 .user-container {
   margin: 10px 0;
+  margin-right: 10px;
   padding: 10px 0;
   border-top: 1px solid rgba(255,255,255,0.3);
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 760px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -440,3 +436,4 @@ ul {
 .fa-user-astronaut {
   padding: 5px;
 }
+

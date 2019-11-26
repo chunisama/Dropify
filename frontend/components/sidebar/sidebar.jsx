@@ -10,6 +10,7 @@ class Sidebar extends React.Component{
     const url = this.props.location.pathname
     return(
       <div className="sidebar-container">
+        <div className="sidebar-wrapper-top">
         <div className="side-bar-logo">
           <img className="app-img" src={window.whiteSpotifyURL}/>
             &nbsp;
@@ -41,6 +42,8 @@ class Sidebar extends React.Component{
             </Link>
           </div>
         </div>
+        </div>
+        <div className="sidebar-wrapper-bottom">
         <div className="user-controls-container">
           <button className="log-out-button"onClick={() => this.props.logout()}>Sign Out</button>
         </div>
@@ -49,6 +52,7 @@ class Sidebar extends React.Component{
           <i className="fas fa-user-astronaut"></i>
           </div>
           <p>{this.props.currentUser.username}</p>
+        </div>
         </div>
       </div>
 
