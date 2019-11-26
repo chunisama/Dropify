@@ -1,9 +1,9 @@
 import React from "react";
 import SongIndexItem from "./song_index_item";
 
-const arrayEq = (a1, a2) => {
-  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
-};
+// const arrayEq = (a1, a2) => {
+//   return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+// };
 
 class SongIndex extends React.Component {
   constructor(props){
@@ -11,17 +11,17 @@ class SongIndex extends React.Component {
   }
 
   componentDidMount(){
-    // if (this.props.songIds) {
-    //   this.props.fetchSongs({
-    //     song_ids: this.props.songIds,
-    //     search_term: this.props.searchTerm,
-    //   }).then(() => {this.props.setSongQueue(this.props.songIds)});
-    // } else {
+    if (this.props.songIds) {
       this.props.fetchSongs({
-        // song_ids: this.props.songIds,
+        song_ids: this.props.songIds,
+        search_term: this.props.searchTerm,
+      }).then(() => {this.props.setSongQueue(this.props.songIds)});
+    } else {
+      this.props.fetchSongs({
+        song_ids: this.props.songIds,
         search_term: this.props.searchTerm,
       }).then(() => {this.props.setSongQueue(this.props.songQueueIds)});
-    // }
+    }
     this.props.fetchAlbums();
     // this.props.fetchArtists();
   }
@@ -39,11 +39,11 @@ class SongIndex extends React.Component {
   // }
   
   render(){
-    // if (this.props.songs.length == 0){
-    //   return (
-    //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-    //     )
-    //   }
+    if (this.props.songs.length == 0){
+      return (
+        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+        )
+      }
 
     let searchedSongs;
     if (this.props.searchTerm) {

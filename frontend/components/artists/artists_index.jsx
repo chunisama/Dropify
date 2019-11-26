@@ -2,9 +2,9 @@ import React from "react";
 import ArtistIndexItem from "./artists_index_item";
 import { withRouter } from 'react-router-dom';
 
-const arrayEqeu = (a1, a2) => {
-  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
-};
+// const arrayEq = (a1, a2) => {
+//   return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+// };
 
 class ArtistIndex extends React.Component {
   constructor(props){
@@ -16,14 +16,14 @@ class ArtistIndex extends React.Component {
     // this.props.fetchSongs();
     // this.props.fetchAlbums();
     this.props.fetchArtists({
-      // artist_ids: this.props.artistIds,
+      artist_ids: this.props.artistIds,
       search_term: this.props.searchTerm
     });
   }
 
   // componentDidUpdate(prevProps){
   //   if (
-  //     (prevProps.artistIds && !arrayEqeu(this.props.artistIds,prevProps.artistIds)) ||
+  //     (prevProps.artistIds && !arrayEq(this.props.artistIds,prevProps.artistIds)) ||
   //     (prevProps.searchTerm && this.props.searchTerm !== prevProps.searchTerm)
   //   ) {
   //     this.props.fetchArtists({
@@ -43,11 +43,11 @@ class ArtistIndex extends React.Component {
   }
 
   render(){
-    // if (this.props.artists.length == 0){
-    //   return (
-    //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-    //   )
-    // }
+    if (this.props.artists.length == 0){
+      return (
+        <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+      )
+    }
 
     let filteredArtists;
     if (this.props.searchTerm) {

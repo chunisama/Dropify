@@ -2,9 +2,9 @@ import React from "react";
 import AlbumIndexItem from "./album_index_item";
 import { withRouter } from 'react-router-dom';
 
-const arrayEq = (a1, a2) => {
-  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
-};
+// const arrayEq = (a1, a2) => {
+//   return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+// };
 
 class AlbumIndex extends React.Component {
   constructor(props){
@@ -15,7 +15,7 @@ class AlbumIndex extends React.Component {
   componentDidMount(){
     // this.props.fetchSongs();
     this.props.fetchAlbums({
-      // album_ids: this.props.albumIds,
+      album_ids: this.props.albumIds,
       search_term: this.props.searchTerm
     });
   }

@@ -1,9 +1,9 @@
 import React from "react";
 import PlaylistIndexItem from "./playlist_index_item";
 
-const arrayEq = (a1, a2) => {
-  return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
-};
+// const arrayEq = (a1, a2) => {
+//   return ( a1.length === a2.length && a1.every((val, idx) => val === a2[idx]) );
+// };
 
 class PlaylistIndex extends React.Component {
   constructor(props){
@@ -12,7 +12,7 @@ class PlaylistIndex extends React.Component {
   
     componentDidMount(){
       this.props.fetchPlaylists({
-        // playlist_ids: this.props.playlistIds,
+        playlist_ids: this.props.playlistIds,
         search_term: this.props.searchTerm  
       });
     }
@@ -31,11 +31,11 @@ class PlaylistIndex extends React.Component {
     // }
 
     render(){
-      // if (this.props.playlists.length === 0){
-      //   return (
-      //     <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
-      //   )
-      // }
+      if (this.props.playlists.length === 0){
+        return (
+          <div className="loading-icon"><i className="fas fa-spinner fa-spin"></i></div>
+        )
+      }
 
       let filteredPlaylists;
       if (this.props.searchTerm) {
