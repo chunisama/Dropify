@@ -55,3 +55,5 @@ Another essential feature that was added to Dropify was the functionality to lik
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/liked%20songs.png)
 ![alt text](https://github.com/chunisama/Dropify/blob/master/app/assets/images/following%20playlist.png)
 
+## Future Plans
+I plan to upgrade the audio player by adding more style to the progress bar to give a professional user experience and add a queue button to render a queue page where the user can view all the songs queued up in the user's queue slice of state saved in the redux store.
