@@ -44,6 +44,6 @@
   },
   "homepage": "https://github.com/chunisama/Dropify#readme",
   "devDependencies": {
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.12"
   }
 }
